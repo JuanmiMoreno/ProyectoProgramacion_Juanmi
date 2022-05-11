@@ -16,6 +16,8 @@ import javax.swing.JTextPane;
 
 import java.awt.FlowLayout;
 import java.awt.Panel;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 
 

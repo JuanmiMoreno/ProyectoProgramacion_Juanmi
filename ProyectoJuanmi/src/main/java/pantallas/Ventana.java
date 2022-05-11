@@ -6,11 +6,11 @@ import javax.swing.JFrame;
 public class Ventana extends JFrame {
 	
 	public Ventana() {
-	this.setSize(600,400);  //TAMAÑO VENTANA
+	this.setSize(800,600);  //TAMAÑO VENTANA
 	this.setLocationRelativeTo(null); //PONE EN LA MITAD DE LA PANTALLA
 	
-	this.setIconImage(new ImageIcon("./icono/cenec.png").getImage());
-	this.setTitle("Proyecto prueba interfaz grafica");
+	this.setIconImage(new ImageIcon("./iconos/icono.jpg").getImage());
+	this.setTitle("Agro Manager Proyecto");
 	//LA VENTANA SE PONER POR ENCIMA Y NO ME PUEDE MOVER
 		//this.setAlwaysOnTop(true);
 		//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
