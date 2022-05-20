@@ -2,22 +2,27 @@ package superClases;
 
 import java.sql.SQLException;
 
+import enums.Provincia;
 import exceptions.nombreInvalidoExceptions;
 
 public abstract class EntidadConUbicacion extends EntidadConNombre {
 	
-	private String provincia;
+	private Provincia provincia;
 
-	public EntidadConUbicacion(String nombre, String provincia) throws nombreInvalidoExceptions, SQLException {
+	public EntidadConUbicacion(String nombre, Provincia provincia) throws nombreInvalidoExceptions, SQLException {
 		super(nombre);
 		this.provincia = provincia;
 	}
 
-	public String getProvincia() {
+	public EntidadConUbicacion(String nombre) throws nombreInvalidoExceptions, SQLException {
+		super(nombre);
+	}
+
+	public Provincia getProvincia() {
 		return provincia;
 	}
 
-	public void setProvincia(String provincia) {
+	public void setProvincia(Provincia provincia) {
 		this.provincia = provincia;
 	}
 	

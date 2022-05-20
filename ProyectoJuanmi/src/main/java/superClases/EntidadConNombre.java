@@ -12,7 +12,7 @@ public abstract  class EntidadConNombre {
 
 	public EntidadConNombre(String nombre) throws nombreInvalidoExceptions, SQLException {
 		super();
-		this.setNombre(nombre);;
+		this.nombre = nombre;
 	}
 
 	public String getNombre() {
