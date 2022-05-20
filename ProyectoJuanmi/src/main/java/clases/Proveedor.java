@@ -1,7 +1,9 @@
 package clases;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConNombre;
 
 public class Proveedor extends EntidadConNombre {
@@ -9,7 +11,7 @@ public class Proveedor extends EntidadConNombre {
 	ArrayList<Producto> productos;
 	
 	
-	public Proveedor(String nombre, byte telefono, ArrayList<Producto> productos) {
+	public Proveedor(String nombre, byte telefono, ArrayList<Producto> productos) throws nombreInvalidoExceptions, SQLException {
 		super(nombre);
 		this.telefono = telefono;
 		this.productos = productos;

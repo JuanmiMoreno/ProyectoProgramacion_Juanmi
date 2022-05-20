@@ -1,5 +1,8 @@
 package clases;
 
+import java.sql.SQLException;
+
+import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConDinero;
 
 public class Trabajador extends EntidadConDinero {
@@ -8,7 +11,7 @@ public class Trabajador extends EntidadConDinero {
 
 	
 	
-	public Trabajador(String nombre, float dinero, String apellido, String dni) {
+	public Trabajador(String nombre, float dinero, String apellido, String dni) throws nombreInvalidoExceptions, SQLException {
 		super(nombre, dinero);
 		this.apellido = apellido;
 		this.dni = dni;

@@ -1,6 +1,9 @@
 package clases;
 
+import java.sql.SQLException;
+
 import enums.tipoPlantacion;
+import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConUbicacion;
 
 public class Campo extends EntidadConUbicacion {
@@ -8,7 +11,7 @@ public class Campo extends EntidadConUbicacion {
 	private tipoPlantacion plantacion;
 	
 	
-	public Campo(String nombre, String provincia, float superficie, tipoPlantacion plantacion) {
+	public Campo(String nombre, String provincia, float superficie, tipoPlantacion plantacion) throws nombreInvalidoExceptions, SQLException {
 		super(nombre, provincia);
 		this.superficie = superficie;
 		this.plantacion = plantacion;

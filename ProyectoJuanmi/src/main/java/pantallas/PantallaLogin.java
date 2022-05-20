@@ -31,6 +31,11 @@ public class PantallaLogin extends JPanel {
 		this.ventana=v;
 		setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\agricultura.png"));
+		lblNewLabel.setBounds(-48, 126, 981, 641);
+		add(lblNewLabel);
+		
 
 	}
 }
