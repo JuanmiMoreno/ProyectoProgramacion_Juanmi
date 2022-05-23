@@ -1,10 +1,12 @@
 package clases;
 
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConDinero;
+import utils.UtilsDB;
 
 public class Empresa extends EntidadConDinero {
 	private String cif;
@@ -30,6 +32,30 @@ public class Empresa extends EntidadConDinero {
 	
 	
 	
+	
+	public Empresa(String nombre, float dinero, String cif) throws nombreInvalidoExceptions, SQLException {
+		super(nombre, dinero);
+		String nombreEmpresa= nombre;
+		float presupuesto = dinero;
+		Statement queryInsertar = UtilsDB.conectarBD();
+		if (queryInsertar.executeUpdate("insert into usuario values('" + nombreEmpresa + "','" + cif+ "','" + presupuesto + "','" + nombreUsuario
+        + "')") > 0) {
+			this.cif=cif;
+		} else {
+			UtilsDB.desconectarBD();
+				throw new SQLException("No se ha podido insertar el usuario");
+		}
+
+		UtilsDB.desconectarBD();
+		this.cif = cif;
+		
+		
+		
+	}
+
+
+
+
 	public String getCif() {
 		return cif;
 	}

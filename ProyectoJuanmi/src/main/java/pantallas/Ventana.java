@@ -11,14 +11,14 @@ import clases.Usuario;
 
 public class Ventana extends JFrame{
 	private HashMap<String, JPanel> pantallas;
-	protected Usuario usuarioLogado;
+	public Usuario usuarioLogado;
 	
 	public Ventana() {
 		pantallas = new HashMap<String,JPanel>();
 		pantallas.put("pantallaInicio", new PantallaInicioPrograma (this));
 		pantallas.put("login",new PantallaLogin(this));
 		pantallas.put("registro", new PantallaRegistro(this));
-		
+		pantallas.put("empresa", new PantallaEmpresa(this));
 		
 		
 		this.setSize(700,500);  //TAMAÑO VENTANA

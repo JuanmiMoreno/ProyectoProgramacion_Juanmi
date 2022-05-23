@@ -125,6 +125,7 @@ public class PantallaLogin extends JPanel {
 
 					ventana.usuarioLogado = new Usuario(nombre, contraseña);
 					JOptionPane.showMessageDialog(ventana, "Bienvenido, "+ventana.usuarioLogado.getNombre(), "Login correcto", JOptionPane.PLAIN_MESSAGE);
+					ventana.cambiarPantallas("empresa");
 				} catch (SQLException | ContraseñaIncorrectaException | UsuarioNoExisteException
 						| nombreInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
