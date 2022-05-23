@@ -123,7 +123,8 @@ public class PantallaLogin extends JPanel {
 					String nombre = campoUsuario.getText();
 					String contraseña = new String(campoContraseña.getPassword());
 
-					new Usuario(nombre, contraseña);
+					ventana.usuarioLogado = new Usuario(nombre, contraseña);
+					JOptionPane.showMessageDialog(ventana, "Bienvenido, "+ventana.usuarioLogado.getNombre(), "Login correcto", JOptionPane.PLAIN_MESSAGE);
 				} catch (SQLException | ContraseñaIncorrectaException | UsuarioNoExisteException
 						| nombreInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

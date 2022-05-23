@@ -29,6 +29,11 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 
 public class PantallaRegistro extends JPanel {
@@ -40,23 +45,26 @@ public class PantallaRegistro extends JPanel {
 	public PantallaRegistro (Ventana v) {
 		this.ventana=v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 75, 146, 0, 0, 16};
-		gridBagLayout.rowHeights = new int[]{19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 107, 146, 0, 0};
+		gridBagLayout.rowHeights = new int[]{19, 0, 0, 0, 0, 0, 0, 0, 0, 39, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
 		JLabel etiquetaRegistro = new JLabel("Registro");
+		etiquetaRegistro.setForeground(SystemColor.desktop);
+		etiquetaRegistro.setBackground(SystemColor.inactiveCaptionBorder);
 		etiquetaRegistro.setHorizontalAlignment(SwingConstants.CENTER);
 		etiquetaRegistro.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 54));
 		GridBagConstraints gbc_etiquetaRegistro = new GridBagConstraints();
-		gbc_etiquetaRegistro.gridwidth = 6;
+		gbc_etiquetaRegistro.gridwidth = 5;
 		gbc_etiquetaRegistro.insets = new Insets(0, 0, 5, 0);
 		gbc_etiquetaRegistro.gridx = 0;
 		gbc_etiquetaRegistro.gridy = 1;
 		add(etiquetaRegistro, gbc_etiquetaRegistro);
 		
 		JLabel etiquetaUsuario = new JLabel("Usuario");
+		etiquetaUsuario.setFont(new Font("Arial", Font.BOLD, 15));
+		etiquetaUsuario.setForeground(SystemColor.desktop);
 		etiquetaUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_etiquetaUsuario = new GridBagConstraints();
 		gbc_etiquetaUsuario.insets = new Insets(0, 0, 5, 5);
@@ -75,6 +83,8 @@ public class PantallaRegistro extends JPanel {
 		campoUsuario.setColumns(10);
 		
 		JLabel etiquetaContraseña = new JLabel("Contrase\u00F1a");
+		etiquetaContraseña.setFont(new Font("Arial", Font.BOLD, 15));
+		etiquetaContraseña.setForeground(new Color(0, 0, 0));
 		GridBagConstraints gbc_etiquetaContraseña = new GridBagConstraints();
 		gbc_etiquetaContraseña.insets = new Insets(0, 0, 5, 5);
 		gbc_etiquetaContraseña.gridx = 1;
@@ -92,6 +102,8 @@ public class PantallaRegistro extends JPanel {
 		add(campoContraseña, gbc_campoContraseña);
 		
 		JLabel etiquetaEmail = new JLabel("Email");
+		etiquetaEmail.setFont(new Font("Arial", Font.BOLD, 15));
+		etiquetaEmail.setForeground(SystemColor.desktop);
 		GridBagConstraints gbc_etiquetaEmail = new GridBagConstraints();
 		gbc_etiquetaEmail.insets = new Insets(0, 0, 5, 5);
 		gbc_etiquetaEmail.gridx = 1;
@@ -109,6 +121,8 @@ public class PantallaRegistro extends JPanel {
 		campoEmail.setColumns(10);
 		
 		JLabel etiquetaProvincia = new JLabel("Provincia");
+		etiquetaProvincia.setFont(new Font("Arial", Font.BOLD, 15));
+		etiquetaProvincia.setForeground(SystemColor.desktop);
 		GridBagConstraints gbc_etiquetaProvincia = new GridBagConstraints();
 		gbc_etiquetaProvincia.insets = new Insets(0, 0, 5, 5);
 		gbc_etiquetaProvincia.gridx = 1;
@@ -127,20 +141,22 @@ public class PantallaRegistro extends JPanel {
 		JButton botonRegistrarse = new JButton("Registrarse");
 		
 		GridBagConstraints gbc_botonRegistrarse = new GridBagConstraints();
+		gbc_botonRegistrarse.anchor = GridBagConstraints.SOUTH;
 		gbc_botonRegistrarse.insets = new Insets(0, 0, 5, 5);
 		gbc_botonRegistrarse.gridx = 2;
 		gbc_botonRegistrarse.gridy = 7;
 		add(botonRegistrarse, gbc_botonRegistrarse);
-		
-		JButton botonSalir = new JButton("Volver");
-		botonSalir.setHorizontalAlignment(SwingConstants.LEFT);
-		botonSalir.setVerticalAlignment(SwingConstants.TOP);
-		
-			GridBagConstraints gbc_botonSalir = new GridBagConstraints();
-			gbc_botonSalir.insets = new Insets(0, 0, 0, 5);
-			gbc_botonSalir.gridx = 4;
-			gbc_botonSalir.gridy = 9;
-			add(botonSalir, gbc_botonSalir);
+			
+			JButton botonSalir = new JButton("Volver");
+			botonSalir.setHorizontalAlignment(SwingConstants.LEFT);
+			botonSalir.setVerticalAlignment(SwingConstants.TOP);
+			
+				GridBagConstraints gbc_botonSalir = new GridBagConstraints();
+				gbc_botonSalir.anchor = GridBagConstraints.NORTHEAST;
+				gbc_botonSalir.insets = new Insets(0, 0, 0, 5);
+				gbc_botonSalir.gridx = 3;
+				gbc_botonSalir.gridy = 9;
+				add(botonSalir, gbc_botonSalir);
 		
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
@@ -159,13 +175,31 @@ public class PantallaRegistro extends JPanel {
 				String contraseña = new String (campoContraseña.getPassword());
 				Provincia provincia = (Provincia)selectorProvincia.getSelectedItem();
 				new Usuario(nombre, provincia, contraseña, email);
-				
-				} catch (SQLException  | ContraseñaVaciaExceptions |emailInvalidoExceptions | nombreInvalidoExceptions e1 ) {
+				JOptionPane.showMessageDialog(ventana, "Registrado con exito! ", "Registro completo", JOptionPane.PLAIN_MESSAGE);
+				ventana.cambiarPantallas("login");
+				}catch(SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana,"Ese usuario ya esta registrado","Error",JOptionPane.ERROR_MESSAGE);	
+
+				}catch ( SQLException  | ContraseñaVaciaExceptions |emailInvalidoExceptions | nombreInvalidoExceptions e1 ) {
 					JOptionPane.showMessageDialog(ventana,e1.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);	
 				}
 				
-				ventana.cambiarPantallas("login");
+				
+				
+				
 			}
 		});
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\registro2.png"));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.gridwidth = 5;
+		gbc_lblNewLabel.gridheight = 10;
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 0;
+		add(lblNewLabel, gbc_lblNewLabel);
+		
+		
 }
 }

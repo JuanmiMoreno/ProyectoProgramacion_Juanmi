@@ -7,9 +7,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import clases.Usuario;
+
 public class Ventana extends JFrame{
 	private HashMap<String, JPanel> pantallas;
-
+	protected Usuario usuarioLogado;
+	
 	public Ventana() {
 		pantallas = new HashMap<String,JPanel>();
 		pantallas.put("pantallaInicio", new PantallaInicioPrograma (this));
