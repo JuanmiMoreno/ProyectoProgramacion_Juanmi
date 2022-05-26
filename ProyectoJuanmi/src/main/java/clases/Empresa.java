@@ -18,6 +18,7 @@ public class Empresa extends EntidadConDinero {
 	
 	
 	
+	
 	public Empresa(String nombre, float dinero, String cif, ArrayList<Campo> campos, ArrayList<Maquinaria> maquinarias,
 			ArrayList<Trabajador> trabajadores, ArrayList<Proveedor> proveedores, ArrayList<Actividad> actividades)
 			throws nombreInvalidoExceptions, SQLException {
@@ -37,6 +38,7 @@ public class Empresa extends EntidadConDinero {
 		super(nombre, dinero);
 		String nombreEmpresa= nombre;
 		float presupuesto = dinero;
+		String nombreUsuario =
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into usuario values('" + nombreEmpresa + "','" + cif+ "','" + presupuesto + "','" + nombreUsuario
         + "')") > 0) {

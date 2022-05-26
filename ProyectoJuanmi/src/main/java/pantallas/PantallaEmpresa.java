@@ -13,6 +13,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PantallaEmpresa extends JPanel{
 
@@ -96,6 +98,7 @@ public class PantallaEmpresa extends JPanel{
 		campoPresupuesto.setColumns(10);
 		
 		JButton botonRegistrarEmpresa = new JButton("Registrar empresa");
+
 		botonRegistrarEmpresa.setBackground(SystemColor.info);
 		botonRegistrarEmpresa.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_botonRegistrarEmpresa = new GridBagConstraints();
@@ -116,6 +119,15 @@ public class PantallaEmpresa extends JPanel{
 		gbc_imagenFondo.gridy = 0;
 		add(imagenFondo, gbc_imagenFondo);
 		
-	
+		botonRegistrarEmpresa.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String nombre = campoNombre.getText();
+				int fondos =Integer.parseInt(campoPresupuesto.getText());
+				String cif = campoCif.getText();
+				
+				new Empresa();
+			}
+		});
 	}
 }
