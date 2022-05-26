@@ -136,10 +136,9 @@ public class PantallaEmpresa extends JPanel {
 		campoNombreEmpresa.setToolTipText("Introducir NOMBRE de la empresa");
 		GridBagConstraints gbc_campoNombreEmpresa = new GridBagConstraints();
 		gbc_campoNombreEmpresa.anchor = GridBagConstraints.NORTH;
-		gbc_campoNombreEmpresa.gridwidth = 2;
 		gbc_campoNombreEmpresa.insets = new Insets(0, 0, 0, 5);
 		gbc_campoNombreEmpresa.fill = GridBagConstraints.HORIZONTAL;
-		gbc_campoNombreEmpresa.gridx = 2;
+		gbc_campoNombreEmpresa.gridx = 3;
 		gbc_campoNombreEmpresa.gridy = 7;
 		add(campoNombreEmpresa, gbc_campoNombreEmpresa);
 		campoNombreEmpresa.setColumns(10);
@@ -150,7 +149,7 @@ public class PantallaEmpresa extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					String nombreEmpresa = campoNombreEmpresa.getText();
-					new Empresa(nombreEmpresa);
+					new Empresa(nombreEmpresa, ventana.usuarioLogado);
 					ventana.cambiarPantallas("principal");
 				} catch (nombreInvalidoExceptions | SQLException | EmpresaIncorrectaExceptions e1) {
 

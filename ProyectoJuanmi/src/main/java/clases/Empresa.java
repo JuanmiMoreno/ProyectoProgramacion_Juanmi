@@ -65,38 +65,12 @@ public class Empresa extends EntidadConDinero {
 	}
 	
 	
-	/*
-	public Empresa(String nombre, float dinero, String cif) throws nombreInvalidoExceptions, SQLException {
-		super(nombre, dinero);
-		String nombreEmpresa= nombre;
-		float presupuesto = dinero;
-		String nombreUsuario =
-		Statement queryInsertar = UtilsDB.conectarBD();
-		if (queryInsertar.executeUpdate("insert into usuario values('" + nombreEmpresa + "','" + cif+ "','" + presupuesto + "','" + nombreUsuario
-        + "')") > 0) {
-			this.cif=cif;
-		} else {
-			UtilsDB.desconectarBD();
-				throw new SQLException("No se ha podido insertar el usuario");
-		}
-
-		UtilsDB.desconectarBD();
-		this.cif = cif;
-		
-	}
-*/
-
-
-
-
-
-
-
-	public Empresa(String nombre) throws nombreInvalidoExceptions, SQLException, EmpresaIncorrectaExceptions {
+	public Empresa(String nombre, Usuario usuario) throws nombreInvalidoExceptions, SQLException, EmpresaIncorrectaExceptions {
 		super(nombre);
+		String nombreUsuario = usuario.getNombre();
 		Statement smt=UtilsDB.conectarBD();
 		ResultSet cursor=smt.executeQuery("select * from empresa where nombreEmpresa='"+
-		nombre+"'");
+		nombre+"' and nombreUsuario='"+nombreUsuario+"'");
 		
 		if(cursor.next()) {
 			this.nombre=cursor.getString("nombreEmpresa");
