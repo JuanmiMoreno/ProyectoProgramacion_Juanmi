@@ -14,6 +14,12 @@ public abstract class EntidadConDinero extends EntidadConNombre {
 
 
 	
+	public EntidadConDinero(String nombre) throws nombreInvalidoExceptions, SQLException {
+		super(nombre);
+	}
+
+
+
 	public float getDinero() {
 		return dinero;
 	}

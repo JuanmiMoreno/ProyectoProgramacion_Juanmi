@@ -8,7 +8,7 @@ import utils.UtilsDB;
 
 public abstract  class EntidadConNombre {
 	
-	private String nombre;
+	protected String nombre;
 
 	public EntidadConNombre(String nombre) throws nombreInvalidoExceptions, SQLException {
 		super();

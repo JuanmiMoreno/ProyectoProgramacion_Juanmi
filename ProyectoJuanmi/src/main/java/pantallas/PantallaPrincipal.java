@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.SystemColor;
 import com.toedter.calendar.JCalendar;
+import javax.swing.ImageIcon;
 
 public class PantallaPrincipal extends JPanel {
 
@@ -23,9 +24,9 @@ public class PantallaPrincipal extends JPanel {
 	public PantallaPrincipal(Ventana v) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{28, 116, 151, 140, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 54, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 54, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel etiquetaTitulo = new JLabel("Agro Manager");
@@ -92,5 +93,27 @@ public class PantallaPrincipal extends JPanel {
 		gbc_botonProveedor.gridx = 3;
 		gbc_botonProveedor.gridy = 5;
 		add(botonProveedor, gbc_botonProveedor);
+		
+		JButton botonSalir = new JButton("Salir");
+		botonSalir.setFont(new Font("Arial", Font.BOLD, 15));
+		GridBagConstraints gbc_botonSalir = new GridBagConstraints();
+		gbc_botonSalir.fill = GridBagConstraints.HORIZONTAL;
+		gbc_botonSalir.insets = new Insets(0, 0, 5, 5);
+		gbc_botonSalir.gridx = 2;
+		gbc_botonSalir.gridy = 10;
+		add(botonSalir, gbc_botonSalir);
+		
+		
+		JLabel fotoFondo = new JLabel("");
+		fotoFondo.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\fondoPrincipal.png"));
+		GridBagConstraints gbc_fotoFondo = new GridBagConstraints();
+		gbc_fotoFondo.anchor = GridBagConstraints.EAST;
+		gbc_fotoFondo.gridwidth = 5;
+		gbc_fotoFondo.gridheight = 12;
+		gbc_fotoFondo.gridx = 0;
+		gbc_fotoFondo.gridy = 0;
+		add(fotoFondo, gbc_fotoFondo);
+		
+		
 	}
 }
