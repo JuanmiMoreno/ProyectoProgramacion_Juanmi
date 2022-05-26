@@ -144,6 +144,7 @@ public class PantallaEmpresa extends JPanel {
 		campoNombreEmpresa.setColumns(10);
 
 		JButton botonIniciar = new JButton("Entrar");
+		botonIniciar.setBackground(SystemColor.info);
 		botonIniciar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

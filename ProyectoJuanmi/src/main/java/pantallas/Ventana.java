@@ -7,11 +7,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import clases.Actividad;
+import clases.Empresa;
 import clases.Usuario;
 
 public class Ventana extends JFrame{
 	private JPanel pantallaActual;
 	public Usuario usuarioLogado;
+	public Empresa empresaLogada;
+	public Actividad actividadLogada;
 	
 	public Ventana() {
 
