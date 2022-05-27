@@ -3,6 +3,8 @@ package pantallas;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.BoxLayout;
@@ -16,12 +18,15 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import com.toedter.calendar.JCalendar;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PantallaPrincipal extends JPanel {
 
 	private Ventana ventana;
 	
 	public PantallaPrincipal(Ventana v) {
+		this.ventana = v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{28, 116, 151, 140, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 54, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -42,6 +47,7 @@ public class PantallaPrincipal extends JPanel {
 		add(etiquetaTitulo, gbc_etiquetaTitulo);
 		
 		JButton botonActividad = new JButton("Actividad");
+
 		botonActividad.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonActividad = new GridBagConstraints();
 		gbc_botonActividad.fill = GridBagConstraints.HORIZONTAL;
@@ -51,6 +57,7 @@ public class PantallaPrincipal extends JPanel {
 		add(botonActividad, gbc_botonActividad);
 		
 		JButton botonCampos = new JButton("Campos");
+
 		botonCampos.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonCampos = new GridBagConstraints();
 		gbc_botonCampos.fill = GridBagConstraints.HORIZONTAL;
@@ -95,6 +102,7 @@ public class PantallaPrincipal extends JPanel {
 		add(botonProveedor, gbc_botonProveedor);
 		
 		JButton botonSalir = new JButton("Salir");
+
 		botonSalir.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonSalir = new GridBagConstraints();
 		gbc_botonSalir.fill = GridBagConstraints.HORIZONTAL;
@@ -113,6 +121,30 @@ public class PantallaPrincipal extends JPanel {
 		gbc_fotoFondo.gridx = 0;
 		gbc_fotoFondo.gridy = 0;
 		add(fotoFondo, gbc_fotoFondo);
+		
+		botonActividad.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.cambiarPantallas("actividad");
+			}
+		});
+		
+		botonCampos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.cambiarPantallas("campos");
+			}
+		});
+		
+		botonSalir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(ventana, "Gracias por utilizar nuestra aplicacion","Salir",JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
+			}
+		});
+		
+
 		
 		
 	}

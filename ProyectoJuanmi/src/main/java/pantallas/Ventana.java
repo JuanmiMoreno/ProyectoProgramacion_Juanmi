@@ -40,6 +40,10 @@ public class Ventana extends JFrame{
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual = null;
 		switch(nombrePantalla) {
+		
+			case "principal":
+				this.pantallaActual = new PantallaPrincipal(this);
+				break;
 			
 			case "login":
 				this.pantallaActual = new PantallaLogin(this);
@@ -52,8 +56,14 @@ public class Ventana extends JFrame{
 			case "empresa":
 				this.pantallaActual = new PantallaEmpresa(this);
 				break;
-			case "principal" :
-				this.pantallaActual = new PantallaPrincipal(this);
+				
+			case "actividad":
+				this.pantallaActual = new PantallaActividad(this);
+				break;
+				
+			case "campos":
+				this.pantallaActual = new PantallaCampo(this);
+				break;
 		}
 		this.pantallaActual.setVisible(true);
 		this.setContentPane(pantallaActual);
