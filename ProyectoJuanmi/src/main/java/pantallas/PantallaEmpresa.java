@@ -188,7 +188,7 @@ public class PantallaEmpresa extends JPanel {
 
 		JLabel fotoFondo = new JLabel("");
 		fotoFondo.setIcon(new ImageIcon(
-				"C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\empresaFondo.png"));
+				".\\imagenes\\empresaFondo.png"));
 		GridBagConstraints gbc_fotoFondo = new GridBagConstraints();
 		gbc_fotoFondo.gridheight = 8;
 		gbc_fotoFondo.gridwidth = 6;

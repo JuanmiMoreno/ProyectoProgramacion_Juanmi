@@ -156,7 +156,7 @@ public class PantallaCampo extends JPanel{
 		add(botonVolver, gbc_botonVolver);
 		
 		JLabel fondo = new JLabel("");
-		fondo.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\campos.png"));
+		fondo.setIcon(new ImageIcon(".\\imagenes\\campos.png"));
 		GridBagConstraints gbc_fondo = new GridBagConstraints();
 		gbc_fondo.gridheight = 12;
 		gbc_fondo.gridwidth = 18;

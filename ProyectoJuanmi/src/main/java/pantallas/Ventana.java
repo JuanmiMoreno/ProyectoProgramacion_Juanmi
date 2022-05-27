@@ -22,7 +22,7 @@ public class Ventana extends JFrame{
 		this.setSize(700,500);  //TAMAÑO VENTANA
 		this.setLocationRelativeTo(null); //PONE EN LA MITAD DE LA PANTALLA
 		
-		this.setIconImage(new ImageIcon("./iconos/logo.png").getImage());
+		this.setIconImage(new ImageIcon("./imagenes/logo.png").getImage());
 		this.setTitle("Agro Manager");
 		//LA VENTANA SE PONER POR ENCIMA Y NO ME PUEDE MOVER
 			//this.setAlwaysOnTop(true);

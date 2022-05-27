@@ -53,7 +53,7 @@ public class PantallaInicioPrograma extends JPanel {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
 		lblNewLabel.setBackground(new Color(245, 255, 250));
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\Introduccion.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(".\\imagenes\\Introduccion.jpg"));
 		lblNewLabel.setBounds(-17, -56, 768, 595);
 		add(lblNewLabel);
 		}

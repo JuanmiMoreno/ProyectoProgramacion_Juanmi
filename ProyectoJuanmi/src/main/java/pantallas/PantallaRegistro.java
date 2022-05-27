@@ -192,7 +192,7 @@ public class PantallaRegistro extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\registro.png"));
+		lblNewLabel.setIcon(new ImageIcon(".\\imagenes\\registro.png"));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.gridwidth = 5;
 		gbc_lblNewLabel.gridheight = 10;

@@ -113,7 +113,7 @@ public class PantallaPrincipal extends JPanel {
 		
 		
 		JLabel fotoFondo = new JLabel("");
-		fotoFondo.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\fondoPrincipal.png"));
+		fotoFondo.setIcon(new ImageIcon(".\\imagenes\\fondoPrincipal.png"));
 		GridBagConstraints gbc_fotoFondo = new GridBagConstraints();
 		gbc_fotoFondo.anchor = GridBagConstraints.EAST;
 		gbc_fotoFondo.gridwidth = 5;
@@ -139,8 +139,13 @@ public class PantallaPrincipal extends JPanel {
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(ventana, "Gracias por utilizar nuestra aplicacion","Salir",JOptionPane.INFORMATION_MESSAGE);
-				System.exit(0);
+				int opcion =JOptionPane.showConfirmDialog(ventana, "¿Seguro que quieres salir?","CUIDADO",JOptionPane.WARNING_MESSAGE);
+				
+				if(opcion==0) {
+					System.exit(0);
+				}else {
+					JOptionPane.showMessageDialog(ventana, "Operacion cancelada", "Cancelado",JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 		

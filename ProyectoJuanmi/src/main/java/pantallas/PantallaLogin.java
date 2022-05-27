@@ -112,7 +112,7 @@ public class PantallaLogin extends JPanel {
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setBackground(new Color(46, 139, 87));
 		lblNewLabel_4.setIcon(new ImageIcon(
-				"C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\agricultura.png"));
+				".\\imagenes\\agricultura.png"));
 		lblNewLabel_4.setBounds(-13, 0, 844, 517);
 		add(lblNewLabel_4);
 

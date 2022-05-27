@@ -157,7 +157,7 @@ public class PantallaActividad extends JPanel{
 		add(botonVolver, gbc_botonVolver);
 		
 		JLabel fotoFondo = new JLabel("");
-		fotoFondo.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\actividad.png"));
+		fotoFondo.setIcon(new ImageIcon(".\\imagenes\\actividad.png"));
 		GridBagConstraints gbc_fotoFondo = new GridBagConstraints();
 		gbc_fotoFondo.gridheight = 11;
 		gbc_fotoFondo.gridwidth = 21;
