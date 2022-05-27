@@ -29,18 +29,19 @@ public class PantallaCampo extends JPanel{
 	public PantallaCampo (Ventana v) {
 		this.ventana = v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, -11, 0, 0, 0, 46, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{0, -11, 0, 0, 0, 46, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 46, 23};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 43, 38, 32, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
+		
 		
 		JLabel etiquetaTitulo = new JLabel("Campos");
 		etiquetaTitulo.setForeground(new Color(255, 255, 255));
 		etiquetaTitulo.setFont(new Font("Georgia", Font.BOLD | Font.ITALIC, 50));
 		GridBagConstraints gbc_etiquetaTitulo = new GridBagConstraints();
 		gbc_etiquetaTitulo.anchor = GridBagConstraints.SOUTH;
-		gbc_etiquetaTitulo.gridwidth = 19;
+		gbc_etiquetaTitulo.gridwidth = 17;
 		gbc_etiquetaTitulo.insets = new Insets(0, 0, 5, 5);
 		gbc_etiquetaTitulo.gridx = 0;
 		gbc_etiquetaTitulo.gridy = 0;
@@ -61,7 +62,7 @@ public class PantallaCampo extends JPanel{
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.BOLD | Font.ITALIC, 22));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.gridwidth = 11;
+		gbc_lblNewLabel_1.gridwidth = 9;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 6;
 		gbc_lblNewLabel_1.gridy = 2;
@@ -71,7 +72,7 @@ public class PantallaCampo extends JPanel{
 		listaCampos.setBackground(new Color(255, 255, 204));
 		GridBagConstraints gbc_listaCampos = new GridBagConstraints();
 		gbc_listaCampos.gridheight = 7;
-		gbc_listaCampos.gridwidth = 13;
+		gbc_listaCampos.gridwidth = 11;
 		gbc_listaCampos.insets = new Insets(0, 0, 5, 5);
 		gbc_listaCampos.fill = GridBagConstraints.BOTH;
 		gbc_listaCampos.gridx = 6;
@@ -139,9 +140,9 @@ public class PantallaCampo extends JPanel{
 		botonEliminar.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonEliminar = new GridBagConstraints();
 		gbc_botonEliminar.anchor = GridBagConstraints.NORTH;
-		gbc_botonEliminar.gridwidth = 5;
+		gbc_botonEliminar.gridwidth = 6;
 		gbc_botonEliminar.insets = new Insets(0, 0, 5, 5);
-		gbc_botonEliminar.gridx = 8;
+		gbc_botonEliminar.gridx = 6;
 		gbc_botonEliminar.gridy = 10;
 		add(botonEliminar, gbc_botonEliminar);
 		
@@ -150,20 +151,20 @@ public class PantallaCampo extends JPanel{
 		botonVolver.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonVolver = new GridBagConstraints();
 		gbc_botonVolver.gridwidth = 4;
-		gbc_botonVolver.gridx = 16;
+		gbc_botonVolver.gridx = 14;
 		gbc_botonVolver.gridy = 11;
 		add(botonVolver, gbc_botonVolver);
 		
 		JLabel fondo = new JLabel("");
 		fondo.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\iconos\\campos.png"));
 		GridBagConstraints gbc_fondo = new GridBagConstraints();
-		gbc_fondo.insets = new Insets(0, 0, 5, 0);
 		gbc_fondo.gridheight = 12;
-		gbc_fondo.gridwidth = 22;
+		gbc_fondo.gridwidth = 18;
+		gbc_fondo.insets = new Insets(0, 0, 5, 5);
 		gbc_fondo.gridx = 0;
 		gbc_fondo.gridy = 0;
 		add(fondo, gbc_fondo);
-		
+
 		botonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
