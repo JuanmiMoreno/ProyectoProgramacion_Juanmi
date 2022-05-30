@@ -20,7 +20,6 @@ public class Usuario extends EntidadConUbicacion {
 
 	public Usuario(String nombre, Provincia provincia, String contraseña, String email) throws SQLException, ContraseñaVaciaExceptions, emailInvalidoExceptions, nombreInvalidoExceptions {
 		super(nombre, provincia);
-		String nombreUsuario = nombre;
 		if(!this.contraseñaValido(contraseña)) {
 			throw new ContraseñaVaciaExceptions("La contraeña no puede estar vacia");
 		}
@@ -29,7 +28,7 @@ public class Usuario extends EntidadConUbicacion {
 		}
 		
 		Statement queryInsertar = UtilsDB.conectarBD();
-		if (queryInsertar.executeUpdate("insert into usuario values('" + nombreUsuario + "','" + contraseña+ "','" + email + "','" + provincia
+		if (queryInsertar.executeUpdate("insert into usuario values('" + this.getNombre() + "','" + contraseña+ "','" + email + "','" + provincia
         + "')") > 0) {
 			this.contraseña = contraseña;
 			this.email = email;
@@ -89,7 +88,7 @@ public class Usuario extends EntidadConUbicacion {
 		}
 		Statement smt = UtilsDB.conectarBD();
 		smt.executeUpdate(
-				"update usuario set contrasena='" + contraseña + "' where nombre='" + super.getNombre() + "'");
+				"update usuario set contrasena='" + contraseña + "' where nombre='" + this.getNombre() + "'");
 		UtilsDB.desconectarBD();
 		this.contraseña = contraseña;
 	}

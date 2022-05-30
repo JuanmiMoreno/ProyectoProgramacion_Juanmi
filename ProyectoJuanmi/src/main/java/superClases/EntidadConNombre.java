@@ -11,9 +11,13 @@ public abstract  class EntidadConNombre {
 	protected String nombre;
 
 	public EntidadConNombre(String nombre) throws nombreInvalidoExceptions, SQLException {
-		super();
 		this.nombre = nombre;
 	}
+	
+	public EntidadConNombre()  {
+		
+	}
+	
 
 	public String getNombre() {
 		return nombre;

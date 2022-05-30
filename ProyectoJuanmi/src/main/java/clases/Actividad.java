@@ -41,6 +41,8 @@ public class Actividad extends EntidadConNombre {
 		UtilsDB.desconectarBD();
 
 	}
+	
+	
 	}
 	
 	

@@ -7,7 +7,7 @@ import exceptions.nombreInvalidoExceptions;
 
 public abstract class EntidadConUbicacion extends EntidadConNombre {
 	
-	private Provincia provincia;
+	protected Provincia provincia;
 
 	public EntidadConUbicacion(String nombre, Provincia provincia) throws nombreInvalidoExceptions, SQLException {
 		super(nombre);
@@ -16,6 +16,10 @@ public abstract class EntidadConUbicacion extends EntidadConNombre {
 
 	public EntidadConUbicacion(String nombre) throws nombreInvalidoExceptions, SQLException {
 		super(nombre);
+	}
+	
+	public EntidadConUbicacion() {
+		
 	}
 
 	public Provincia getProvincia() {

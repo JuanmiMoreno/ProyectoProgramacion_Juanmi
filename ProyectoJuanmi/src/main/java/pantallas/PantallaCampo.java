@@ -9,28 +9,40 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import clases.Campo;
+import clases.Usuario;
+
 import javax.swing.JComboBox;
+import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
 import enums.Provincia;
 import javax.swing.JCheckBox;
 import enums.tipoPlantacion;
+import exceptions.nombreInvalidoExceptions;
+
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.awt.SystemColor;
 
 public class PantallaCampo extends JPanel{
 	
 	private Ventana ventana;
 	private JTextField campoNombre;
+	private JTextField campoSuperficie;
 	
 	public PantallaCampo (Ventana v) {
 		this.ventana = v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, -11, 0, 0, 0, 46, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 46, 23};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 43, 38, 32, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 22, 19, 47, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -79,6 +91,18 @@ public class PantallaCampo extends JPanel{
 		gbc_listaCampos.gridy = 3;
 		add(listaCampos, gbc_listaCampos);
 		
+		/*final ArrayList<Campo> todos=Campo.getTodos();
+
+		listaCampos.setModel(new AbstractListModel() {
+
+			public int getSize() {
+				return todos.size();
+			}
+			public Object getElementAt(int index) {
+				return todos.get(index);
+			}
+		});*/
+		
 		campoNombre = new JTextField();
 		campoNombre.setBackground(new Color(255, 255, 204));
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
@@ -99,7 +123,7 @@ public class PantallaCampo extends JPanel{
 		gbc_etiquetaProvincia.gridy = 4;
 		add(etiquetaProvincia, gbc_etiquetaProvincia);
 		
-		JComboBox selecctorProvincia = new JComboBox();
+		final JComboBox selecctorProvincia = new JComboBox();
 		selecctorProvincia.setModel(new DefaultComboBoxModel(Provincia.values()));
 		GridBagConstraints gbc_selecctorProvincia = new GridBagConstraints();
 		gbc_selecctorProvincia.insets = new Insets(0, 0, 5, 5);
@@ -117,7 +141,7 @@ public class PantallaCampo extends JPanel{
 		gbc_etiquetaPlantacion.gridy = 6;
 		add(etiquetaPlantacion, gbc_etiquetaPlantacion);
 		
-		JComboBox selectorPlantacion = new JComboBox();
+		final JComboBox selectorPlantacion = new JComboBox();
 		selectorPlantacion.setModel(new DefaultComboBoxModel(tipoPlantacion.values()));
 		GridBagConstraints gbc_selectorPlantacion = new GridBagConstraints();
 		gbc_selectorPlantacion.insets = new Insets(0, 0, 5, 5);
@@ -126,15 +150,33 @@ public class PantallaCampo extends JPanel{
 		gbc_selectorPlantacion.gridy = 7;
 		add(selectorPlantacion, gbc_selectorPlantacion);
 		
-		JButton botonAñadirActividad = new JButton("A\u00F1adir");
-		botonAñadirActividad.setFont(new Font("Arial", Font.BOLD, 15));
-		GridBagConstraints gbc_botonAñadirActividad = new GridBagConstraints();
-		gbc_botonAñadirActividad.anchor = GridBagConstraints.SOUTH;
-		gbc_botonAñadirActividad.fill = GridBagConstraints.HORIZONTAL;
-		gbc_botonAñadirActividad.insets = new Insets(0, 0, 5, 5);
-		gbc_botonAñadirActividad.gridx = 2;
-		gbc_botonAñadirActividad.gridy = 8;
-		add(botonAñadirActividad, gbc_botonAñadirActividad);
+		JLabel etiquetaSuperficie = new JLabel("Superficie");
+		etiquetaSuperficie.setForeground(Color.WHITE);
+		etiquetaSuperficie.setFont(new Font("Arial", Font.BOLD, 15));
+		GridBagConstraints gbc_etiquetaSuperficie = new GridBagConstraints();
+		gbc_etiquetaSuperficie.insets = new Insets(0, 0, 5, 5);
+		gbc_etiquetaSuperficie.gridx = 2;
+		gbc_etiquetaSuperficie.gridy = 8;
+		add(etiquetaSuperficie, gbc_etiquetaSuperficie);
+		
+		campoSuperficie = new JTextField();
+		campoSuperficie.setBackground(SystemColor.info);
+		GridBagConstraints gbc_campoSuperficie = new GridBagConstraints();
+		gbc_campoSuperficie.insets = new Insets(0, 0, 5, 5);
+		gbc_campoSuperficie.fill = GridBagConstraints.HORIZONTAL;
+		gbc_campoSuperficie.gridx = 2;
+		gbc_campoSuperficie.gridy = 9;
+		add(campoSuperficie, gbc_campoSuperficie);
+		campoSuperficie.setColumns(10);
+		
+		JButton botonAñadir = new JButton("A\u00F1adir");
+
+		botonAñadir.setFont(new Font("Arial", Font.BOLD, 15));
+		GridBagConstraints gbc_botonAñadir = new GridBagConstraints();
+		gbc_botonAñadir.insets = new Insets(0, 0, 5, 5);
+		gbc_botonAñadir.gridx = 2;
+		gbc_botonAñadir.gridy = 10;
+		add(botonAñadir, gbc_botonAñadir);
 		
 		JButton botonEliminar = new JButton("Eliminar campo");
 		botonEliminar.setFont(new Font("Arial", Font.BOLD, 15));
@@ -164,12 +206,36 @@ public class PantallaCampo extends JPanel{
 		gbc_fondo.gridx = 0;
 		gbc_fondo.gridy = 0;
 		add(fondo, gbc_fondo);
-
+		
+	
+	
 		botonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ventana.cambiarPantallas("principal");
 			}
+		});
+		
+		botonAñadir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					String nombreCampo = campoNombre.getText();
+					Provincia provincia = (Provincia)selecctorProvincia.getSelectedItem();
+					tipoPlantacion plantacion = (tipoPlantacion)selectorPlantacion.getSelectedItem();
+					float superficie = Float.parseFloat(campoSuperficie.getText());
+					
+					new Campo(nombreCampo, provincia, superficie,plantacion, ventana.empresaLogada);
+					JOptionPane.showMessageDialog(ventana, "Campo insertado con exito!","Insertado con exito",JOptionPane.INFORMATION_MESSAGE);
+					ventana.cambiarPantallas("campos");
+					
+					} catch (nombreInvalidoExceptions  | SQLException e1) {
+						JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+				
+					}catch(NumberFormatException  e1){
+						JOptionPane.showMessageDialog(ventana, "El decimal debe ir con un punto, no con coma","Error",JOptionPane.ERROR_MESSAGE);
+					}
+				}
 		});
 		
 

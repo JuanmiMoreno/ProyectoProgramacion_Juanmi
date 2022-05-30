@@ -150,7 +150,7 @@ public class PantallaEmpresa extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					String nombreEmpresa = campoNombreEmpresa.getText();
-					new Empresa(nombreEmpresa, ventana.usuarioLogado);
+					ventana.empresaLogada = new Empresa(nombreEmpresa, ventana.usuarioLogado);
 					ventana.cambiarPantallas("principal");
 				} catch (nombreInvalidoExceptions | SQLException | EmpresaIncorrectaExceptions e1) {
 
@@ -177,7 +177,7 @@ public class PantallaEmpresa extends JPanel {
 					int fondos = Integer.parseInt(campoPresupuesto.getText());
 					String cif = campoCif.getText();
 
-					new Empresa(nombre, fondos, cif, ventana.usuarioLogado);
+					ventana.empresaLogada = new Empresa(nombre, fondos, cif, ventana.usuarioLogado);
 					ventana.cambiarPantallas("principal");
 				} catch (cifInvalidoExceptions | nombreInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
