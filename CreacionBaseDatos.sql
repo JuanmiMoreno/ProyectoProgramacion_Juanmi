@@ -1,30 +1,23 @@
+
+drop  database  if exists proyectoProgramacion; 
 create database proyectoProgramacion;
 use proyectoProgramacion;
 
-CREATE TABLE actividad (
-    nombreActividad VARCHAR(30) NOT NULL PRIMARY KEY, 
-    duracion        NUMERIC(2) NOT NULL,
-    descripcion     VARCHAR(255),
-    nombreEmpresa   VARCHAR(30) NOT NULL,
-    foreign key (nombreEmpresa) references empresa(nombreEmpresa)
+CREATE TABLE usuario (
+    nombreUsuario VARCHAR(30) NOT NULL PRIMARY KEY,
+    contraseña    VARCHAR(20) NOT NULL,
+    email         VARCHAR(100) NOT NULL,
+    provincia     VARCHAR(40)
 );
 
-
-CREATE TABLE apero (
-    nombreApero     VARCHAR(30) PRIMARY KEY,
-    modeloApero     VARCHAR(50),
-    añoAdquisicion  INT(4),
-    tipoapero       VARCHAR(40),
-    nombreEmpresa   VARCHAR(30) NOT NULL,
-    nombreActividad VARCHAR(30) NOT NULL
+CREATE TABLE empresa (
+    nombreEmpresa VARCHAR(30) NOT NULL PRIMARY KEY,
+    cif           VARCHAR(9) NOT NULL,
+    presupuesto   NUMERIC(8, 2),
+    nombreUsuario VARCHAR(30) NOT NULL,
+    foreign key (nombreUsuario) references usuario(nombreUsuario)
 );
-ALTER TABLE apero
-    ADD CONSTRAINT apero_actividad_fk FOREIGN KEY ( nombreActividad )
-        REFERENCES actividad ( nombreActividad );
 
-ALTER TABLE apero
-    ADD CONSTRAINT apero_empresa_fk FOREIGN KEY ( nombreEmpresa )
-        REFERENCES empresa ( nombreEmpresa );
 
 
 CREATE TABLE campo (
@@ -36,14 +29,45 @@ CREATE TABLE campo (
     foreign key (nombreEmpresa) references empresa(nombreEmpresa)
 );
 
-
-CREATE TABLE empresa (
-    nombreEmpresa VARCHAR(30) NOT NULL PRIMARY KEY,
-    cif           VARCHAR(9) NOT NULL,
-    presupuesto   NUMERIC(8, 2),
-    nombreUsuario VARCHAR(30) NOT NULL,
-    foreign key (nombreUsuario) references usuario(nombreUsuario)
+CREATE TABLE actividad (
+    nombreActividad VARCHAR(30) NOT NULL, 
+    duracion        NUMERIC(2) NOT NULL,
+    descripcion     VARCHAR(255),
+    nombreEmpresa   VARCHAR(30) NOT NULL,
+    nombreCampo varchar(30) not null,
+    foreign key (nombreEmpresa) references empresa(nombreEmpresa),
+    foreign key (nombrecampo) references campo(nombreCampo),
+    primary key(nombreActividad, nombreCampo)
+    
 );
+
+
+CREATE TABLE apero (
+    nombreApero     VARCHAR(30) PRIMARY KEY,
+    modeloApero     VARCHAR(50),
+    añoAdquisicion  INT(4),
+    tipoapero       VARCHAR(40),
+    nombreEmpresa   VARCHAR(30) NOT NULL,
+    nombreActividad VARCHAR(30) NOT NULL,
+    nombreCampo varchar(30) not null,
+    foreign key (nombreCampo) references campo(nombreCampo)
+);
+ALTER TABLE apero
+    ADD CONSTRAINT apero_actividad_fk FOREIGN KEY ( nombreActividad )
+        REFERENCES actividad ( nombreActividad );
+
+ALTER TABLE apero
+    ADD CONSTRAINT apero_empresa_fk FOREIGN KEY ( nombreEmpresa )
+        REFERENCES empresa ( nombreEmpresa );
+
+
+CREATE TABLE proveedor (
+    nombreProveedor VARCHAR(30) PRIMARY KEY,
+    telefono        NUMERIC(9)
+);
+
+
+
 
 
 CREATE TABLE empresa_proveedor (
@@ -73,10 +97,7 @@ CREATE TABLE producto (
 
 
 
-CREATE TABLE proveedor (
-    nombreProveedor VARCHAR(30) PRIMARY KEY,
-    telefono        NUMERIC(9)
-);
+
 
 
 CREATE TABLE proveedor_producto (
@@ -123,12 +144,7 @@ ALTER TABLE tractor
         REFERENCES empresa ( nombreEmpresa );
 
 
-CREATE TABLE usuario (
-    nombreUsuario VARCHAR(30) NOT NULL PRIMARY KEY,
-    contraseña    VARCHAR(20) NOT NULL,
-    email         VARCHAR(100) NOT NULL,
-    provincia     VARCHAR(40)
-);
+
 
 
 
