@@ -6,18 +6,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import enums.Provincia;
-import enums.tipoPlantacion;
+import enums.TipoPlantacion;
 import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConUbicacion;
 import utils.UtilsDB;
 
 public class Campo extends EntidadConUbicacion {
 	private float superficie;
-	private tipoPlantacion plantacion;
+	private TipoPlantacion plantacion;
 	private Empresa empresa;
 	
 	
-	public Campo(String nombre, Provincia provincia, float superficie, tipoPlantacion plantacion, Empresa empresa)
+	public Campo(String nombre, Provincia provincia, float superficie, TipoPlantacion plantacion, Empresa empresa)
 			throws nombreInvalidoExceptions, SQLException {
 		super(nombre, provincia);
 		
@@ -57,12 +57,12 @@ public class Campo extends EntidadConUbicacion {
 	}
 
 
-	public tipoPlantacion getPlantacion() {
+	public TipoPlantacion getPlantacion() {
 		return plantacion;
 	}
 
 
-	public void setPlantacion(tipoPlantacion plantacion) {
+	public void setPlantacion(TipoPlantacion plantacion) {
 		this.plantacion = plantacion;
 	}
 
@@ -86,7 +86,7 @@ public class Campo extends EntidadConUbicacion {
 				Campo actual = new Campo();
 
 				actual.nombre = cursor.getString("nombreCampo");
-				actual.plantacion = tipoPlantacion.valueOf("plantacion");
+				actual.plantacion = TipoPlantacion.valueOf("plantacion");
 				actual.superficie = cursor.getFloat("superficie");
 				actual.provincia = Provincia.valueOf("provincia");
 				ret.add(actual);
@@ -99,6 +99,14 @@ public class Campo extends EntidadConUbicacion {
 		
 		UtilsDB.desconectarBD();
 		return ret;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Campo: " +this.getNombre() + " Superficie: "+superficie+ " Plantacion: " + plantacion + " Provincia: " + this.getProvincia()+"\n";
 	}
 	
 	

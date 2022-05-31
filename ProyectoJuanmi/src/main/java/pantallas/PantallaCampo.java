@@ -22,7 +22,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
 import enums.Provincia;
 import javax.swing.JCheckBox;
-import enums.tipoPlantacion;
+import enums.TipoPlantacion;
 import exceptions.nombreInvalidoExceptions;
 
 import javax.swing.ImageIcon;
@@ -63,10 +63,9 @@ public class PantallaCampo extends JPanel{
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel.gridwidth = 5;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 1;
+		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 2;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
@@ -101,7 +100,8 @@ public class PantallaCampo extends JPanel{
 			public Object getElementAt(int index) {
 				return todos.get(index);
 			}
-		});*/
+		});
+		*/
 		
 		campoNombre = new JTextField();
 		campoNombre.setBackground(new Color(255, 255, 204));
@@ -142,7 +142,7 @@ public class PantallaCampo extends JPanel{
 		add(etiquetaPlantacion, gbc_etiquetaPlantacion);
 		
 		final JComboBox selectorPlantacion = new JComboBox();
-		selectorPlantacion.setModel(new DefaultComboBoxModel(tipoPlantacion.values()));
+		selectorPlantacion.setModel(new DefaultComboBoxModel(TipoPlantacion.values()));
 		GridBagConstraints gbc_selectorPlantacion = new GridBagConstraints();
 		gbc_selectorPlantacion.insets = new Insets(0, 0, 5, 5);
 		gbc_selectorPlantacion.fill = GridBagConstraints.HORIZONTAL;
@@ -222,7 +222,7 @@ public class PantallaCampo extends JPanel{
 				try {
 					String nombreCampo = campoNombre.getText();
 					Provincia provincia = (Provincia)selecctorProvincia.getSelectedItem();
-					tipoPlantacion plantacion = (tipoPlantacion)selectorPlantacion.getSelectedItem();
+					TipoPlantacion plantacion = (TipoPlantacion)selectorPlantacion.getSelectedItem();
 					float superficie = Float.parseFloat(campoSuperficie.getText());
 					
 					new Campo(nombreCampo, provincia, superficie,plantacion, ventana.empresaLogada);

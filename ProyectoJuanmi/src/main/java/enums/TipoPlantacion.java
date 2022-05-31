@@ -1,5 +1,5 @@
 package enums;
 
-public enum tipoPlantacion {
+public enum TipoPlantacion {
 OLIVAR, ALMENDRO, PISTACHOS
 }

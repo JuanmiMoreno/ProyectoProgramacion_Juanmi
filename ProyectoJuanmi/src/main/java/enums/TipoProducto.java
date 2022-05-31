@@ -1,5 +1,5 @@
 package enums;
 
-public enum tipoProducto {
+public enum TipoProducto {
 FERTILIZANTE, HERBICIDA, ABONO
 }

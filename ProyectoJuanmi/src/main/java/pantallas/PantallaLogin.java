@@ -30,8 +30,8 @@ import exceptions.nombreInvalidoExceptions;
 public class PantallaLogin extends JPanel {
 
 	private Ventana ventana;
-	private JPasswordField campoContraseña;
-	private JTextField campoUsuario;
+	protected JPasswordField campoContraseña;
+	protected JTextField campoUsuario;
 
 	public PantallaLogin(Ventana v) {
 		setBackground(SystemColor.inactiveCaption);

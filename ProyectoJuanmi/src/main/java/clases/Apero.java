@@ -3,13 +3,13 @@ package clases;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import enums.tipoApero;
+import enums.TipoApero;
 import utils.UtilsDB;
 
 public class Apero extends Maquinaria {
-	private tipoApero tipo;
+	private TipoApero tipo;
 
-	public Apero(String marca, String modelo, short añoAdquisicion, tipoApero tipo) throws SQLException {
+	public Apero(String marca, String modelo, short añoAdquisicion, TipoApero tipo) throws SQLException {
 		super(marca, modelo, añoAdquisicion);
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into apero values('" + marca + "','" + modelo + "','" + añoAdquisicion
@@ -24,11 +24,11 @@ public class Apero extends Maquinaria {
 
 	}
 
-	public tipoApero getTipo() {
+	public TipoApero getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(tipoApero tipo) {
+	public void setTipo(TipoApero tipo) {
 		this.tipo = tipo;
 	}
 

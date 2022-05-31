@@ -1,5 +1,5 @@
 package enums;
 
-public enum tipoApero {
+public enum TipoApero {
 ARRASTRADO, SUSPENDIDO
 }

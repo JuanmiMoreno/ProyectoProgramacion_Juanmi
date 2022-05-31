@@ -2,16 +2,16 @@ package clases;
 
 import java.sql.SQLException;
 
-import enums.tipoProducto;
+import enums.TipoProducto;
 import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConDinero;
 
 public class Producto extends EntidadConDinero {
-	private tipoProducto tipo;
+	private TipoProducto tipo;
 	private  Actividad nombreActividad;
 	
 	
-	public Producto(String nombre, float dinero, tipoProducto tipo, Actividad nombreActividad)
+	public Producto(String nombre, float dinero, TipoProducto tipo, Actividad nombreActividad)
 			throws nombreInvalidoExceptions, SQLException {
 		super(nombre, dinero);
 		this.tipo = tipo;
@@ -19,12 +19,12 @@ public class Producto extends EntidadConDinero {
 	}
 
 
-	public tipoProducto getTipo() {
+	public TipoProducto getTipo() {
 		return tipo;
 	}
 
 
-	public void setTipo(tipoProducto tipo) {
+	public void setTipo(TipoProducto tipo) {
 		this.tipo = tipo;
 	}
 
