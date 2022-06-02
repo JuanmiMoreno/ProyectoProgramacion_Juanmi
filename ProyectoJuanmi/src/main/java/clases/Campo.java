@@ -86,9 +86,9 @@ public class Campo extends EntidadConUbicacion {
 				Campo actual = new Campo();
 
 				actual.nombre = cursor.getString("nombreCampo");
-				actual.plantacion = TipoPlantacion.valueOf("plantacion");
+				actual.plantacion = cursor.getString("plantacion");
 				actual.superficie = cursor.getFloat("superficie");
-				actual.provincia = Provincia.valueOf("provincia");
+				actual.provincia = cursor.getString("provincia");
 				ret.add(actual);
 			}
 		} catch (SQLException e) {
@@ -100,14 +100,30 @@ public class Campo extends EntidadConUbicacion {
 		UtilsDB.desconectarBD();
 		return ret;
 	}
+	
+	public boolean eliminar() {
 
-
-
-
-	@Override
-	public String toString() {
-		return "Campo: " +this.getNombre() + " Superficie: "+superficie+ " Plantacion: " + plantacion + " Provincia: " + this.getProvincia()+"\n";
+		Statement smt = UtilsDB.conectarBD();
+		boolean ret;
+		try {
+			ret = smt.executeUpdate("delete from campo where nombreCampo='" + this.nombre + "'") > 0;
+			
+			this.nombre = null;
+			this.plantacion = null;
+			this.empresa = null;
+			this.superficie = 0;
+			this.provincia = null;
+			
+		} catch (SQLException e) {
+			UtilsDB.desconectarBD();
+			return false;
+		}
+		UtilsDB.desconectarBD();
+		return ret;
 	}
+
+
+
 	
 	
 

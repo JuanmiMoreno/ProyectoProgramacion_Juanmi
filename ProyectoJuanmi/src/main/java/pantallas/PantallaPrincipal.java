@@ -67,6 +67,12 @@ public class PantallaPrincipal extends JPanel {
 		add(botonCampos, gbc_botonCampos);
 		
 		JButton botonPersonal = new JButton("Personal");
+		botonPersonal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.cambiarPantallas("personal");
+			}
+		});
 		botonPersonal.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonPersonal = new GridBagConstraints();
 		gbc_botonPersonal.fill = GridBagConstraints.HORIZONTAL;

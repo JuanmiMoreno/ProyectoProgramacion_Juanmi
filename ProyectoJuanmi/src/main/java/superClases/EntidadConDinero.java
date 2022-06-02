@@ -18,7 +18,9 @@ public abstract class EntidadConDinero extends EntidadConNombre {
 		super(nombre);
 	}
 
-
+	public EntidadConDinero() {
+		
+	}
 
 	public float getDinero() {
 		return dinero;

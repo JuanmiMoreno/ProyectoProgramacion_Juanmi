@@ -8,7 +8,7 @@ public class Main {
 		
 		
 		Ventana v = new Ventana();
-		String usuario=null;
+		/*String usuario=null;
 		String contrasena=null;
 		for(byte i=0;i<args.length;i++ ) {
 			
@@ -21,10 +21,10 @@ public class Main {
 				contrasena=args[i+1];
 				
 			}
-			
+			*/
 		}
 		
 		
 	}
 
-}
+
