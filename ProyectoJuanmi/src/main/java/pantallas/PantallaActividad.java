@@ -12,6 +12,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JCalendar;
 import javax.swing.ImageIcon;
@@ -22,11 +24,13 @@ import clases.Actividad;
 import clases.Trabajador;
 import elementosVisuales.ElementosListaActividades;
 import elementosVisuales.ElementosListraTrabajador;
+import exceptions.nombreInvalidoExceptions;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.UIManager;
@@ -42,7 +46,7 @@ public class PantallaActividad extends JPanel{
 	private JTextField campoDuracion;
 
 	
-	public PantallaActividad (Ventana v) {
+	public PantallaActividad (final Ventana v) {
 		this.ventana = v;
 		setLayout(new BorderLayout(0, 0));
 		
@@ -50,7 +54,7 @@ public class PantallaActividad extends JPanel{
 		panel.setBackground(new Color(220, 220, 220));
 		add(panel, BorderLayout.WEST);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0, 0, 0};
+		gbl_panel.columnWidths = new int[]{45, 112, 47, 0};
 		gbl_panel.rowHeights = new int[]{0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0};
 		gbl_panel.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
@@ -98,7 +102,7 @@ public class PantallaActividad extends JPanel{
 		gbc_etiquetaDescripcion.gridy = 5;
 		panel.add(etiquetaDescripcion, gbc_etiquetaDescripcion);
 		
-		JTextArea campoDescripcion = new JTextArea();
+		final JTextArea campoDescripcion = new JTextArea();
 		GridBagConstraints gbc_campoDescripcion = new GridBagConstraints();
 		gbc_campoDescripcion.gridheight = 2;
 		gbc_campoDescripcion.insets = new Insets(0, 0, 5, 5);
@@ -107,13 +111,29 @@ public class PantallaActividad extends JPanel{
 		gbc_campoDescripcion.gridy = 6;
 		panel.add(campoDescripcion, gbc_campoDescripcion);
 		
+		JLabel etiquetaCampo = new JLabel("Campo");
+		etiquetaCampo.setFont(new Font("Arial", Font.BOLD, 15));
+		GridBagConstraints gbc_etiquetaCampo = new GridBagConstraints();
+		gbc_etiquetaCampo.insets = new Insets(0, 0, 5, 5);
+		gbc_etiquetaCampo.gridx = 1;
+		gbc_etiquetaCampo.gridy = 8;
+		panel.add(etiquetaCampo, gbc_etiquetaCampo);
+		
+		JComboBox comboBox = new JComboBox();
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 1;
+		gbc_comboBox.gridy = 9;
+		panel.add(comboBox, gbc_comboBox);
+		
 		JButton botonAñadir = new JButton("");
+		
 		botonAñadir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\a\u00F1adir.png"));
 		GridBagConstraints gbc_botonAñadir = new GridBagConstraints();
-		gbc_botonAñadir.gridheight = 3;
-		gbc_botonAñadir.insets = new Insets(0, 0, 0, 5);
+		gbc_botonAñadir.insets = new Insets(0, 0, 5, 5);
 		gbc_botonAñadir.gridx = 1;
-		gbc_botonAñadir.gridy = 8;
+		gbc_botonAñadir.gridy = 10;
 		panel.add(botonAñadir, gbc_botonAñadir);
 		
 		JPanel panel_1 = new JPanel();
@@ -145,6 +165,12 @@ public class PantallaActividad extends JPanel{
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				v.cambiarPantallas("principal");
+			}
+		});
 		botonSalir.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonSalir = new GridBagConstraints();
 		gbc_botonSalir.gridheight = 2;
@@ -183,6 +209,22 @@ public class PantallaActividad extends JPanel{
 			listaActividades.add(new ElementosListaActividades(ventana,todos.get(i)));
 		}
 		
+		botonAñadir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+				String nombre = campoNombre.getText();
+				String descripcion = campoDescripcion.getText();
+				byte duracion = Byte.parseByte(campoDuracion.getText());
+				String campo = campoCampo.getText();
+				try {
+					new Actividad (nombre,duracion,campo,descripcion,v.empresaLogada);
+					JOptionPane.showMessageDialog(ventana, "Actividad añadida con exito!","Añadida con exito!",JOptionPane.INFORMATION_MESSAGE);
+				} catch (nombreInvalidoExceptions | SQLException e1) {
+					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				} 
+			}
+		});
 		
 	}
 

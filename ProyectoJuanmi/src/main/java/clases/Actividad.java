@@ -11,7 +11,7 @@ import utils.UtilsDB;
 
 public class Actividad extends EntidadConNombre {
 	private Byte duracion;
-	private Campo campo;
+	private String campo;
 	private Trabajador trabajador;
 	private ArrayList<Maquinaria> maquinarias;
 	private String descripcion;
@@ -23,13 +23,12 @@ public class Actividad extends EntidadConNombre {
 		
 	}
 	
-	public Actividad(String nombre, Byte duracion, Campo campo, Trabajador trabajador,
-			ArrayList<Maquinaria> maquinarias, String descripcion, Producto producto, Empresa empresa)
+	public Actividad(String nombre, Byte duracion, String campo, String descripcion,  Empresa empresa)
 			throws nombreInvalidoExceptions, SQLException {
 		super(nombre);
 		Statement queryInsertar = UtilsDB.conectarBD();
-		if (queryInsertar.executeUpdate("insert into usuario values('" + nombre + "','" + duracion + "','" + descripcion
-				+ "'," + empresa.getNombre() + "')") > 0) {
+		if (queryInsertar.executeUpdate("insert into actividad values('" + this.getNombre() + "','" + this.getDuracion() + "','" + descripcion
+				+ "','" + empresa.getNombre() + "','"+campo + "')") > 0) {
 			this.duracion = duracion;
 			this.campo = campo;
 			this.trabajador = trabajador;
@@ -39,13 +38,14 @@ public class Actividad extends EntidadConNombre {
 			this.empresa = empresa;
 		} else {
 			UtilsDB.desconectarBD();
-				throw new SQLException("No se ha podido insertar el usuario");
+				throw new SQLException("No se ha podido insertar la actividad");
 		}
 
 		UtilsDB.desconectarBD();
 
 	}
 
+	
 
 
 	public Byte getDuracion() {
@@ -60,13 +60,13 @@ public class Actividad extends EntidadConNombre {
 
 
 
-	public Campo getCampo() {
+	public String getCampo() {
 		return campo;
 	}
 
 
 
-	public void setCampo(Campo campo) {
+	public void setCampo(String campo) {
 		this.campo = campo;
 	}
 

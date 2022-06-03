@@ -90,7 +90,7 @@ public class ElementosListaActividades extends JPanel{
 				ac.eliminar();
 			}
 		});
-		botonBorrar.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\borrar.png"));
+		botonBorrar.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));
 		GridBagConstraints gbc_botonBorrar = new GridBagConstraints();
 		gbc_botonBorrar.gridheight = 2;
 		gbc_botonBorrar.gridx = 6;

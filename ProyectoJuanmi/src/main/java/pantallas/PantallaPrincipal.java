@@ -29,42 +29,23 @@ public class PantallaPrincipal extends JPanel {
 		this.ventana = v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{28, 116, 151, 140, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 54, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 54, 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel etiquetaTitulo = new JLabel("Agro Manager");
+		etiquetaTitulo.setForeground(Color.BLACK);
 		etiquetaTitulo.setBackground(Color.GRAY);
 		etiquetaTitulo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 50));
 		GridBagConstraints gbc_etiquetaTitulo = new GridBagConstraints();
 		gbc_etiquetaTitulo.anchor = GridBagConstraints.SOUTH;
-		gbc_etiquetaTitulo.gridheight = 2;
+		gbc_etiquetaTitulo.gridheight = 3;
 		gbc_etiquetaTitulo.insets = new Insets(0, 0, 5, 0);
 		gbc_etiquetaTitulo.gridwidth = 5;
 		gbc_etiquetaTitulo.gridx = 0;
 		gbc_etiquetaTitulo.gridy = 0;
 		add(etiquetaTitulo, gbc_etiquetaTitulo);
-		
-		JButton botonActividad = new JButton("Actividad");
-
-		botonActividad.setFont(new Font("Arial", Font.BOLD, 15));
-		GridBagConstraints gbc_botonActividad = new GridBagConstraints();
-		gbc_botonActividad.fill = GridBagConstraints.HORIZONTAL;
-		gbc_botonActividad.insets = new Insets(0, 0, 5, 5);
-		gbc_botonActividad.gridx = 1;
-		gbc_botonActividad.gridy = 3;
-		add(botonActividad, gbc_botonActividad);
-		
-		JButton botonCampos = new JButton("Campos");
-
-		botonCampos.setFont(new Font("Arial", Font.BOLD, 15));
-		GridBagConstraints gbc_botonCampos = new GridBagConstraints();
-		gbc_botonCampos.fill = GridBagConstraints.HORIZONTAL;
-		gbc_botonCampos.insets = new Insets(0, 0, 5, 5);
-		gbc_botonCampos.gridx = 2;
-		gbc_botonCampos.gridy = 3;
-		add(botonCampos, gbc_botonCampos);
 		
 		JButton botonPersonal = new JButton("Personal");
 		botonPersonal.addMouseListener(new MouseAdapter() {
@@ -73,12 +54,56 @@ public class PantallaPrincipal extends JPanel {
 				ventana.cambiarPantallas("personal");
 			}
 		});
+		
+		JLabel etiquetaNombreEmpresa = new JLabel(v.empresaLogada.nombre);
+		etiquetaNombreEmpresa.setForeground(Color.WHITE);
+		etiquetaNombreEmpresa.setFont(new Font("Georgia", Font.ITALIC, 50));
+		GridBagConstraints gbc_etiquetaNombreEmpresa = new GridBagConstraints();
+		gbc_etiquetaNombreEmpresa.gridheight = 2;
+		gbc_etiquetaNombreEmpresa.gridwidth = 5;
+		gbc_etiquetaNombreEmpresa.insets = new Insets(0, 0, 5, 0);
+		gbc_etiquetaNombreEmpresa.gridx = 0;
+		gbc_etiquetaNombreEmpresa.gridy = 5;
+		add(etiquetaNombreEmpresa, gbc_etiquetaNombreEmpresa);
+		
+		JButton botonActividad = new JButton("Actividad");
+		
+				botonActividad.setFont(new Font("Arial", Font.BOLD, 15));
+				GridBagConstraints gbc_botonActividad = new GridBagConstraints();
+				gbc_botonActividad.fill = GridBagConstraints.HORIZONTAL;
+				gbc_botonActividad.insets = new Insets(0, 0, 5, 5);
+				gbc_botonActividad.gridx = 1;
+				gbc_botonActividad.gridy = 7;
+				add(botonActividad, gbc_botonActividad);
+				botonActividad.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						ventana.cambiarPantallas("actividad");
+					}
+				});
+		
+		JButton botonCampos = new JButton("Campos");
+		
+				botonCampos.setFont(new Font("Arial", Font.BOLD, 15));
+				GridBagConstraints gbc_botonCampos = new GridBagConstraints();
+				gbc_botonCampos.fill = GridBagConstraints.HORIZONTAL;
+				gbc_botonCampos.insets = new Insets(0, 0, 5, 5);
+				gbc_botonCampos.gridx = 2;
+				gbc_botonCampos.gridy = 7;
+				add(botonCampos, gbc_botonCampos);
+				
+				botonCampos.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						ventana.cambiarPantallas("campos");
+					}
+				});
 		botonPersonal.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonPersonal = new GridBagConstraints();
 		gbc_botonPersonal.fill = GridBagConstraints.HORIZONTAL;
 		gbc_botonPersonal.insets = new Insets(0, 0, 5, 5);
 		gbc_botonPersonal.gridx = 3;
-		gbc_botonPersonal.gridy = 3;
+		gbc_botonPersonal.gridy = 7;
 		add(botonPersonal, gbc_botonPersonal);
 		
 		JButton botonTractor = new JButton("Tractores");
@@ -87,7 +112,7 @@ public class PantallaPrincipal extends JPanel {
 		gbc_botonTractor.fill = GridBagConstraints.HORIZONTAL;
 		gbc_botonTractor.insets = new Insets(0, 0, 5, 5);
 		gbc_botonTractor.gridx = 1;
-		gbc_botonTractor.gridy = 5;
+		gbc_botonTractor.gridy = 9;
 		add(botonTractor, gbc_botonTractor);
 		
 		JButton botonApero = new JButton("Aperos");
@@ -96,7 +121,7 @@ public class PantallaPrincipal extends JPanel {
 		gbc_botonApero.fill = GridBagConstraints.HORIZONTAL;
 		gbc_botonApero.insets = new Insets(0, 0, 5, 5);
 		gbc_botonApero.gridx = 2;
-		gbc_botonApero.gridy = 5;
+		gbc_botonApero.gridy = 9;
 		add(botonApero, gbc_botonApero);
 		
 		JButton botonProveedor = new JButton("Proveedores");
@@ -104,7 +129,7 @@ public class PantallaPrincipal extends JPanel {
 		GridBagConstraints gbc_botonProveedor = new GridBagConstraints();
 		gbc_botonProveedor.insets = new Insets(0, 0, 5, 5);
 		gbc_botonProveedor.gridx = 3;
-		gbc_botonProveedor.gridy = 5;
+		gbc_botonProveedor.gridy = 9;
 		add(botonProveedor, gbc_botonProveedor);
 		
 		JButton botonSalir = new JButton("Salir");
@@ -114,7 +139,7 @@ public class PantallaPrincipal extends JPanel {
 		gbc_botonSalir.fill = GridBagConstraints.HORIZONTAL;
 		gbc_botonSalir.insets = new Insets(0, 0, 5, 5);
 		gbc_botonSalir.gridx = 2;
-		gbc_botonSalir.gridy = 10;
+		gbc_botonSalir.gridy = 11;
 		add(botonSalir, gbc_botonSalir);
 		
 		
@@ -123,24 +148,11 @@ public class PantallaPrincipal extends JPanel {
 		GridBagConstraints gbc_fotoFondo = new GridBagConstraints();
 		gbc_fotoFondo.anchor = GridBagConstraints.EAST;
 		gbc_fotoFondo.gridwidth = 5;
-		gbc_fotoFondo.gridheight = 12;
+		gbc_fotoFondo.gridheight = 13;
 		gbc_fotoFondo.gridx = 0;
 		gbc_fotoFondo.gridy = 0;
 		add(fotoFondo, gbc_fotoFondo);
 		
-		botonActividad.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ventana.cambiarPantallas("actividad");
-			}
-		});
-		
-		botonCampos.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ventana.cambiarPantallas("campos");
-			}
-		});
 		
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override

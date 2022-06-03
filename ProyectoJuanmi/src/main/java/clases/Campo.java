@@ -24,7 +24,7 @@ public class Campo extends EntidadConUbicacion {
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into campo values('" + this.getNombre() + "','" + provincia+ "'," + superficie+ ",'" + plantacion
         + "','"+empresa.getNombre()+ "')") > 0){
-			
+		
 			this.superficie = superficie;
 			this.plantacion = plantacion;
 			this.empresa = empresa;
@@ -84,9 +84,9 @@ public class Campo extends EntidadConUbicacion {
 			ResultSet cursor = smt.executeQuery("select * from campo ");
 			while (cursor.next()) {
 				Campo actual = new Campo();
-
+				
 				actual.nombre = cursor.getString("nombreCampo");
-				actual.plantacion = cursor.getString("plantacion");
+				actual.plantacion = cursor.getString("plantacion")
 				actual.superficie = cursor.getFloat("superficie");
 				actual.provincia = cursor.getString("provincia");
 				ret.add(actual);

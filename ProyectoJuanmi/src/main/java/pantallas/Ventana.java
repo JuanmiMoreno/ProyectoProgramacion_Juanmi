@@ -1,5 +1,6 @@
 package pantallas;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -10,6 +11,8 @@ import javax.swing.JPanel;
 import clases.Actividad;
 import clases.Empresa;
 import clases.Usuario;
+import exceptions.ContraseñaVaciaExceptions;
+import exceptions.nombreInvalidoExceptions;
 
 public class Ventana extends JFrame{
 	private JPanel pantallaActual;
@@ -17,18 +20,19 @@ public class Ventana extends JFrame{
 	public Empresa empresaLogada;
 	public Actividad actividadLogada;
 	
-	public Ventana() {
-
-		this.setSize(700,500);  //TAMAÑO VENTANA
-		this.setLocationRelativeTo(null); //PONE EN LA MITAD DE LA PANTALLA
+	public Ventana(String usuario, String contraseña) throws SQLException, ContraseñaVaciaExceptions, nombreInvalidoExceptions {
+		
+		
+		
+	
+		
+		this.setSize(700,500);  
+		this.setLocationRelativeTo(null); 
 		
 		this.setIconImage(new ImageIcon("./imagenes/logo.png").getImage());
 		this.setTitle("Agro Manager");
-		//LA VENTANA SE PONER POR ENCIMA Y NO ME PUEDE MOVER
-			//this.setAlwaysOnTop(true);
-			//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-			//this.setUndecorated(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE); //CUANDO CIERRA VENTANA SE APAGA EL PROGRAMA
+
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
 		this.pantallaActual  = new PantallaInicioPrograma(this);
 		this.setContentPane(pantallaActual);
 		this.setResizable(false);
