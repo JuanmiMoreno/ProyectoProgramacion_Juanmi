@@ -56,9 +56,9 @@ public class PantallaCampo extends JPanel{
 		panel.setBackground(new Color(204, 204, 204));
 		add(panel, BorderLayout.WEST);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 103, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 68, 27, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.columnWidths = new int[]{37, 103, 38, 0};
+		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 27, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
@@ -133,7 +133,8 @@ public class PantallaCampo extends JPanel{
 		panel.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
-		JButton botonAñadir = new JButton("");
+		JButton botonAñadir = new JButton("A\u00F1adir");
+		botonAñadir.setFont(new Font("Arial", Font.BOLD, 13));
 
 		botonAñadir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\a\u00F1adir.png"));
 		GridBagConstraints gbc_botonAñadir = new GridBagConstraints();
@@ -164,6 +165,7 @@ public class PantallaCampo extends JPanel{
 		panel_1.add(etiquetaTitulo, gbc_etiquetaTitulo);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(SystemColor.controlShadow);
 		add(panel_2, BorderLayout.SOUTH);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{0, 0, 0, 0};
@@ -194,17 +196,16 @@ public class PantallaCampo extends JPanel{
 		scrollPane.setColumnHeaderView(panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[]{0, 0, 0, 0};
-		gbl_panel_3.rowHeights = new int[]{0, 25, 0};
+		gbl_panel_3.rowHeights = new int[]{37, 43, 25, 0};
 		gbl_panel_3.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
 		JLabel lblNewLabel = new JLabel("Registro de Campos");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 22));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.gridwidth = 3;
-		gbc_lblNewLabel.gridheight = 2;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel.gridheight = 3;
 		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 0;
 		panel_3.add(lblNewLabel, gbc_lblNewLabel);
@@ -225,11 +226,15 @@ public class PantallaCampo extends JPanel{
 				String nombre = campoNombre.getText();
 				TipoPlantacion plantacion = (TipoPlantacion) comboBox.getSelectedItem();
 				Provincia provincia = (Provincia) selectorProvincia.getSelectedItem();
-				Float superficie = Float.parseFloat(campoSuperficie.getText());
+				float superficie = Float.parseFloat(campoSuperficie.getText());
 					new Campo (nombre, provincia, superficie, plantacion, v.empresaLogada);
 					JOptionPane.showMessageDialog(ventana, "Campo insertado con exito","",JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("campos");
-				} catch (nombreInvalidoExceptions | SQLException e1) {
+				}catch(NullPointerException e1) {
+					JOptionPane.showMessageDialog(ventana, "El decimal lo debes de poner con el punto", "Error", JOptionPane.ERROR_MESSAGE);
+					System.out.println(e1.getMessage());
+				} 
+				catch (nombreInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			

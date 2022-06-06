@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JCalendar;
+
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import com.toedter.components.JLocaleChooser;
 import com.toedter.components.JSpinField;
@@ -31,6 +33,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
 import javax.swing.UIManager;
@@ -39,11 +42,14 @@ import javax.swing.JComboBox;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JScrollPane;
+import java.awt.SystemColor;
 
 public class PantallaActividad extends JPanel{
 	private Ventana ventana;
 	private JTextField campoNombre;
 	private JTextField campoDuracion;
+	private JTextField campoCampo;
+	private JTextField campoTractor;
 
 	
 	public PantallaActividad (final Ventana v) {
@@ -55,9 +61,9 @@ public class PantallaActividad extends JPanel{
 		add(panel, BorderLayout.WEST);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{45, 112, 47, 0};
-		gbl_panel.rowHeights = new int[]{0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 0, 0};
 		gbl_panel.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel etiquetaNombre = new JLabel("Nombre");
@@ -119,25 +125,46 @@ public class PantallaActividad extends JPanel{
 		gbc_etiquetaCampo.gridy = 8;
 		panel.add(etiquetaCampo, gbc_etiquetaCampo);
 		
-		JComboBox comboBox = new JComboBox();
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 1;
-		gbc_comboBox.gridy = 9;
-		panel.add(comboBox, gbc_comboBox);
+		campoCampo = new JTextField();
+		campoCampo.setToolTipText("Introducir NOMBRE DEL CAMPO al que esta destinado la actividad");
+		GridBagConstraints gbc_campoCampo = new GridBagConstraints();
+		gbc_campoCampo.insets = new Insets(0, 0, 5, 5);
+		gbc_campoCampo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_campoCampo.gridx = 1;
+		gbc_campoCampo.gridy = 9;
+		panel.add(campoCampo, gbc_campoCampo);
+		campoCampo.setColumns(10);
 		
-		JButton botonAñadir = new JButton("");
+		JLabel etiquetaTractor = new JLabel("Tractor (Modelo)");
+		etiquetaTractor.setFont(new Font("Arial", Font.BOLD, 15));
+		GridBagConstraints gbc_etiquetaTractor = new GridBagConstraints();
+		gbc_etiquetaTractor.insets = new Insets(0, 0, 5, 5);
+		gbc_etiquetaTractor.gridx = 1;
+		gbc_etiquetaTractor.gridy = 10;
+		panel.add(etiquetaTractor, gbc_etiquetaTractor);
+		
+		campoTractor = new JTextField();
+		campoTractor.setToolTipText("A\u00D1ADIR MODELO DEL TRACTOR");
+		GridBagConstraints gbc_campoTractor = new GridBagConstraints();
+		gbc_campoTractor.insets = new Insets(0, 0, 5, 5);
+		gbc_campoTractor.fill = GridBagConstraints.HORIZONTAL;
+		gbc_campoTractor.gridx = 1;
+		gbc_campoTractor.gridy = 11;
+		panel.add(campoTractor, gbc_campoTractor);
+		campoTractor.setColumns(10);
+		
+		JButton botonAñadir = new JButton("A\u00F1adir");
+		botonAñadir.setFont(new Font("Arial", Font.BOLD, 13));
 		
 		botonAñadir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\a\u00F1adir.png"));
 		GridBagConstraints gbc_botonAñadir = new GridBagConstraints();
 		gbc_botonAñadir.insets = new Insets(0, 0, 5, 5);
 		gbc_botonAñadir.gridx = 1;
-		gbc_botonAñadir.gridy = 10;
+		gbc_botonAñadir.gridy = 12;
 		panel.add(botonAñadir, gbc_botonAñadir);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.GRAY);
+		panel_1.setBackground(SystemColor.controlShadow);
 		add(panel_1, BorderLayout.NORTH);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{0, 0};
@@ -156,12 +183,13 @@ public class PantallaActividad extends JPanel{
 		panel_1.add(lblNewLabel, gbc_lblNewLabel);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(SystemColor.controlShadow);
 		add(panel_2, BorderLayout.SOUTH);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{0, 0, 0, 0};
-		gbl_panel_2.rowHeights = new int[]{0, 0, 0};
+		gbl_panel_2.rowHeights = new int[]{41, 0};
 		gbl_panel_2.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton botonSalir = new JButton("Salir");
@@ -173,7 +201,6 @@ public class PantallaActividad extends JPanel{
 		});
 		botonSalir.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonSalir = new GridBagConstraints();
-		gbc_botonSalir.gridheight = 2;
 		gbc_botonSalir.insets = new Insets(0, 0, 0, 5);
 		gbc_botonSalir.gridx = 1;
 		gbc_botonSalir.gridy = 0;
@@ -186,24 +213,24 @@ public class PantallaActividad extends JPanel{
 		scrollPane.setColumnHeaderView(panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[]{0, 0, 0, 0};
-		gbl_panel_3.rowHeights = new int[]{0, 29, 0};
+		gbl_panel_3.rowHeights = new int[]{0, 43, 29, 0};
 		gbl_panel_3.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
 		JLabel lblNewLabel_1 = new JLabel("Registro de actividades");
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 24));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.gridheight = 2;
+		gbc_lblNewLabel_1.gridheight = 3;
 		gbc_lblNewLabel_1.gridwidth = 3;
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_1.gridx = 0;
 		gbc_lblNewLabel_1.gridy = 0;
 		panel_3.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		JPanel listaActividades = new JPanel();
 		scrollPane.setViewportView(listaActividades);
-		
+		listaActividades.setLayout(new BoxLayout(listaActividades, BoxLayout.Y_AXIS));
+
 		ArrayList<Actividad> todos=Actividad.getTodos();
 		for(int i=0;i<todos.size();i++) {
 			listaActividades.add(new ElementosListaActividades(ventana,todos.get(i)));
@@ -212,15 +239,20 @@ public class PantallaActividad extends JPanel{
 		botonAñadir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			
+				try {
 				String nombre = campoNombre.getText();
 				String descripcion = campoDescripcion.getText();
 				byte duracion = Byte.parseByte(campoDuracion.getText());
 				String campo = campoCampo.getText();
-				try {
-					new Actividad (nombre,duracion,campo,descripcion,v.empresaLogada);
+				String tractor  = campoTractor.getText();
+				
+					new Actividad (nombre,duracion,campo,descripcion,tractor,v.empresaLogada);
 					JOptionPane.showMessageDialog(ventana, "Actividad añadida con exito!","Añadida con exito!",JOptionPane.INFORMATION_MESSAGE);
+				}catch(SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana, "En los campos tractor y campos, debes introducri registros ya insertado anteriormente", "Error", JOptionPane.ERROR_MESSAGE);
+					
 				} catch (nombreInvalidoExceptions | SQLException e1) {
+					
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} 
 			}

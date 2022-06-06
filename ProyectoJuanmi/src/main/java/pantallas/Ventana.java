@@ -6,12 +6,15 @@ import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import clases.Actividad;
 import clases.Empresa;
 import clases.Usuario;
+import exceptions.ContraseñaIncorrectaException;
 import exceptions.ContraseñaVaciaExceptions;
+import exceptions.UsuarioNoExisteException;
 import exceptions.nombreInvalidoExceptions;
 
 public class Ventana extends JFrame{
@@ -24,8 +27,6 @@ public class Ventana extends JFrame{
 		
 		
 		
-	
-		
 		this.setSize(700,500);  
 		this.setLocationRelativeTo(null); 
 		
@@ -33,14 +34,28 @@ public class Ventana extends JFrame{
 		this.setTitle("Agro Manager");
 
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
-		this.pantallaActual  = new PantallaInicioPrograma(this);
-		this.setContentPane(pantallaActual);
+		if(usuario!=null&&contraseña!=null) {
+			try {
+				this.usuarioLogado=new Usuario(usuario,contraseña);
+				this.pantallaActual  = new PantallaEmpresa(this);
+				this.setContentPane(pantallaActual);
+			} catch (SQLException | ContraseñaIncorrectaException | UsuarioNoExisteException
+					| nombreInvalidoExceptions e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(pantallaActual, "No se ha podido inciar sesion por argumentos", "Error", JOptionPane.ERROR_MESSAGE);
+				this.pantallaActual  = new PantallaInicioPrograma(this);
+				this.setContentPane(pantallaActual);
+			}
+		}else {
+			this.pantallaActual  = new PantallaInicioPrograma(this);
+			this.setContentPane(pantallaActual);
+		}
 		this.setResizable(false);
 		this.setVisible(true);
 	
 	}
 	
-	public void cambiarPantallas(String nombrePantalla) {
+	public void cambiarPantallas(String nombrePantalla){
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual = null;
 		switch(nombrePantalla) {
@@ -71,6 +86,11 @@ public class Ventana extends JFrame{
 				
 			case "personal":
 				this.pantallaActual = new PantallaTrabajador(this);
+				break;
+			case "tractores":
+				this.pantallaActual = new PantallaTractor(this);
+			case "apero":
+				this.pantallaActual = new PantallaApero(this);
 				break;
 		}
 		this.pantallaActual.setVisible(true);

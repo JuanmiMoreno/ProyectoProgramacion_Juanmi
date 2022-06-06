@@ -17,18 +17,19 @@ public class Actividad extends EntidadConNombre {
 	private String descripcion;
 	private Producto producto;
 	private Empresa empresa;
+	private String tractor;
 	
 	
 	public Actividad() {
 		
 	}
 	
-	public Actividad(String nombre, Byte duracion, String campo, String descripcion,  Empresa empresa)
+	public Actividad(String nombre, Byte duracion, String campo, String descripcion,  String tractor, Empresa empresa)
 			throws nombreInvalidoExceptions, SQLException {
 		super(nombre);
 		Statement queryInsertar = UtilsDB.conectarBD();
-		if (queryInsertar.executeUpdate("insert into actividad values('" + this.getNombre() + "','" + this.getDuracion() + "','" + descripcion
-				+ "','" + empresa.getNombre() + "','"+campo + "')") > 0) {
+		if (queryInsertar.executeUpdate("insert into actividad values('" + this.getNombre() + "','" +duracion + "','" + descripcion
+				+ "','" + empresa.getNombre() + "','"+ campo + "','"+tractor+ "')") > 0)  {
 			this.duracion = duracion;
 			this.campo = campo;
 			this.trabajador = trabajador;

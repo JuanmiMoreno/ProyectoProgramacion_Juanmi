@@ -86,7 +86,7 @@ public class ElementosListaCampos extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 				c.eliminar();
-			JOptionPane.showConfirmDialog(ventana, "Campo eliminado","Eliminado",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showConfirmDialog(ventana, "Campo eliminado","Eliminado",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		

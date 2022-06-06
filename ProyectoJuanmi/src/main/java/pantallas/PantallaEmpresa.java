@@ -181,6 +181,9 @@ public class PantallaEmpresa extends JPanel {
 					ventana.cambiarPantallas("principal");
 				} catch (cifInvalidoExceptions | nombreInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				}catch(NumberFormatException e1) {
+					JOptionPane.showMessageDialog(ventana, "En fondos debes introducir un numero", "Error", JOptionPane.ERROR_MESSAGE);
+
 				}
 			}
 

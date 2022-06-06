@@ -11,6 +11,8 @@ import clases.Actividad;
 import clases.Trabajador;
 import pantallas.Ventana;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
@@ -38,7 +40,7 @@ public class ElementosListaActividades extends JPanel{
 		setLayout(gridBagLayout);
 		
 		JLabel icono = new JLabel("");
-		icono.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\iconoActividad.png"));
+		icono.setIcon(new ImageIcon(".\\imagenes\\iconoActividad.png"));
 		GridBagConstraints gbc_icono = new GridBagConstraints();
 		gbc_icono.gridheight = 2;
 		gbc_icono.insets = new Insets(0, 0, 0, 5);
@@ -73,7 +75,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_etiquetaDuracion.gridy = 0;
 		add(etiquetaDuracion, gbc_etiquetaDuracion);*/
 		
-		JLabel etiquetaCampo = new JLabel(ac.getCampo().getNombre());
+		JLabel etiquetaCampo = new JLabel(ac.getCampo());
 		etiquetaCampo.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_etiquetaCampo = new GridBagConstraints();
 		gbc_etiquetaCampo.gridheight = 2;
@@ -88,6 +90,8 @@ public class ElementosListaActividades extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 				ac.eliminar();
+				JOptionPane.showConfirmDialog(ventana, "Actividad eliminada","Eliminada",JOptionPane.INFORMATION_MESSAGE);
+
 			}
 		});
 		botonBorrar.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));

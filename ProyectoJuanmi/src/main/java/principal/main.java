@@ -18,17 +18,15 @@ public class Main {
 			if(args[i].equals("-usuario")) {
 				usuario=args[1+i];
 				
-				
 			}
-			if(args[i].equals("-contraseña")){
+			if(args[i].equals("-contrasena")){
 				contrasena=args[i+1];
-				
 			}
 		}
 		try {
 			Ventana v = new Ventana(usuario, contrasena);
 		} catch (SQLException | ContraseñaVaciaExceptions | nombreInvalidoExceptions e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

@@ -24,11 +24,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
+import javax.swing.BoxLayout;
 import javax.swing.JScrollBar;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class PantallaTrabajador extends JPanel{
 
@@ -47,12 +49,13 @@ public class PantallaTrabajador extends JPanel{
 		
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(204, 204, 204));
 		add(panel, BorderLayout.WEST);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{57, 109, 52, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 35, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 0};
 		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel etiquetaNombre = new JLabel("Nombre");
@@ -123,7 +126,7 @@ public class PantallaTrabajador extends JPanel{
 		panel.add(campoSueldo, gbc_campoSueldo);
 		campoSueldo.setColumns(10);
 		
-		JButton botonAñadir = new JButton("");
+		JButton botonAñadir = new JButton("A\u00F1adir");
 		botonAñadir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\a\u00F1adir.png"));
 	
 		botonAñadir.setFont(new Font("Arial", Font.BOLD, 15));
@@ -135,11 +138,11 @@ public class PantallaTrabajador extends JPanel{
 		gbc_botonAñadir.fill = GridBagConstraints.HORIZONTAL;
 		gbc_botonAñadir.insets = new Insets(0, 0, 5, 5);
 		gbc_botonAñadir.gridx = 1;
-		gbc_botonAñadir.gridy = 10;
+		gbc_botonAñadir.gridy = 9;
 		panel.add(botonAñadir, gbc_botonAñadir);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.GRAY);
+		panel_1.setBackground(SystemColor.controlShadow);
 		add(panel_1, BorderLayout.NORTH);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0};
@@ -159,9 +162,16 @@ public class PantallaTrabajador extends JPanel{
 		panel_1.add(etiquetaTitulo, gbc_etiquetaTitulo);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(SystemColor.controlShadow);
 		add(panel_2, BorderLayout.SOUTH);
+		GridBagLayout gbl_panel_2 = new GridBagLayout();
+		gbl_panel_2.columnWidths = new int[]{0, 67, 0, 0};
+		gbl_panel_2.rowHeights = new int[]{27, 0, 0};
+		gbl_panel_2.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panel_2.setLayout(gbl_panel_2);
 		
-		JButton botonSalir = new JButton("volver");
+		JButton botonSalir = new JButton("Salir");
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -169,19 +179,45 @@ public class PantallaTrabajador extends JPanel{
 			}
 		});
 		botonSalir.setFont(new Font("Arial", Font.BOLD, 15));
-		panel_2.add(botonSalir);
+		GridBagConstraints gbc_botonSalir = new GridBagConstraints();
+		gbc_botonSalir.insets = new Insets(0, 0, 0, 5);
+		gbc_botonSalir.gridheight = 2;
+		gbc_botonSalir.anchor = GridBagConstraints.WEST;
+		gbc_botonSalir.gridx = 1;
+		gbc_botonSalir.gridy = 0;
+		panel_2.add(botonSalir, gbc_botonSalir);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
 		
+		JPanel panel_3 = new JPanel();
+		scrollPane.setColumnHeaderView(panel_3);
+		GridBagLayout gbl_panel_3 = new GridBagLayout();
+		gbl_panel_3.columnWidths = new int[]{0, 0};
+		gbl_panel_3.rowHeights = new int[]{0, 61, 0};
+		gbl_panel_3.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panel_3.setLayout(gbl_panel_3);
+		
+		JLabel lblNewLabel = new JLabel("Registro trabajadores");
+		lblNewLabel.setBackground(SystemColor.controlHighlight);
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD | Font.ITALIC, 26));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.gridheight = 2;
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 0;
+		panel_3.add(lblNewLabel, gbc_lblNewLabel);
+		
 		JPanel listaTrabajadores = new JPanel();
-		listaTrabajadores.setBackground(new Color(204, 204, 204));
 		scrollPane.setViewportView(listaTrabajadores);
+		listaTrabajadores.setLayout(new BoxLayout(listaTrabajadores, BoxLayout.Y_AXIS));
 		
 		ArrayList<Trabajador> todos=Trabajador.getTodos();
 		for(int i=0;i<todos.size();i++) {
 			listaTrabajadores.add(new ElementosListraTrabajador(ventana,todos.get(i)));
 		}
+		
+		
 	
 		botonAñadir.addMouseListener(new MouseAdapter() {
 			@Override

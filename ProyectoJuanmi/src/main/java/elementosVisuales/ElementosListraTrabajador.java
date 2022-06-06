@@ -26,13 +26,13 @@ public class ElementosListraTrabajador extends JPanel {
 	private Trabajador trabajador;
 	
 	public ElementosListraTrabajador(Ventana v, final Trabajador tr) {
-		setBorder(new LineBorder(new Color(218, 165, 32), 3, true));
+		setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		this.ventana=v;
 		this.trabajador=tr;
 		this.setMaximumSize(new Dimension(80000,70));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{67, 0, 53, 48, 69, 41, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 22, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);

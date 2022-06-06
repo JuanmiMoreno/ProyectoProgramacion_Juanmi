@@ -11,7 +11,7 @@ public abstract  class EntidadConNombre {
 	public String nombre;
 
 	public EntidadConNombre(String nombre) throws nombreInvalidoExceptions, SQLException {
-		this.nombre = nombre;
+		this.setNombre(nombre);;
 	}
 	
 	public EntidadConNombre()  {
@@ -27,9 +27,6 @@ public abstract  class EntidadConNombre {
 		if(!this.nombreValido(nombre)) {
 			throw new nombreInvalidoExceptions("El  nombre no puede estar vacio");
 		}
-		Statement smt = UtilsDB.conectarBD();
-		smt.executeUpdate("update usuario set nombre='" + nombre + "' where nombre='" + this.nombre + "'");
-		UtilsDB.desconectarBD();
 		this.nombre = nombre;
 	}
 	
