@@ -1,4 +1,3 @@
-
 drop  database  if exists proyectoProgramacion; 
 create database proyectoProgramacion;
 use proyectoProgramacion;
@@ -28,6 +27,14 @@ CREATE TABLE campo (
     nombreEmpresa VARCHAR(30) NOT NULL,
     foreign key (nombreEmpresa) references empresa(nombreEmpresa)
 );
+CREATE TABLE tractor (
+    marcaTractor    VARCHAR(30),
+    modeloTractor   VARCHAR(30),
+    añoAdquisicion  int(4),
+    nombreEmpresa   VARCHAR(30) NOT NULL,
+    
+    primary key (marcaTractor, modeloTractor)
+);
 
 CREATE TABLE actividad (
     nombreActividad VARCHAR(30) NOT NULL, 
@@ -35,6 +42,8 @@ CREATE TABLE actividad (
     descripcion     VARCHAR(255),
     nombreEmpresa   VARCHAR(30) NOT NULL,
     nombreCampo varchar(30) not null,
+    modeloTractor varchar(30) not null,
+    modeloApero varchar(30) not null,
     foreign key (nombreEmpresa) references empresa(nombreEmpresa),
     foreign key (nombrecampo) references campo(nombreCampo),
     primary key(nombreActividad, nombreCampo)
@@ -42,19 +51,15 @@ CREATE TABLE actividad (
 );
 
 
+
 CREATE TABLE apero (
     nombreApero     VARCHAR(30) PRIMARY KEY,
     modeloApero     VARCHAR(50),
     añoAdquisicion  INT(4),
     tipoapero       VARCHAR(40),
-    nombreEmpresa   VARCHAR(30) NOT NULL,
-    nombreActividad VARCHAR(30) NOT NULL,
-    nombreCampo varchar(30) not null,
-    foreign key (nombreCampo) references campo(nombreCampo)
+    nombreEmpresa   VARCHAR(30) NOT NULL
 );
-ALTER TABLE apero
-    ADD CONSTRAINT apero_actividad_fk FOREIGN KEY ( nombreActividad )
-        REFERENCES actividad ( nombreActividad );
+
 
 ALTER TABLE apero
     ADD CONSTRAINT apero_empresa_fk FOREIGN KEY ( nombreEmpresa )
@@ -128,39 +133,9 @@ CREATE TABLE trabajador (
 
 
 
-CREATE TABLE tractor (
-    marcaTractor    VARCHAR(30) PRIMARY KEY,
-    modeloTractor   VARCHAR(30),
-    añoAdquisicion  int(4),
-    nombreEmpresa   VARCHAR(30) NOT NULL,
-    nombreActividad VARCHAR(30) NOT NULL
-);
-ALTER TABLE tractor
-    ADD CONSTRAINT tractor_actividad_fk FOREIGN KEY ( nombreActividad )
-        REFERENCES actividad ( nombreActividad );
+
+
 
 ALTER TABLE tractor
     ADD CONSTRAINT tractor_empresa_fk FOREIGN KEY ( nombreEmpresa )
         REFERENCES empresa ( nombreEmpresa );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
