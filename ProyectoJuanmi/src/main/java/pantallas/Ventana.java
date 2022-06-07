@@ -39,6 +39,8 @@ public class Ventana extends JFrame{
 				this.usuarioLogado=new Usuario(usuario,contraseña);
 				this.pantallaActual  = new PantallaEmpresa(this);
 				this.setContentPane(pantallaActual);
+				JOptionPane.showMessageDialog(pantallaActual, "Sesion iniciada con argumentos","Sesion Iniciada", JOptionPane.INFORMATION_MESSAGE);
+
 			} catch (SQLException | ContraseñaIncorrectaException | UsuarioNoExisteException
 					| nombreInvalidoExceptions e) {
 				e.printStackTrace();
@@ -89,6 +91,7 @@ public class Ventana extends JFrame{
 				break;
 			case "tractores":
 				this.pantallaActual = new PantallaTractor(this);
+				break;
 			case "apero":
 				this.pantallaActual = new PantallaApero(this);
 				break;

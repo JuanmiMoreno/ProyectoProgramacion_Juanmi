@@ -7,22 +7,22 @@ import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConNombre;
 
 public class Proveedor extends EntidadConNombre {
-	private byte telefono;
+	private int telefono;
 	ArrayList<Producto> productos;
 	
 	
-	public Proveedor(String nombre, byte telefono, ArrayList<Producto> productos) throws nombreInvalidoExceptions, SQLException {
+	public Proveedor(String nombre, int telefono, ArrayList<Producto> productos) throws nombreInvalidoExceptions, SQLException {
 		super(nombre);
 		this.telefono = telefono;
 		this.productos = productos;
 	}
 
 
-	public byte getTelefono() {
+	public int getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(byte telefono) {
+	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
 

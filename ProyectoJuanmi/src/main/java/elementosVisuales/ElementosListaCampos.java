@@ -26,8 +26,10 @@ public class ElementosListaCampos extends JPanel{
 	private Campo campo;
 	
 	public ElementosListaCampos(Ventana v, final Campo c) {
+		setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		this.ventana=v;
 		this.campo = c;
+		this.setMaximumSize(new Dimension(80000,70));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{68, 47, 57, 71, 136, 58, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0};

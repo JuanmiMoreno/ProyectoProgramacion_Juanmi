@@ -172,6 +172,7 @@ public class PantallaTrabajador extends JPanel{
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -45,6 +45,7 @@ public class PantallaApero extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.GRAY);
 		add(panel, BorderLayout.NORTH);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 37, 0, 0};
@@ -55,7 +56,7 @@ public class PantallaApero extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("Aperos");
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBackground(Color.GRAY);
+		lblNewLabel.setBackground(Color.DARK_GRAY);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Georgia", Font.BOLD | Font.ITALIC, 50));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -159,12 +160,13 @@ public class PantallaApero extends JPanel {
 		add(panel_2, BorderLayout.SOUTH);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{0, 71, 0, 0};
-		gbl_panel_2.rowHeights = new int[]{38, 0};
+		gbl_panel_2.rowHeights = new int[]{0, 38, 0};
 		gbl_panel_2.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton btnNewButton = new JButton("Salir");
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -173,6 +175,7 @@ public class PantallaApero extends JPanel {
 		});
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.gridheight = 2;
 		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
 		gbc_btnNewButton.gridx = 1;
 		gbc_btnNewButton.gridy = 0;
@@ -201,7 +204,12 @@ public class PantallaApero extends JPanel {
 		
 		JPanel listaAperos = new JPanel();
 		scrollPane.setViewportView(listaAperos);
-		listaAperos.setLayout(new BoxLayout(listaAperos, BoxLayout.Y_AXIS));
+		GridBagLayout gbl_listaAperos = new GridBagLayout();
+		gbl_listaAperos.columnWidths = new int[]{49, 0};
+		gbl_listaAperos.rowHeights = new int[]{14, 0};
+		gbl_listaAperos.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_listaAperos.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		listaAperos.setLayout(gbl_listaAperos);
 		
 		ArrayList<Apero> todos=Apero.getTodos();
 		for(int i=0;i<todos.size();i++) {

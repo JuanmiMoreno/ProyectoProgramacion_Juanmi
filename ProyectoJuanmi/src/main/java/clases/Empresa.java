@@ -47,7 +47,7 @@ public class Empresa extends EntidadConDinero {
 			throw new cifInvalidoExceptions("La longuitud del CIF debe ser de 9 digitos, 8 numeos y 1 letra");
 		}
 		Statement queryInsertar = UtilsDB.conectarBD();
-		if (queryInsertar.executeUpdate("insert into empresa values('" + this.getNombre() + "','" + cif+ "','" + this.getDinero() + "','" + usuario.getNombre()
+		if (queryInsertar.executeUpdate("insert into empresa values('" + this.getNombre() + "','" + cif+ "'," + this.getDinero() + ",'" + usuario.getNombre()
         + "')") > 0) {
 			this.cif=cif;
 		} else {

@@ -24,6 +24,7 @@ import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public class PantallaEmpresa extends JPanel {
 
@@ -33,7 +34,7 @@ public class PantallaEmpresa extends JPanel {
 	private JTextField campoPresupuesto;
 	private JTextField campoNombreEmpresa;
 
-	public PantallaEmpresa(Ventana v) {
+	public PantallaEmpresa(final Ventana v) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 90, 130, 92, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 0, 39, 0, 0, 0, 67, 56, 0, 0 };
@@ -153,7 +154,7 @@ public class PantallaEmpresa extends JPanel {
 					ventana.empresaLogada = new Empresa(nombreEmpresa, ventana.usuarioLogado);
 					ventana.cambiarPantallas("principal");
 				} catch (nombreInvalidoExceptions | SQLException | EmpresaIncorrectaExceptions e1) {
-
+					e1.printStackTrace();
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 				}
@@ -179,11 +180,15 @@ public class PantallaEmpresa extends JPanel {
 
 					ventana.empresaLogada = new Empresa(nombre, fondos, cif, ventana.usuarioLogado);
 					ventana.cambiarPantallas("principal");
-				} catch (cifInvalidoExceptions | nombreInvalidoExceptions | SQLException e1) {
+				}catch(SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana, "El usuario "+v.usuarioLogado.getNombre() + " ya tiene registrada una empresa con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
+
+				}catch (cifInvalidoExceptions | nombreInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
 				}catch(NumberFormatException e1) {
 					JOptionPane.showMessageDialog(ventana, "En fondos debes introducir un numero", "Error", JOptionPane.ERROR_MESSAGE);
-
+					e1.printStackTrace();
 				}
 			}
 

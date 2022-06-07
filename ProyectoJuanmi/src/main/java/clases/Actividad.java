@@ -17,19 +17,19 @@ public class Actividad extends EntidadConNombre {
 	private String descripcion;
 	private Producto producto;
 	private Empresa empresa;
-	private String tractor;
-	
+	private String modeloTractor;
+	private String modeloApero;
 	
 	public Actividad() {
 		
 	}
 	
-	public Actividad(String nombre, Byte duracion, String campo, String descripcion,  String tractor, Empresa empresa)
+	public Actividad(String nombre, Byte duracion, String campo, String descripcion,  String modeloTractor, String modeloApero,Empresa empresa)
 			throws nombreInvalidoExceptions, SQLException {
 		super(nombre);
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into actividad values('" + this.getNombre() + "','" +duracion + "','" + descripcion
-				+ "','" + empresa.getNombre() + "','"+ campo + "','"+tractor+ "')") > 0)  {
+				+ "','" + empresa.getNombre() + "','"+ campo + "','"+modeloTractor+"','"+modeloApero+ "')") > 0 ){
 			this.duracion = duracion;
 			this.campo = campo;
 			this.trabajador = trabajador;
@@ -37,6 +37,8 @@ public class Actividad extends EntidadConNombre {
 			this.descripcion = descripcion;
 			this.producto = producto;
 			this.empresa = empresa;
+			this.modeloTractor = modeloTractor;
+			this.modeloApero = modeloApero;
 		} else {
 			UtilsDB.desconectarBD();
 				throw new SQLException("No se ha podido insertar la actividad");
@@ -78,6 +80,22 @@ public class Actividad extends EntidadConNombre {
 	}
 
 
+
+	public String getModeloTractor() {
+		return modeloTractor;
+	}
+
+	public void setModeloTractor(String modeloTractor) {
+		this.modeloTractor = modeloTractor;
+	}
+
+	public String getModeloApero() {
+		return modeloApero;
+	}
+
+	public void setModeloApero(String modeloApero) {
+		this.modeloApero = modeloApero;
+	}
 
 	public void setTrabajador(Trabajador trabajador) {
 		this.trabajador = trabajador;
@@ -142,8 +160,10 @@ public class Actividad extends EntidadConNombre {
 
 				actual.nombre = cursor.getString("nombreActividad");
 				actual.descripcion = cursor.getString("descripcion");
-				//actual.campo = cursor.getString();
+				actual.campo = cursor.getString("nombreCampo");
 				actual.duracion = cursor.getByte("duracion");
+				actual.modeloTractor = cursor.getString("modeloTractor");
+				actual.modeloApero = cursor.getString("modeloApero");
 				
 				ret.add(actual);
 			}

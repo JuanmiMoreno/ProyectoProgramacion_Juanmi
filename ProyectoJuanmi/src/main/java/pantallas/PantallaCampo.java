@@ -24,6 +24,7 @@ import elementosVisuales.ElementosListraTrabajador;
 
 import javax.swing.JComboBox;
 import javax.swing.AbstractListModel;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import enums.Provincia;
 import javax.swing.JCheckBox;
@@ -45,7 +46,7 @@ public class PantallaCampo extends JPanel{
 	
 	private Ventana ventana;
 	private JTextField campoSuperficie;
-	private JTextField textField;
+	private JTextField campoSuperficie1;
 	private JTextField campoNombre;
 	
 	public PantallaCampo ( final Ventana v) {
@@ -124,14 +125,14 @@ public class PantallaCampo extends JPanel{
 		gbc_etiquetaSuperficie.gridy = 7;
 		panel.add(etiquetaSuperficie, gbc_etiquetaSuperficie);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 8;
-		panel.add(textField, gbc_textField);
-		textField.setColumns(10);
+		campoSuperficie1 = new JTextField();
+		GridBagConstraints gbc_campoSuperficie1 = new GridBagConstraints();
+		gbc_campoSuperficie1.insets = new Insets(0, 0, 5, 5);
+		gbc_campoSuperficie1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_campoSuperficie1.gridx = 1;
+		gbc_campoSuperficie1.gridy = 8;
+		panel.add(campoSuperficie1, gbc_campoSuperficie1);
+		campoSuperficie1.setColumns(10);
 		
 		JButton botonAñadir = new JButton("A\u00F1adir");
 		botonAñadir.setFont(new Font("Arial", Font.BOLD, 13));
@@ -169,12 +170,13 @@ public class PantallaCampo extends JPanel{
 		add(panel_2, BorderLayout.SOUTH);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{0, 0, 0, 0};
-		gbl_panel_2.rowHeights = new int[]{0, 0, 0};
+		gbl_panel_2.rowHeights = new int[]{38, 0, 0};
 		gbl_panel_2.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -212,6 +214,7 @@ public class PantallaCampo extends JPanel{
 		
 		JPanel listaCampos = new JPanel();
 		scrollPane.setViewportView(listaCampos);
+		listaCampos.setLayout(new BoxLayout(listaCampos, BoxLayout.Y_AXIS));
 		
 		ArrayList<Campo> todos=Campo.getTodos();
 		for(int i=0;i<todos.size();i++) {
@@ -226,13 +229,13 @@ public class PantallaCampo extends JPanel{
 				String nombre = campoNombre.getText();
 				TipoPlantacion plantacion = (TipoPlantacion) comboBox.getSelectedItem();
 				Provincia provincia = (Provincia) selectorProvincia.getSelectedItem();
-				float superficie = Float.parseFloat(campoSuperficie.getText());
+				float superficie = Float.parseFloat(campoSuperficie1.getText());
 					new Campo (nombre, provincia, superficie, plantacion, v.empresaLogada);
 					JOptionPane.showMessageDialog(ventana, "Campo insertado con exito","",JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("campos");
-				}catch(NullPointerException e1) {
+				}catch(NumberFormatException e1) {
 					JOptionPane.showMessageDialog(ventana, "El decimal lo debes de poner con el punto", "Error", JOptionPane.ERROR_MESSAGE);
-					System.out.println(e1.getMessage());
+					e1.printStackTrace();
 				} 
 				catch (nombreInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

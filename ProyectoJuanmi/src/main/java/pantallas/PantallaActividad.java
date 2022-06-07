@@ -50,6 +50,7 @@ public class PantallaActividad extends JPanel{
 	private JTextField campoDuracion;
 	private JTextField campoCampo;
 	private JTextField campoTractor;
+	private JTextField campoApero;
 
 	
 	public PantallaActividad (final Ventana v) {
@@ -61,9 +62,9 @@ public class PantallaActividad extends JPanel{
 		add(panel, BorderLayout.WEST);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{45, 112, 47, 0};
-		gbl_panel.rowHeights = new int[]{0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 0, 0};
 		gbl_panel.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel etiquetaNombre = new JLabel("Nombre");
@@ -153,6 +154,23 @@ public class PantallaActividad extends JPanel{
 		panel.add(campoTractor, gbc_campoTractor);
 		campoTractor.setColumns(10);
 		
+		JLabel etiquetaApero = new JLabel("Apero (Modelo)");
+		etiquetaApero.setFont(new Font("Arial", Font.BOLD, 15));
+		GridBagConstraints gbc_etiquetaApero = new GridBagConstraints();
+		gbc_etiquetaApero.insets = new Insets(0, 0, 5, 5);
+		gbc_etiquetaApero.gridx = 1;
+		gbc_etiquetaApero.gridy = 12;
+		panel.add(etiquetaApero, gbc_etiquetaApero);
+		
+		campoApero = new JTextField();
+		GridBagConstraints gbc_campoApero = new GridBagConstraints();
+		gbc_campoApero.insets = new Insets(0, 0, 5, 5);
+		gbc_campoApero.fill = GridBagConstraints.HORIZONTAL;
+		gbc_campoApero.gridx = 1;
+		gbc_campoApero.gridy = 13;
+		panel.add(campoApero, gbc_campoApero);
+		campoApero.setColumns(10);
+		
 		JButton botonAñadir = new JButton("A\u00F1adir");
 		botonAñadir.setFont(new Font("Arial", Font.BOLD, 13));
 		
@@ -160,7 +178,7 @@ public class PantallaActividad extends JPanel{
 		GridBagConstraints gbc_botonAñadir = new GridBagConstraints();
 		gbc_botonAñadir.insets = new Insets(0, 0, 5, 5);
 		gbc_botonAñadir.gridx = 1;
-		gbc_botonAñadir.gridy = 12;
+		gbc_botonAñadir.gridy = 14;
 		panel.add(botonAñadir, gbc_botonAñadir);
 		
 		JPanel panel_1 = new JPanel();
@@ -193,6 +211,7 @@ public class PantallaActividad extends JPanel{
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -245,18 +264,21 @@ public class PantallaActividad extends JPanel{
 				byte duracion = Byte.parseByte(campoDuracion.getText());
 				String campo = campoCampo.getText();
 				String tractor  = campoTractor.getText();
-				
-					new Actividad (nombre,duracion,campo,descripcion,tractor,v.empresaLogada);
+				String apero = campoApero.getText();
+					new Actividad (nombre,duracion,campo,descripcion,tractor,apero,v.empresaLogada);
 					JOptionPane.showMessageDialog(ventana, "Actividad añadida con exito!","Añadida con exito!",JOptionPane.INFORMATION_MESSAGE);
+					v.cambiarPantallas("actividad");
 				}catch(SQLIntegrityConstraintViolationException e1) {
-					JOptionPane.showMessageDialog(ventana, "En los campos tractor y campos, debes introducri registros ya insertado anteriormente", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ventana, "En los campos tractor, campos y apero, debes introducir registros ya insertado anteriormente", "Error", JOptionPane.ERROR_MESSAGE);
 					
 				} catch (nombreInvalidoExceptions | SQLException e1) {
-					
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} 
 			}
 		});
+		
+
+
 		
 	}
 
