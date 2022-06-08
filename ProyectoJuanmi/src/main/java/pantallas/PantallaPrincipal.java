@@ -137,6 +137,12 @@ public class PantallaPrincipal extends JPanel {
 		add(botonApero, gbc_botonApero);
 		
 		JButton botonProveedor = new JButton("Proveedores");
+		botonProveedor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				v.cambiarPantallas("proveedor");
+			}
+		});
 		botonProveedor.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonProveedor = new GridBagConstraints();
 		gbc_botonProveedor.insets = new Insets(0, 0, 5, 5);
