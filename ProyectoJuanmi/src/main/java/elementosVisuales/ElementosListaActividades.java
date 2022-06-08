@@ -130,7 +130,7 @@ public class ElementosListaActividades extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 				ac.eliminar();
-				JOptionPane.showConfirmDialog(ventana, "Actividad eliminada","Eliminada",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(ventana, "Actividad eliminada","Eliminada",JOptionPane.INFORMATION_MESSAGE);
 
 			}
 		});
