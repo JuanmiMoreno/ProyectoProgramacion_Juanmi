@@ -273,7 +273,10 @@ public class PantallaActividad extends JPanel{
 					
 				} catch (nombreInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-				} 
+				} catch (NumberFormatException e1) {
+					JOptionPane.showMessageDialog(ventana, "Por favor introduce un numero en duracion menor de 127 dias. Ninguna actividad dura mas de medio año:(", "Error", JOptionPane.ERROR_MESSAGE);
+
+				}
 			}
 		});
 		
