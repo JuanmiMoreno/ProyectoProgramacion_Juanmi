@@ -11,6 +11,11 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.UIManager;
@@ -23,8 +28,11 @@ import exceptions.nombreInvalidoExceptions;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+
 
 public class PantallaEmpresa extends JPanel {
 
@@ -152,9 +160,14 @@ public class PantallaEmpresa extends JPanel {
 				try {
 					String nombreEmpresa = campoNombreEmpresa.getText();
 					ventana.empresaLogada = new Empresa(nombreEmpresa, ventana.usuarioLogado);
+			        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/animales.WAV"));
+			        Clip clip = AudioSystem.getClip();
+			        clip.open(audioInputStream);
+			        clip.start();					
 					ventana.cambiarPantallas("principal");
-				} catch (nombreInvalidoExceptions | SQLException | EmpresaIncorrectaExceptions e1) {
-					e1.printStackTrace();
+					
+				} catch (nombreInvalidoExceptions | SQLException | EmpresaIncorrectaExceptions | UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+					
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 				}
