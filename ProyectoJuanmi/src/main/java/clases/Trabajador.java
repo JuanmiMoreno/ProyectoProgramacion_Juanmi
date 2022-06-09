@@ -20,7 +20,7 @@ public class Trabajador extends EntidadConDinero {
 		
 	}
 	
-	public Trabajador(String nombre, float dinero, String apellido, String dni, Empresa empresa) throws nombreInvalidoExceptions, SQLException {
+	public Trabajador(String nombre, int dinero, String apellido, String dni, Empresa empresa) throws nombreInvalidoExceptions, SQLException {
 		super(nombre, dinero);
 		
 		Statement queryInsertar = UtilsDB.conectarBD();

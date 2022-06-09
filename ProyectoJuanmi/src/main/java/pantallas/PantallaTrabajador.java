@@ -227,7 +227,7 @@ public class PantallaTrabajador extends JPanel{
 				String nombre = campoNombre.getText();
 				String apellido = campoApellido.getText();
 				String dni = campoDni.getText();
-				Float sueldo = Float.parseFloat(campoSueldo.getText());
+				int sueldo = Integer.parseInt(campoSueldo.getText());
 				new Trabajador(nombre, sueldo, apellido, dni, v.empresaLogada);
 				JOptionPane.showMessageDialog(ventana, "Trabajador insertado con exito!", "Insertado con exito", JOptionPane.INFORMATION_MESSAGE);
 				v.cambiarPantallas("personal");
@@ -235,6 +235,9 @@ public class PantallaTrabajador extends JPanel{
 				} catch (nombreInvalidoExceptions |SQLException e1) {
 					System.out.println(e1.getMessage());
 					JOptionPane.showMessageDialog(ventana,e1.getMessage(),"Error",JOptionPane.ERROR_MESSAGE );
+				}catch(NumberFormatException e1) {
+					JOptionPane.showMessageDialog(ventana,"El sueldo del empleado debe ser un numero entero!","Error",JOptionPane.ERROR_MESSAGE );
+
 				}
 			}
 		});

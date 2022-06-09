@@ -31,20 +31,44 @@ public class ElementosListaAperos extends JPanel{
 	this.ventana=v;
 	this.setMaximumSize(new Dimension(8000,70));
 	GridBagLayout gridBagLayout = new GridBagLayout();
-	gridBagLayout.columnWidths = new int[]{75, 86, 91, 0, 136, 70, 0};
-	gridBagLayout.rowHeights = new int[]{35, 0, 0};
+	gridBagLayout.columnWidths = new int[]{75, 86, 91, 0, 136, 79, 0};
+	gridBagLayout.rowHeights = new int[]{35, 0, 0, 0};
 	gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-	gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+	gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 	setLayout(gridBagLayout);
 	
 	JLabel lblNewLabel = new JLabel("");
 	lblNewLabel.setIcon(new ImageIcon(".\\imagenes\\arado.png"));
 	GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-	gbc_lblNewLabel.gridheight = 2;
+	gbc_lblNewLabel.gridheight = 3;
 	gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
 	gbc_lblNewLabel.gridx = 0;
 	gbc_lblNewLabel.gridy = 0;
 	add(lblNewLabel, gbc_lblNewLabel);
+	
+	JLabel lblNewLabel_1 = new JLabel("Que apero es");
+	lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 13));
+	GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+	gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+	gbc_lblNewLabel_1.gridx = 1;
+	gbc_lblNewLabel_1.gridy = 0;
+	add(lblNewLabel_1, gbc_lblNewLabel_1);
+	
+	JLabel lblNewLabel_2 = new JLabel("Modelo");
+	lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 13));
+	GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+	gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
+	gbc_lblNewLabel_2.gridx = 2;
+	gbc_lblNewLabel_2.gridy = 0;
+	add(lblNewLabel_2, gbc_lblNewLabel_2);
+	
+	JLabel lblNewLabel_3 = new JLabel("Tipo");
+	lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 13));
+	GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+	gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
+	gbc_lblNewLabel_3.gridx = 3;
+	gbc_lblNewLabel_3.gridy = 0;
+	add(lblNewLabel_3, gbc_lblNewLabel_3);
 	
 	JLabel etiquetaMarca = new JLabel(ap.getMarca());
 	etiquetaMarca.setFont(new Font("Arial", Font.BOLD, 12));
@@ -52,7 +76,7 @@ public class ElementosListaAperos extends JPanel{
 	gbc_etiquetaMarca.gridheight = 2;
 	gbc_etiquetaMarca.insets = new Insets(0, 0, 0, 5);
 	gbc_etiquetaMarca.gridx = 1;
-	gbc_etiquetaMarca.gridy = 0;
+	gbc_etiquetaMarca.gridy = 1;
 	add(etiquetaMarca, gbc_etiquetaMarca);
 	
 	JLabel etiquetaModelo = new JLabel(ap.getModelo());
@@ -61,7 +85,7 @@ public class ElementosListaAperos extends JPanel{
 	gbc_etiquetaModelo.gridheight = 2;
 	gbc_etiquetaModelo.insets = new Insets(0, 0, 0, 5);
 	gbc_etiquetaModelo.gridx = 2;
-	gbc_etiquetaModelo.gridy = 0;
+	gbc_etiquetaModelo.gridy = 1;
 	add(etiquetaModelo, gbc_etiquetaModelo);
 	
 	JLabel etiquetaTipo = new JLabel(ap.getTipo().toString());
@@ -70,7 +94,7 @@ public class ElementosListaAperos extends JPanel{
 	gbc_etiquetaTipo.gridheight = 2;
 	gbc_etiquetaTipo.insets = new Insets(0, 0, 0, 5);
 	gbc_etiquetaTipo.gridx = 3;
-	gbc_etiquetaTipo.gridy = 0;
+	gbc_etiquetaTipo.gridy = 1;
 	add(etiquetaTipo, gbc_etiquetaTipo);
 	
 	JButton btnNewButton = new JButton("");
@@ -85,8 +109,7 @@ public class ElementosListaAperos extends JPanel{
 	});
 	btnNewButton.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));
 	GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-	gbc_btnNewButton.gridheight = 2;
-	gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
+	gbc_btnNewButton.gridheight = 3;
 	gbc_btnNewButton.gridx = 5;
 	gbc_btnNewButton.gridy = 0;
 	add(btnNewButton, gbc_btnNewButton);

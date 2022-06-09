@@ -33,9 +33,9 @@ public class ElementosListaActividades extends JPanel{
 		setBorder(new LineBorder(new Color(218, 165, 32), 3, true));
 		this.setMaximumSize(new Dimension(80000,70));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{67, 0, 108, 48, 75, 0, 49, 0};
+		gridBagLayout.columnWidths = new int[]{67, 0, 108, 118, 83, 75, 0, 49, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 27, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -64,11 +64,19 @@ public class ElementosListaActividades extends JPanel{
 		gbc_lblNewLabel_1.gridy = 0;
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
+		JLabel lblNewLabel_5 = new JLabel("Duraci\u00F3n(Dias)");
+		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 13));
+		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
+		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_5.gridx = 3;
+		gbc_lblNewLabel_5.gridy = 0;
+		add(lblNewLabel_5, gbc_lblNewLabel_5);
+		
 		JLabel lblNewLabel_2 = new JLabel("Campo");
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_2.gridx = 3;
+		gbc_lblNewLabel_2.gridx = 4;
 		gbc_lblNewLabel_2.gridy = 0;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
@@ -76,7 +84,7 @@ public class ElementosListaActividades extends JPanel{
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 4;
+		gbc_lblNewLabel_3.gridx = 5;
 		gbc_lblNewLabel_3.gridy = 0;
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
@@ -84,7 +92,7 @@ public class ElementosListaActividades extends JPanel{
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_4.gridx = 5;
+		gbc_lblNewLabel_4.gridx = 6;
 		gbc_lblNewLabel_4.gridy = 0;
 		add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
@@ -106,21 +114,21 @@ public class ElementosListaActividades extends JPanel{
 		gbc_etiquetaDescripcion.gridy = 1;
 		add(etiquetaDescripcion, gbc_etiquetaDescripcion);
 		
-		/*JLabel etiquetaDuracion = new JLabel(ac.getDuracion());
+		JLabel etiquetaDuracion = new JLabel(String.valueOf(ac.getDuracion()));
 		etiquetaDuracion.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_etiquetaDuracion = new GridBagConstraints();
 		gbc_etiquetaDuracion.gridheight = 2;
 		gbc_etiquetaDuracion.insets = new Insets(0, 0, 0, 5);
 		gbc_etiquetaDuracion.gridx = 3;
-		gbc_etiquetaDuracion.gridy = 0;
-		add(etiquetaDuracion, gbc_etiquetaDuracion);*/
+		gbc_etiquetaDuracion.gridy = 1;
+		add(etiquetaDuracion, gbc_etiquetaDuracion);
 		
 		JLabel etiquetaCampo = new JLabel(ac.getCampo());
 		etiquetaCampo.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_etiquetaCampo = new GridBagConstraints();
 		gbc_etiquetaCampo.gridheight = 2;
 		gbc_etiquetaCampo.insets = new Insets(0, 0, 0, 5);
-		gbc_etiquetaCampo.gridx = 3;
+		gbc_etiquetaCampo.gridx = 4;
 		gbc_etiquetaCampo.gridy = 1;
 		add(etiquetaCampo, gbc_etiquetaCampo);
 		
@@ -140,7 +148,7 @@ public class ElementosListaActividades extends JPanel{
 		GridBagConstraints gbc_etiquetaTractor = new GridBagConstraints();
 		gbc_etiquetaTractor.gridheight = 2;
 		gbc_etiquetaTractor.insets = new Insets(0, 0, 0, 5);
-		gbc_etiquetaTractor.gridx = 4;
+		gbc_etiquetaTractor.gridx = 5;
 		gbc_etiquetaTractor.gridy = 1;
 		add(etiquetaTractor, gbc_etiquetaTractor);
 		
@@ -148,14 +156,14 @@ public class ElementosListaActividades extends JPanel{
 		etiquetaApero.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_etiquetaApero = new GridBagConstraints();
 		gbc_etiquetaApero.gridheight = 2;
-		gbc_etiquetaApero.insets = new Insets(0, 0, 5, 5);
-		gbc_etiquetaApero.gridx = 5;
+		gbc_etiquetaApero.insets = new Insets(0, 0, 0, 5);
+		gbc_etiquetaApero.gridx = 6;
 		gbc_etiquetaApero.gridy = 1;
 		add(etiquetaApero, gbc_etiquetaApero);
 		botonBorrar.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));
 		GridBagConstraints gbc_botonBorrar = new GridBagConstraints();
 		gbc_botonBorrar.gridheight = 2;
-		gbc_botonBorrar.gridx = 6;
+		gbc_botonBorrar.gridx = 7;
 		gbc_botonBorrar.gridy = 1;
 		add(botonBorrar, gbc_botonBorrar);
 		

@@ -25,7 +25,7 @@ public class Empresa extends EntidadConDinero {
 	
 	
 	
-	public Empresa(String nombre, float dinero, String cif, ArrayList<Campo> campos, ArrayList<Maquinaria> maquinarias,
+	public Empresa(String nombre, int dinero, String cif, ArrayList<Campo> campos, ArrayList<Maquinaria> maquinarias,
 			ArrayList<Trabajador> trabajadores, ArrayList<Proveedor> proveedores, ArrayList<Actividad> actividades)
 			throws nombreInvalidoExceptions, SQLException {
 		super(nombre, dinero);
@@ -37,7 +37,7 @@ public class Empresa extends EntidadConDinero {
 		this.actividades = actividades;
 	}
 	
-	public Empresa(String nombre, float dinero, String cif, Usuario usuario)
+	public Empresa(String nombre, int dinero, String cif, Usuario usuario)
 			throws nombreInvalidoExceptions, SQLException, cifInvalidoExceptions {
 		super(nombre, dinero);
 		String nombreEmpresa = nombre;

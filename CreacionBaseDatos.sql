@@ -12,7 +12,7 @@ CREATE TABLE usuario (
 CREATE TABLE empresa (
     nombreEmpresa VARCHAR(30) NOT NULL PRIMARY KEY,
     cif           VARCHAR(9) NOT NULL,
-    presupuesto   NUMERIC(8, 2),
+    presupuesto   int(6),
     nombreUsuario VARCHAR(30) NOT NULL,
     foreign key (nombreUsuario) references usuario(nombreUsuario)
 );
@@ -38,7 +38,7 @@ CREATE TABLE tractor (
 
 CREATE TABLE actividad (
     nombreActividad VARCHAR(30) NOT NULL, 
-    duracion        NUMERIC(2) NOT NULL,
+    duracion        int(2) NOT NULL,
     descripcion     VARCHAR(255),
     nombreEmpresa   VARCHAR(30) NOT NULL,
     nombreCampo varchar(30) not null,
@@ -68,7 +68,7 @@ ALTER TABLE apero
 
 CREATE TABLE proveedor (
     nombreProveedor VARCHAR(30) PRIMARY KEY,
-    telefono        NUMERIC(9)
+    telefono        int(9)
 );
 
 
@@ -94,7 +94,7 @@ ALTER TABLE empresa_proveedor
 
 CREATE TABLE producto (
     nombreProducto  VARCHAR(30) PRIMARY KEY,
-    precio          NUMERIC(8, 2),
+    precio          int (8),
     tipo            VARCHAR(50) NOT NULL,
     nombreActividad VARCHAR(50) NOT NULL,
 	foreign key (nombreActividad) references actividad(nombreActividad)
@@ -126,7 +126,7 @@ CREATE TABLE trabajador (
     nombreTrabajador VARCHAR(30) PRIMARY KEY,
     apellido         VARCHAR(30),
     dni              VARCHAR(9),
-    sueldo           NUMERIC(6, 2),
+    sueldo           int(6),
     nombreEmpresa    VARCHAR(30) NOT NULL,
     foreign key (nombreEmpresa) references empresa(nombreEmpresa)
 );

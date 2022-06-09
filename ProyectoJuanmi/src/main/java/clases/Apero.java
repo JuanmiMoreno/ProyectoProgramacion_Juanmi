@@ -7,16 +7,20 @@ import java.util.ArrayList;
 
 import enums.Provincia;
 import enums.TipoApero;
+import exceptions.AñoInvalidoExceptions;
 import utils.UtilsDB;
 
 public class Apero extends Maquinaria {
 	private TipoApero tipo;
 
-	public Apero(String marca, String modelo, short añoAdquisicion, TipoApero tipo, Empresa empresa) throws SQLException {
+	public Apero(String marca, String modelo, short añoAdquisicion, TipoApero tipo, Empresa empresa) throws SQLException, AñoInvalidoExceptions {
 		super(marca, modelo, añoAdquisicion, empresa);
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into apero values('" + marca + "','" + modelo + "','" + añoAdquisicion
 				+ "','" + tipo + "','"+empresa.getNombre()+ "')") > 0){
+			this.setAñoAdquisicion(añoAdquisicion);
+			this.setMarca(marca);
+			this.setModelo(modelo);
 			this.tipo = tipo;
 		} else {
 			UtilsDB.desconectarBD();
@@ -54,7 +58,7 @@ public class Apero extends Maquinaria {
 				actual.tipo = TipoApero.valueOf(cursor.getString("tipoapero"));
 				ret.add(actual);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | AñoInvalidoExceptions e) {
 			return null;
 		}
 		
@@ -76,7 +80,7 @@ public class Apero extends Maquinaria {
 			this.tipo = null;
 			
 			
-		} catch (SQLException e) {
+		} catch (SQLException | AñoInvalidoExceptions e) {
 			UtilsDB.desconectarBD();
 			return false;
 		}

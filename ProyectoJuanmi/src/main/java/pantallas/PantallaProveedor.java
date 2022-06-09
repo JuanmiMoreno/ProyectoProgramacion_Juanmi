@@ -4,22 +4,32 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import clases.Proveedor;
+import exceptions.TelefonoInvalidoExceptions;
+import exceptions.nombreInvalidoExceptions;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 public class PantallaProveedor extends JPanel {
 
 	private Ventana ventana;
 	private JTextField campoNombre;
-	private JTextField textField;
+	private JTextField campoTelefono;
 	
-	public PantallaProveedor (Ventana v) {
+	public PantallaProveedor (final Ventana v) {
 		this.ventana = v;
 		setLayout(new BorderLayout(0, 0));
 		
@@ -78,16 +88,17 @@ public class PantallaProveedor extends JPanel {
 		gbc_etiquetaTelefono.gridy = 3;
 		panel_1.add(etiquetaTelefono, gbc_etiquetaTelefono);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 4;
-		panel_1.add(textField, gbc_textField);
-		textField.setColumns(10);
+		campoTelefono = new JTextField();
+		GridBagConstraints gbc_campoTelefono = new GridBagConstraints();
+		gbc_campoTelefono.insets = new Insets(0, 0, 5, 5);
+		gbc_campoTelefono.fill = GridBagConstraints.HORIZONTAL;
+		gbc_campoTelefono.gridx = 1;
+		gbc_campoTelefono.gridy = 4;
+		panel_1.add(campoTelefono, gbc_campoTelefono);
+		campoTelefono.setColumns(10);
 		
 		JButton btnNewButton = new JButton("A\u00F1adir");
+
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\a\u00F1adir.png"));
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
@@ -107,6 +118,12 @@ public class PantallaProveedor extends JPanel {
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				v.cambiarPantallas("principal");
+			}
+		});
 		botonSalir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		botonSalir.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonSalir = new GridBagConstraints();
@@ -137,6 +154,18 @@ public class PantallaProveedor extends JPanel {
 		gbc_lblNewLabel_1.gridy = 0;
 		panel_3.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+				String nombre = campoNombre.getText();
+				String telefono = campoTelefono.getText();
+					new Proveedor(nombre, telefono);
+					
+				} catch (SQLException | TelefonoInvalidoExceptions | nombreInvalidoExceptions e1) {
+					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 	}
 }

@@ -7,12 +7,13 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import exceptions.AñoInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 import utils.UtilsDB;
 
 public class Tractor extends Maquinaria {
 
-	public Tractor(String marca, String modelo, short añoAdquisicion, Empresa empresa) throws SQLException {
+	public Tractor(String marca, String modelo, short añoAdquisicion, Empresa empresa) throws SQLException, AñoInvalidoExceptions {
 		super(marca, modelo, añoAdquisicion,empresa );
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate(
@@ -46,7 +47,7 @@ public class Tractor extends Maquinaria {
 				actual.setAñoAdquisicion(cursor.getShort("añoAdquisicion"));
 				ret.add(actual);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | AñoInvalidoExceptions e) {
 			return null;
 		}
 		
@@ -66,7 +67,7 @@ public class Tractor extends Maquinaria {
 			this.setAñoAdquisicion((short) 0);
 			
 			
-		} catch (SQLException e) {
+		} catch (SQLException | AñoInvalidoExceptions e) {
 			UtilsDB.desconectarBD();
 			return false;
 		}

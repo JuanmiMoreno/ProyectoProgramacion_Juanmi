@@ -25,6 +25,8 @@ import javax.swing.DefaultComboBoxModel;
 
 import enums.Provincia;
 import enums.TipoApero;
+import exceptions.AñoInvalidoExceptions;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
@@ -210,7 +212,8 @@ public class PantallaApero extends JPanel {
 		gbl_listaAperos.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gbl_listaAperos.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		listaAperos.setLayout(gbl_listaAperos);
-		
+		listaAperos.setLayout(new BoxLayout(listaAperos, BoxLayout.Y_AXIS));
+
 		ArrayList<Apero> todos=Apero.getTodos();
 		for(int i=0;i<todos.size();i++) {
 			listaAperos.add(new ElementosListaAperos(ventana,todos.get(i)));
@@ -227,10 +230,13 @@ public class PantallaApero extends JPanel {
 				new Apero(marca, modelo, año, tipo, v.empresaLogada);
 				JOptionPane.showMessageDialog(ventana, "Apero insertado con exito!","Insertado con exito",JOptionPane.INFORMATION_MESSAGE);
 				v.cambiarPantallas("apero");
-				} catch (SQLException e1) {
+				} catch (SQLException | AñoInvalidoExceptions e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
-				}
+				}catch(NumberFormatException e1) {
+					JOptionPane.showMessageDialog(ventana, "En el año debes de introducir un numero entero de 4 digitos","Error",JOptionPane.ERROR_MESSAGE);
+	
+				} 
 			}
 		});
 		

@@ -11,7 +11,7 @@ public class Producto extends EntidadConDinero {
 	private  Actividad nombreActividad;
 	
 	
-	public Producto(String nombre, float dinero, TipoProducto tipo, Actividad nombreActividad)
+	public Producto(String nombre, int dinero, TipoProducto tipo, Actividad nombreActividad)
 			throws nombreInvalidoExceptions, SQLException {
 		super(nombre, dinero);
 		this.tipo = tipo;

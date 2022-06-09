@@ -160,7 +160,7 @@ public class PantallaEmpresa extends JPanel {
 				try {
 					String nombreEmpresa = campoNombreEmpresa.getText();
 					ventana.empresaLogada = new Empresa(nombreEmpresa, ventana.usuarioLogado);
-			        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/animales.WAV"));
+			        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/inicio.wav"));
 			        Clip clip = AudioSystem.getClip();
 			        clip.open(audioInputStream);
 			        clip.start();					
@@ -192,15 +192,28 @@ public class PantallaEmpresa extends JPanel {
 					String cif = campoCif.getText();
 
 					ventana.empresaLogada = new Empresa(nombre, fondos, cif, ventana.usuarioLogado);
+			        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/inicio.wav"));
+			        Clip clip = AudioSystem.getClip();
+			        clip.open(audioInputStream);
+			        clip.start();	
 					ventana.cambiarPantallas("principal");
 				}catch(SQLIntegrityConstraintViolationException e1) {
 					JOptionPane.showMessageDialog(ventana, "El usuario "+v.usuarioLogado.getNombre() + " ya tiene registrada una empresa con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
 
 				}catch (cifInvalidoExceptions | nombreInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-					e1.printStackTrace();
+					
 				}catch(NumberFormatException e1) {
-					JOptionPane.showMessageDialog(ventana, "En fondos debes introducir un numero", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ventana, "En fondos debes introducir un numero entero sin decimales", "Error", JOptionPane.ERROR_MESSAGE);
+					
+				} catch (UnsupportedAudioFileException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (LineUnavailableException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

@@ -2,7 +2,9 @@ package clases;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
+import exceptions.AñoInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 import utils.UtilsDB;
 
@@ -55,10 +57,17 @@ public abstract class Maquinaria {
 		return añoAdquisicion;
 	}
 
-	public void setAñoAdquisicion(short añoAdquisicion) {
+	public void setAñoAdquisicion(short añoAdquisicion) throws AñoInvalidoExceptions {
+		if(!this.añoValido(añoAdquisicion)) {
+			throw new AñoInvalidoExceptions("El  no puede ser inferior a 1920 ni superior a 2022");
+		}
+		
 		this.añoAdquisicion = añoAdquisicion;
 	}
 	
+	private boolean añoValido( short año) {
+		return año> 1920 && año< 2022;
+	}
 
 	
 }

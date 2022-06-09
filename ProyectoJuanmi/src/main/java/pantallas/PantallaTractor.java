@@ -15,6 +15,7 @@ import clases.Trabajador;
 import clases.Tractor;
 import elementosVisuales.ElementosListaTractor;
 import elementosVisuales.ElementosListraTrabajador;
+import exceptions.AñoInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 
 import javax.swing.JButton;
@@ -193,11 +194,14 @@ public class PantallaTractor extends JPanel {
 				String modelo = campoModelo.getText();
 				short añoAdquisicion = Short.parseShort(campoAño.getText());
 				new Tractor(marca,modelo,añoAdquisicion, v.empresaLogada);
-				v.cambiarPantallas("tractor");
+				v.cambiarPantallas("tractores");
 				JOptionPane.showMessageDialog(ventana, "Tractor insertado con exito","Insertado con exito",JOptionPane.INFORMATION_MESSAGE);
-				} catch (SQLException e1) {
+				} catch (SQLException | AñoInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
 
+				}catch(NumberFormatException e1) {
+					JOptionPane.showMessageDialog(ventana, "En el año debes de introducir un numero entero de 4 digitos","Error",JOptionPane.ERROR_MESSAGE);
+	
 				}
 			}
 		});

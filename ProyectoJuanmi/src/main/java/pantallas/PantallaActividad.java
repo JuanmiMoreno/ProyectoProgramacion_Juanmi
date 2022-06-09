@@ -249,7 +249,6 @@ public class PantallaActividad extends JPanel{
 		JPanel listaActividades = new JPanel();
 		scrollPane.setViewportView(listaActividades);
 		listaActividades.setLayout(new BoxLayout(listaActividades, BoxLayout.Y_AXIS));
-
 		ArrayList<Actividad> todos=Actividad.getTodos();
 		for(int i=0;i<todos.size();i++) {
 			listaActividades.add(new ElementosListaActividades(ventana,todos.get(i)));

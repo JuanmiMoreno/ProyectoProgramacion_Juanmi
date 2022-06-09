@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import exceptions.nombreInvalidoExceptions;
 
 public abstract class EntidadConDinero extends EntidadConNombre {
-	private float dinero;
+	private int dinero;
 
-	public EntidadConDinero(String nombre, float dinero) throws nombreInvalidoExceptions, SQLException {
+	public EntidadConDinero(String nombre, int dinero) throws nombreInvalidoExceptions, SQLException {
 		super(nombre);
 		this.dinero = dinero;
 	}
@@ -22,11 +22,11 @@ public abstract class EntidadConDinero extends EntidadConNombre {
 		
 	}
 
-	public float getDinero() {
+	public int getDinero() {
 		return dinero;
 	}
 
-	public void setDinero(float dinero) {
+	public void setDinero(int dinero) {
 		this.dinero = dinero;
 	}
 	

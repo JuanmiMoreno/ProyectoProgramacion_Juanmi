@@ -76,12 +76,12 @@ public class Campo extends EntidadConUbicacion {
 		this.empresa = empresa;
 	}
 	
-	public  static ArrayList<Campo> getTodos() {
+	public static ArrayList<Campo> getTodos() {
 		Statement smt = UtilsDB.conectarBD();
 		ArrayList<Campo> ret = new ArrayList<Campo>();
 
 		try {
-			ResultSet cursor = smt.executeQuery("select * from campo ");
+			ResultSet cursor = smt.executeQuery("select * from campo where nombreEmpresa='" + empresa.nombre + "'" );
 			while (cursor.next()) {
 				Campo actual = new Campo();
 				
