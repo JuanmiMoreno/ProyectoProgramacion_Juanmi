@@ -13,8 +13,8 @@ import utils.UtilsDB;
  *
  */
 public abstract class EntidadConNombre {
-	/** es el nombre **/
-	private String nombre;
+	/** es el nombre publico para poder trabajar con el en pantalla principal**/
+	public String nombre;
 
 	/**
 	 * Constructor que crea una entidad con nombre
