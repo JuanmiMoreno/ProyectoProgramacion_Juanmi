@@ -41,6 +41,10 @@ public class Apero extends Maquinaria {
 	public Apero(String marca, String modelo, short añoAdquisicion, TipoApero tipo, Empresa empresa)
 			throws SQLException, AñoInvalidoExceptions {
 		super(marca, modelo, añoAdquisicion, empresa);
+		if (!this.añoValido(añoAdquisicion)) {
+			throw new AñoInvalidoExceptions("El  no puede ser inferior a 1920 ni superior a 2022");
+		}
+		
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into apero values('" + marca + "','" + modelo + "','" + añoAdquisicion
 				+ "','" + tipo + "','" + empresa.getNombre() + "')") > 0) {
@@ -85,15 +89,15 @@ public class Apero extends Maquinaria {
 	/**
 	 * Funcion que crea un array list de apero en el que se inserta todos los apero
 	 * de la empresa que estan en la base de datos
-	 * 
+	 * @param empresa empresa a los que pertenece los aperos
 	 * @return devuelve un array list de todos los aperos que pertencen a la empresa
 	 */
-	public static ArrayList<Apero> getTodos() {
+	public static ArrayList<Apero> getTodos(Empresa empresa) {
 		Statement smt = UtilsDB.conectarBD();
 		ArrayList<Apero> ret = new ArrayList<Apero>();
 
 		try {
-			ResultSet cursor = smt.executeQuery("select * from Apero  ");
+			ResultSet cursor = smt.executeQuery("select * from Apero where nombreEmpresa='" + empresa.nombre + "'" );
 			while (cursor.next()) {
 				Apero actual = new Apero();
 

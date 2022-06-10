@@ -27,12 +27,28 @@ import exceptions.ContraseñaIncorrectaException;
 import exceptions.UsuarioNoExisteException;
 import exceptions.nombreInvalidoExceptions;
 
+/**
+ * Clase que extiende de JPanel es la pantalla de login donde contiene un
+ * usuario y contraseña y dos botones (inicar sesion o registrarse)
+ * 
+ * @author Juanmi
+ *
+ */
 public class PantallaLogin extends JPanel {
-
+	/** ventana sobre la que aparece la pantalla **/
 	private Ventana ventana;
+	/** contraseña de usuario **/
 	protected JPasswordField campoContraseña;
+	/** el nombre del usuario **/
 	protected JTextField campoUsuario;
 
+	/**
+	 * Construnctor que crea pantalla de login contiene la etiqueta con todos los
+	 * atributos de login y los campos donde se recoge la informacion. Tambien
+	 * contiene todas las propiedades de dicha pantalla
+	 * 
+	 * @param v es la ventana en la que aparece la pantalla
+	 */
 	public PantallaLogin(Ventana v) {
 		setBackground(SystemColor.inactiveCaption);
 		this.ventana = v;
@@ -71,14 +87,17 @@ public class PantallaLogin extends JPanel {
 		JButton btnNewButton = new JButton("Registrarse");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Funcion que al clicar en el boton de registrarse cambia hacia la pantalla de
+			 * registrarse
+			 * 
+			 * @param e
+			 */
 			public void mouseClicked(MouseEvent e) {
 				ventana.cambiarPantallas("registro");
 			}
 		});
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnNewButton.setBounds(246, 281, 110, 23);
 		add(btnNewButton);
@@ -111,27 +130,33 @@ public class PantallaLogin extends JPanel {
 
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setBackground(new Color(46, 139, 87));
-		lblNewLabel_4.setIcon(new ImageIcon(
-				".\\imagenes\\agricultura.png"));
+		lblNewLabel_4.setIcon(new ImageIcon(".\\imagenes\\agricultura.png"));
 		lblNewLabel_4.setBounds(-13, 0, 844, 517);
 		add(lblNewLabel_4);
 
 		botonIniciar.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Funcion que al clicar en el boton iniciar recoge la informacion de los campos
+			 * e intenta crear ese usuario si exite en la base de datos para intentar
+			 * iniciar. Si no existe no podra iniciar sesion Tambien saltaran otro errores
+			 * como el de contraseña invalida
+			 */
 			public void mouseClicked(MouseEvent e) {
 				try {
 					String nombre = campoUsuario.getText();
 					String contraseña = new String(campoContraseña.getPassword());
 
 					ventana.usuarioLogado = new Usuario(nombre, contraseña);
-					JOptionPane.showMessageDialog(ventana, "Bienvenido, "+ventana.usuarioLogado.getNombre(), "Login correcto", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(ventana, "Bienvenido, " + ventana.usuarioLogado.getNombre(),
+							"Login correcto", JOptionPane.PLAIN_MESSAGE);
 					ventana.cambiarPantallas("empresa");
 				} catch (SQLException | ContraseñaIncorrectaException | UsuarioNoExisteException
 						| nombreInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 				}
-				
+
 			}
 		});
 

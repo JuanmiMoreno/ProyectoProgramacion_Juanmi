@@ -33,15 +33,32 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
-
+/**
+ * Clase que extiende de JPanel es la pantalla donde se registra la empresa
+ * 
+ * @author Juanmi
+ *
+ */
 public class PantallaEmpresa extends JPanel {
-
+	/** ventana donde se muestra la pantalla **/
 	private Ventana ventana;
+	/** nombre de la empresa **/
 	private JTextField campoNombre;
+	/** cif de la empresa **/
 	private JTextField campoCif;
+	/** presupuesto de la empresa **/
 	private JTextField campoPresupuesto;
+	/** nombre para inicar sesion una vez creada la empresa **/
 	private JTextField campoNombreEmpresa;
 
+	/**
+	 * Construnctor que crea pantalla de empresa contiene la etiqueta con todos los
+	 * atributos de empresa y los campos donde se recoge la informacion. Tambien
+	 * contiene todas las propiedades de dicha pantalla
+	 * Tambien crea una lista con los registro insertados
+	 * 
+	 * @param v es la ventana en la que aparece la pantalla
+	 */
 	public PantallaEmpresa(final Ventana v) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 90, 130, 92, 0, 0 };
@@ -156,18 +173,25 @@ public class PantallaEmpresa extends JPanel {
 		botonIniciar.setBackground(SystemColor.info);
 		botonIniciar.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Boton que al clicar en el boton entra, entra el el menu principal de la
+			 * apliacion una vez que suena un sonido y cambia a la pantalla principal
+			 * 
+			 * @param e evento de clicar
+			 */
 			public void mouseClicked(MouseEvent e) {
 				try {
 					String nombreEmpresa = campoNombreEmpresa.getText();
 					ventana.empresaLogada = new Empresa(nombreEmpresa, ventana.usuarioLogado);
-			        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/inicio.wav"));
-			        Clip clip = AudioSystem.getClip();
-			        clip.open(audioInputStream);
-			        clip.start();					
+					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/inicio.wav"));
+					Clip clip = AudioSystem.getClip();
+					clip.open(audioInputStream);
+					clip.start();
 					ventana.cambiarPantallas("principal");
-					
-				} catch (nombreInvalidoExceptions | SQLException | EmpresaIncorrectaExceptions | UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-					
+
+				} catch (nombreInvalidoExceptions | SQLException | EmpresaIncorrectaExceptions
+						| UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 				}
@@ -184,6 +208,13 @@ public class PantallaEmpresa extends JPanel {
 
 		botonRegistrarEmpresa.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Funcion que al clicar en el boton recoge toda la informacion de los campos y
+			 * crea una nueva empresa. Al crear la empresa entra en el menu principal y
+			 * suena un sonidpo
+			 * 
+			 * @param e evento de clicar
+			 */
 			public void mouseClicked(MouseEvent e) {
 
 				try {
@@ -192,20 +223,24 @@ public class PantallaEmpresa extends JPanel {
 					String cif = campoCif.getText();
 
 					ventana.empresaLogada = new Empresa(nombre, fondos, cif, ventana.usuarioLogado);
-			        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/inicio.wav"));
-			        Clip clip = AudioSystem.getClip();
-			        clip.open(audioInputStream);
-			        clip.start();	
+					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/inicio.wav"));
+					Clip clip = AudioSystem.getClip();
+					clip.open(audioInputStream);
+					clip.start();
 					ventana.cambiarPantallas("principal");
-				}catch(SQLIntegrityConstraintViolationException e1) {
-					JOptionPane.showMessageDialog(ventana, "El usuario "+v.usuarioLogado.getNombre() + " ya tiene registrada una empresa con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
+				} catch (SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana,
+							"El usuario " + v.usuarioLogado.getNombre()
+									+ " ya tiene registrada una empresa con ese nombre",
+							"Error", JOptionPane.ERROR_MESSAGE);
 
-				}catch (cifInvalidoExceptions | nombreInvalidoExceptions | SQLException e1) {
+				} catch (cifInvalidoExceptions | nombreInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-					
-				}catch(NumberFormatException e1) {
-					JOptionPane.showMessageDialog(ventana, "En fondos debes introducir un numero entero sin decimales", "Error", JOptionPane.ERROR_MESSAGE);
-					
+
+				} catch (NumberFormatException e1) {
+					JOptionPane.showMessageDialog(ventana, "En fondos debes introducir un numero entero sin decimales",
+							"Error", JOptionPane.ERROR_MESSAGE);
+
 				} catch (UnsupportedAudioFileException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -221,8 +256,7 @@ public class PantallaEmpresa extends JPanel {
 		});
 
 		JLabel fotoFondo = new JLabel("");
-		fotoFondo.setIcon(new ImageIcon(
-				".\\imagenes\\empresaFondo.png"));
+		fotoFondo.setIcon(new ImageIcon(".\\imagenes\\empresaFondo.png"));
 		GridBagConstraints gbc_fotoFondo = new GridBagConstraints();
 		gbc_fotoFondo.gridheight = 8;
 		gbc_fotoFondo.gridwidth = 6;

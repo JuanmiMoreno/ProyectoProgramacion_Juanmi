@@ -263,15 +263,15 @@ public class Actividad extends EntidadConNombre {
 	/**
 	 * Funcion que añade en un array list todas las actividades de una empresa que
 	 * haya en la base de datos
-	 * 
+	 * @param empresa empresa a los que pertenece las actividades
 	 * @return devuelve el array list de actividades
 	 */
-	public static ArrayList<Actividad> getTodos() {
+	public static ArrayList<Actividad> getTodos(Empresa empresa) {
 		Statement smt = UtilsDB.conectarBD();
 		ArrayList<Actividad> ret = new ArrayList<Actividad>();
 
 		try {
-			ResultSet cursor = smt.executeQuery("select * from actividad ");
+			ResultSet cursor = smt.executeQuery("select * from actividad where nombreEmpresa='" + empresa.nombre + "'" );
 			while (cursor.next()) {
 				Actividad actual = new Actividad();
 

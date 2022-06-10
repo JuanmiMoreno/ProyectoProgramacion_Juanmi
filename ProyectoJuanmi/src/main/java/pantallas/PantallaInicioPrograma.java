@@ -11,35 +11,55 @@ import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Clase que extiende de JPanel es la pantalla principal del programa solo tiene
+ * un boton de empezar , un fondo y un pequeño texto
+ * 
+ * @author Juanmi
+ *
+ */
 public class PantallaInicioPrograma extends JPanel {
 
+	/** ventana sobre la que aparece la pantalla **/
 	private Ventana ventana;
-	
-	public PantallaInicioPrograma (Ventana v) {
-		this.ventana=v;
+
+	/**
+	 * Construnctor que crea pantalla de incio contiene un boton para inicar el
+	 * programa. Tambien contiene todas las propiedades de dicha pantalla
+	 * 
+	 * @param v es la ventana en la que aparece la pantalla
+	 */
+	public PantallaInicioPrograma(Ventana v) {
+		this.ventana = v;
 		setLayout(null);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Agro Manager");
 		lblNewLabel_1.setBackground(Color.BLACK);
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 54));
 		lblNewLabel_1.setBounds(10, 124, 465, 113);
 		add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Algunos llaman a esto  \"El medio de la nada\",\r\n");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel_2.setBounds(20, 220, 333, 69);
 		add(lblNewLabel_2);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("nosotros lo llamamos \"El centro de todo\"");
 		lblNewLabel_3.setVerticalAlignment(SwingConstants.TOP);
 		lblNewLabel_3.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel_3.setBounds(20, 262, 323, 36);
 		add(lblNewLabel_3);
-		
+
 		JButton btnNewButton = new JButton("Empezar");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Funcion que al clicar sobre el boton empezar, cambia de pantalla hacia la
+			 * pantalla de login
+			 * 
+			 * @param e evento de clicar
+			 */
 			public void mouseClicked(MouseEvent e) {
 				ventana.cambiarPantallas("login");
 			}
@@ -49,12 +69,12 @@ public class PantallaInicioPrograma extends JPanel {
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 14));
 		btnNewButton.setBounds(268, 339, 126, 23);
 		add(btnNewButton);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
 		lblNewLabel.setBackground(new Color(245, 255, 250));
 		lblNewLabel.setIcon(new ImageIcon(".\\imagenes\\Introduccion.jpg"));
 		lblNewLabel.setBounds(-17, -56, 768, 595);
 		add(lblNewLabel);
-		}
+	}
 }

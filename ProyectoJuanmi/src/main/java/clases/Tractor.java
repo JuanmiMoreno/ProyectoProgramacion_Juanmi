@@ -38,6 +38,10 @@ public class Tractor extends Maquinaria {
 	public Tractor(String marca, String modelo, short añoAdquisicion, Empresa empresa)
 			throws SQLException, AñoInvalidoExceptions {
 		super(marca, modelo, añoAdquisicion, empresa);
+		if (!this.añoValido(añoAdquisicion)) {
+			throw new AñoInvalidoExceptions("El  no puede ser inferior a 1920 ni superior a 2022");
+		}
+		
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into tractor values('" + marca + "','" + modelo + "','" + añoAdquisicion
 				+ "','" + empresa.getNombre() + "')") > 0) {
@@ -64,12 +68,12 @@ public class Tractor extends Maquinaria {
 	 * 
 	 * @return devuelve una arraylist con todos los tractores
 	 */
-	public static ArrayList<Tractor> getTodos() {
+	public static ArrayList<Tractor> getTodos(Empresa empresa) {
 		Statement smt = UtilsDB.conectarBD();
 		ArrayList<Tractor> ret = new ArrayList<Tractor>();
 
 		try {
-			ResultSet cursor = smt.executeQuery("select * from Tractor ");
+			ResultSet cursor = smt.executeQuery("select * from Tractor where nombreEmpresa='" + empresa.nombre + "'" );
 			while (cursor.next()) {
 				Tractor actual = new Tractor();
 
@@ -88,6 +92,7 @@ public class Tractor extends Maquinaria {
 
 	/**
 	 * Funcion privada que sirve para eliminar un tractor segun su modelo
+	 * @param empresa empresa a los que pertenece los  tractores
 	 * 
 	 * @return devuelve null todas las variables y lo borra de la base de datos
 	 */

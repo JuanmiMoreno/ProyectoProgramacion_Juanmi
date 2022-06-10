@@ -17,16 +17,31 @@ import exceptions.ContraseñaVaciaExceptions;
 import exceptions.UsuarioNoExisteException;
 import exceptions.nombreInvalidoExceptions;
 
+/**
+ * Clase que hereda de JFrame, y que contendrá a las pantallas (Herederas de JPanel) del programa. 
+ * @author Juanmi
+ *
+ */
 public class Ventana extends JFrame{
+	/** Pantalla actual es un JPanel de la pantalla que se muestra **/
 	private JPanel pantallaActual;
+	/** usuario con el que se ha inciado sesion**/
 	public Usuario usuarioLogado;
+	/** empresa con la que se ha iniciado sesion**/
 	public Empresa empresaLogada;
-	public Actividad actividadLogada;
+
 	
+	
+	/**
+	 * Constructor de ventana que contiene el logo, el tamaño , el titulo y otras propiedades
+	 * Tambien contiene un autologin recibido por argumentos
+	 * @param usuario es el nombre de usuario
+	 * @param contraseña es la contraseña del usuario
+	 * @throws SQLException error base de datos
+	 * @throws ContraseñaVaciaExceptions error que salta cuando la contraseña esta vacia
+	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 */
 	public Ventana(String usuario, String contraseña) throws SQLException, ContraseñaVaciaExceptions, nombreInvalidoExceptions {
-		
-		
-		
 		this.setSize(700,500);  
 		this.setLocationRelativeTo(null); 
 		
@@ -49,6 +64,7 @@ public class Ventana extends JFrame{
 				this.setContentPane(pantallaActual);
 			}
 		}else {
+			JOptionPane.showMessageDialog(pantallaActual, "No se ha podido inciar sesion por argumentos", "Error", JOptionPane.ERROR_MESSAGE);
 			this.pantallaActual  = new PantallaInicioPrograma(this);
 			this.setContentPane(pantallaActual);
 		}
@@ -56,7 +72,10 @@ public class Ventana extends JFrame{
 		this.setVisible(true);
 	
 	}
-	
+	/**
+	 * Funcion que sirve para cambiar de pantalla segun el nombre 
+	 * @param nombrePantalla es el nombre de la pantalla a la que se va a cambiar
+	 */
 	public void cambiarPantallas(String nombrePantalla){
 		this.pantallaActual.setVisible(false);
 		this.pantallaActual = null;

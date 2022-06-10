@@ -130,12 +130,12 @@ public abstract class Maquinaria {
 	}
 
 	/**
-	 * Funcion privada que comprueba la validez de año de adquisicion
+	 * Funcion protected que comprueba la validez de año de adquisicion
 	 * 
 	 * @param año nuevo año
 	 * @return devuelve true si el año esta entre 1920 y 2022 y sino devuelve false
 	 */
-	private boolean añoValido(short año) {
+	protected boolean añoValido(short año) {
 		return año > 1920 && año <= 2022;
 	}
 

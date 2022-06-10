@@ -1,5 +1,6 @@
 package clases;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -39,6 +40,13 @@ public class Proveedor extends EntidadConNombre {
 		super(nombre);
 		this.telefono = telefono;
 		this.productos = productos;
+	}
+
+	/**
+	 * Contructor privado vacio que nos sirve para utilizarlo en el metodo get todos
+	 */
+	private Proveedor() {
+
 	}
 
 	/**
@@ -118,4 +126,56 @@ public class Proveedor extends EntidadConNombre {
 		this.productos = productos;
 	}
 
+	/**
+	 * Funcion statica de arraylist que coge todos los proveedores de una empresa y los devuelves
+	 * @param empresa empresa a los que pertenece los proveedores
+	 * @return arraylist de todos los proveedores
+	 */
+	public static ArrayList<Proveedor> getTodos(Empresa empresa) {
+		Statement smt = UtilsDB.conectarBD();
+		ArrayList<Proveedor> ret = new ArrayList<Proveedor>();
+
+		try {
+			ResultSet cursor = smt
+					.executeQuery("select * from proveedor ");
+			while (cursor.next()) {
+				Proveedor actual = new Proveedor();
+
+				actual.nombre = cursor.getString("nombreProveedor");
+				actual.telefono = cursor.getString("telefono");
+				ret.add(actual);
+			}
+		} catch (SQLException e) {
+
+			e.getMessage();
+			return null;
+		}
+
+		UtilsDB.desconectarBD();
+		return ret;
+	}
+
+	/**
+	 * Funcion privada que elimina un proveedor segun su nombre
+	 * 
+	 * @return devuelve null en todas las variables y lo borra de la base de datos
+	 */
+	public boolean eliminar() {
+
+		Statement smt = UtilsDB.conectarBD();
+		boolean ret;
+		try {
+			ret = smt.executeUpdate("delete from proveedor where nombreProveedor='" + this.nombre + "'") > 0;
+
+			this.nombre = null;
+			this.productos = null;
+			this.telefono = null;
+
+		} catch (SQLException e) {
+			UtilsDB.desconectarBD();
+			return false;
+		}
+		UtilsDB.desconectarBD();
+		return ret;
+	}
 }

@@ -104,15 +104,16 @@ public class Trabajador extends EntidadConDinero {
 	/**
 	 * Funcion estatica que crea un arraylist de todos los trabajadores de una
 	 * empresa
+	 * @param empresa empresa a los que pertenece los trabajadores
 	 * 
 	 * @return devuvle un arraylist de todos los trabajadores
 	 */
-	public static ArrayList<Trabajador> getTodos() {
+	public static ArrayList<Trabajador> getTodos(Empresa empresa) {
 		Statement smt = UtilsDB.conectarBD();
 		ArrayList<Trabajador> ret = new ArrayList<Trabajador>();
 
 		try {
-			ResultSet cursor = smt.executeQuery("select * from trabajador ");
+			ResultSet cursor = smt.executeQuery("select * from trabajador where nombreEmpresa='" + empresa.nombre + "'" );
 			while (cursor.next()) {
 				Trabajador actual = new Trabajador();
 
