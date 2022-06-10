@@ -12,8 +12,9 @@ import superClases.EntidadConNombre;
 import utils.UtilsDB;
 
 /**
- * Clase que instancia un proveedor, que se ocupa de venderle productos a la
- * empresa, hereda de entidad con nombre
+ * DAO que instancia un proveedor, que se ocupa de venderle productos a la
+ * empresa, hereda de entidad con nombre En el se hace todo los movimientos con
+ * la base de datos
  * 
  * @author Juanmi
  *
@@ -127,7 +128,9 @@ public class Proveedor extends EntidadConNombre {
 	}
 
 	/**
-	 * Funcion statica de arraylist que coge todos los proveedores de una empresa y los devuelves
+	 * Funcion statica de arraylist que coge todos los proveedores de una empresa y
+	 * los devuelves
+	 * 
 	 * @param empresa empresa a los que pertenece los proveedores
 	 * @return arraylist de todos los proveedores
 	 */
@@ -136,8 +139,7 @@ public class Proveedor extends EntidadConNombre {
 		ArrayList<Proveedor> ret = new ArrayList<Proveedor>();
 
 		try {
-			ResultSet cursor = smt
-					.executeQuery("select * from proveedor ");
+			ResultSet cursor = smt.executeQuery("select * from proveedor ");
 			while (cursor.next()) {
 				Proveedor actual = new Proveedor();
 

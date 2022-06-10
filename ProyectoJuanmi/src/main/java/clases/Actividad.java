@@ -10,8 +10,8 @@ import superClases.EntidadConNombre;
 import utils.UtilsDB;
 
 /**
- * clase que instancia a una actividad que representa la actividades que tiene
- * la empresa
+ * DAO que instancia a una actividad que representa la actividades que tiene
+ * la empresa. En el  se hace todo los movimientos con la base de datos
  * 
  * @author Juanmi
  *

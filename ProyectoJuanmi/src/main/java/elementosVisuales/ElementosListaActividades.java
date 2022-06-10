@@ -21,24 +21,39 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ElementosListaActividades extends JPanel{
-	
+/**
+ * Clase que extiende de JPanel, es una lista de las actividades de la empresa
+ * 
+ * @author Juanmi
+ *
+ */
+public class ElementosListaActividades extends JPanel {
+	/** ventana sobre la que aparece la lista **/
 	private Ventana ventana;
+	/** actividad que se mostrara en la lista **/
 	private Actividad actividades;
-	
-	public ElementosListaActividades (Ventana v, final Actividad ac) {
+
+	/**
+	 * Constructor que crea una lista de actividaddes, con los registros de la
+	 * activiad se muestran automaticamente. * Tambien contiene todas las
+	 * propiedades de dicha lista
+	 * 
+	 * @param v  ventana sobre la que aprece
+	 * @param ac actividad sobre la que se mostrara informacion
+	 */
+	public ElementosListaActividades(Ventana v, final Actividad ac) {
 		this.actividades = ac;
 		this.ventana = v;
-		
+
 		setBorder(new LineBorder(new Color(218, 165, 32), 3, true));
-		this.setMaximumSize(new Dimension(80000,70));
+		this.setMaximumSize(new Dimension(80000, 70));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{67, 0, 108, 118, 83, 75, 0, 49, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 27, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] { 67, 0, 108, 118, 83, 75, 0, 49, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 27, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-		
+
 		JLabel icono = new JLabel("");
 		icono.setIcon(new ImageIcon(".\\imagenes\\iconoActividad.png"));
 		GridBagConstraints gbc_icono = new GridBagConstraints();
@@ -47,7 +62,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_icono.gridx = 0;
 		gbc_icono.gridy = 0;
 		add(icono, gbc_icono);
-		
+
 		JLabel lblNewLabel = new JLabel("Nombre");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -55,7 +70,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 0;
 		add(lblNewLabel, gbc_lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Descripcion");
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
@@ -63,7 +78,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_lblNewLabel_1.gridx = 2;
 		gbc_lblNewLabel_1.gridy = 0;
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_5 = new JLabel("Duraci\u00F3n(Dias)");
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
@@ -71,7 +86,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_lblNewLabel_5.gridx = 3;
 		gbc_lblNewLabel_5.gridy = 0;
 		add(lblNewLabel_5, gbc_lblNewLabel_5);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Campo");
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
@@ -79,7 +94,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_lblNewLabel_2.gridx = 4;
 		gbc_lblNewLabel_2.gridy = 0;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Tractor");
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
@@ -87,7 +102,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_lblNewLabel_3.gridx = 5;
 		gbc_lblNewLabel_3.gridy = 0;
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("Apero");
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
@@ -95,7 +110,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_lblNewLabel_4.gridx = 6;
 		gbc_lblNewLabel_4.gridy = 0;
 		add(lblNewLabel_4, gbc_lblNewLabel_4);
-		
+
 		JLabel etiquetaNombre = new JLabel(ac.getNombre());
 		etiquetaNombre.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_etiquetaNombre = new GridBagConstraints();
@@ -104,7 +119,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_etiquetaNombre.gridx = 1;
 		gbc_etiquetaNombre.gridy = 1;
 		add(etiquetaNombre, gbc_etiquetaNombre);
-		
+
 		JLabel etiquetaDescripcion = new JLabel(ac.getDescripcion());
 		etiquetaDescripcion.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_etiquetaDescripcion = new GridBagConstraints();
@@ -113,7 +128,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_etiquetaDescripcion.gridx = 2;
 		gbc_etiquetaDescripcion.gridy = 1;
 		add(etiquetaDescripcion, gbc_etiquetaDescripcion);
-		
+
 		JLabel etiquetaDuracion = new JLabel(String.valueOf(ac.getDuracion()));
 		etiquetaDuracion.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_etiquetaDuracion = new GridBagConstraints();
@@ -122,7 +137,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_etiquetaDuracion.gridx = 3;
 		gbc_etiquetaDuracion.gridy = 1;
 		add(etiquetaDuracion, gbc_etiquetaDuracion);
-		
+
 		JLabel etiquetaCampo = new JLabel(ac.getCampo());
 		etiquetaCampo.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_etiquetaCampo = new GridBagConstraints();
@@ -131,18 +146,25 @@ public class ElementosListaActividades extends JPanel{
 		gbc_etiquetaCampo.gridx = 4;
 		gbc_etiquetaCampo.gridy = 1;
 		add(etiquetaCampo, gbc_etiquetaCampo);
-		
+
 		JButton botonBorrar = new JButton("");
 		botonBorrar.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Funcion que al clicar en el boton borrar elimina una actividad de la lista y
+			 * de la base de datos
+			 * 
+			 * @param e evento de clicar
+			 */
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 				ac.eliminar();
-				JOptionPane.showMessageDialog(ventana, "Actividad eliminada","Eliminada",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(ventana, "Actividad eliminada", "Eliminada",
+						JOptionPane.INFORMATION_MESSAGE);
 
 			}
 		});
-		
+
 		JLabel etiquetaTractor = new JLabel(ac.getModeloTractor());
 		etiquetaTractor.setFont(new Font("Arial", Font.PLAIN, 12));
 		GridBagConstraints gbc_etiquetaTractor = new GridBagConstraints();
@@ -151,7 +173,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_etiquetaTractor.gridx = 5;
 		gbc_etiquetaTractor.gridy = 1;
 		add(etiquetaTractor, gbc_etiquetaTractor);
-		
+
 		JLabel etiquetaApero = new JLabel(ac.getModeloApero());
 		etiquetaApero.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_etiquetaApero = new GridBagConstraints();
@@ -166,7 +188,7 @@ public class ElementosListaActividades extends JPanel{
 		gbc_botonBorrar.gridx = 7;
 		gbc_botonBorrar.gridy = 1;
 		add(botonBorrar, gbc_botonBorrar);
-		
+
 	}
 
 }

@@ -12,8 +12,9 @@ import exceptions.nombreInvalidoExceptions;
 import utils.UtilsDB;
 
 /**
- * Clase que instancia un tractor que es una herramienta de hecho hereda de
- * herramientas no tiene variables internas
+ * DAO que instancia un tractor que es una herramienta de hecho hereda de
+ * herramientas no tiene variables internas En el se hace todo los movimientos
+ * con la base de datos
  * 
  * @author Juanmi
  *
@@ -41,7 +42,7 @@ public class Tractor extends Maquinaria {
 		if (!this.añoValido(añoAdquisicion)) {
 			throw new AñoInvalidoExceptions("El  no puede ser inferior a 1920 ni superior a 2022");
 		}
-		
+
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into tractor values('" + marca + "','" + modelo + "','" + añoAdquisicion
 				+ "','" + empresa.getNombre() + "')") > 0) {
@@ -73,7 +74,7 @@ public class Tractor extends Maquinaria {
 		ArrayList<Tractor> ret = new ArrayList<Tractor>();
 
 		try {
-			ResultSet cursor = smt.executeQuery("select * from Tractor where nombreEmpresa='" + empresa.nombre + "'" );
+			ResultSet cursor = smt.executeQuery("select * from Tractor where nombreEmpresa='" + empresa.nombre + "'");
 			while (cursor.next()) {
 				Tractor actual = new Tractor();
 
@@ -92,7 +93,8 @@ public class Tractor extends Maquinaria {
 
 	/**
 	 * Funcion privada que sirve para eliminar un tractor segun su modelo
-	 * @param empresa empresa a los que pertenece los  tractores
+	 * 
+	 * @param empresa empresa a los que pertenece los tractores
 	 * 
 	 * @return devuelve null todas las variables y lo borra de la base de datos
 	 */

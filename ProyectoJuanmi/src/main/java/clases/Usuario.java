@@ -14,8 +14,8 @@ import superClases.EntidadConUbicacion;
 import utils.UtilsDB;
 
 /**
- * Clase que instancia un usuario que representa al dueño de la empresa herada
- * de entidad con uicacion
+ * DAO que instancia un usuario que representa al dueño de la empresa herada de
+ * entidad con uicacion. En el se hace todo los movimientos con la base de datos
  * 
  * @author Juanmi
  *

@@ -15,8 +15,8 @@ import superClases.EntidadConDinero;
 import utils.UtilsDB;
 
 /**
- * Clase que instancia una empresa que es la que contiene todos los elementos
- * del proyecto
+ * DAO que instancia una empresa que es la que contiene todos los elementos del
+ * proyecto. En el se hace todo los movimientos con la base de datos
  * 
  * @author Juanmi
  *

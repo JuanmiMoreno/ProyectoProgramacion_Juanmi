@@ -12,8 +12,9 @@ import superClases.EntidadConDinero;
 import utils.UtilsDB;
 
 /**
- * Clase que instancia un trabajador representa a las personas que trabajan en
- * la empresa hereda de entidad con dinero
+ * DAO que instancia un trabajador representa a las personas que trabajan en la
+ * empresa hereda de entidad con dinero En el se hace todo los movimientos con
+ * la base de datos
  * 
  * @author Juanmi
  *
@@ -104,6 +105,7 @@ public class Trabajador extends EntidadConDinero {
 	/**
 	 * Funcion estatica que crea un arraylist de todos los trabajadores de una
 	 * empresa
+	 * 
 	 * @param empresa empresa a los que pertenece los trabajadores
 	 * 
 	 * @return devuvle un arraylist de todos los trabajadores
@@ -113,7 +115,8 @@ public class Trabajador extends EntidadConDinero {
 		ArrayList<Trabajador> ret = new ArrayList<Trabajador>();
 
 		try {
-			ResultSet cursor = smt.executeQuery("select * from trabajador where nombreEmpresa='" + empresa.nombre + "'" );
+			ResultSet cursor = smt
+					.executeQuery("select * from trabajador where nombreEmpresa='" + empresa.nombre + "'");
 			while (cursor.next()) {
 				Trabajador actual = new Trabajador();
 
