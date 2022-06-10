@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import enums.Provincia;
 import enums.TipoPlantacion;
+import exceptions.ContraseñaVaciaExceptions;
+import exceptions.DniInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConDinero;
 import utils.UtilsDB;
@@ -46,11 +48,14 @@ public class Trabajador extends EntidadConDinero {
 	 *                                  blanco
 	 * @throws SQLException             error que salta cuando hay error de base de
 	 *                                  datos
+	 * @throws DniInvalidoExceptions error que salta cuando el dni no tiene 9 digitos
 	 */
 	public Trabajador(String nombre, int dinero, String apellido, String dni, Empresa empresa)
-			throws nombreInvalidoExceptions, SQLException {
+			throws nombreInvalidoExceptions, SQLException, DniInvalidoExceptions {
 		super(nombre, dinero);
-
+		if (!this.dniValido(dni)) {
+			throw new DniInvalidoExceptions("El dni debe tener 9 digitos");
+		}
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into trabajador values('" + this.getNombre() + "','" + apellido + "','"
 				+ dni + "','" + this.getDinero() + "','" + empresa.getNombre() + "')") > 0) {
@@ -123,6 +128,7 @@ public class Trabajador extends EntidadConDinero {
 				actual.nombre = cursor.getString("nombreTrabajador");
 				actual.apellido = cursor.getString("apellido");
 				actual.dni = cursor.getString("dni");
+				actual.dinero = cursor.getInt("sueldo"); 
 				ret.add(actual);
 			}
 		} catch (SQLException e) {
@@ -158,6 +164,10 @@ public class Trabajador extends EntidadConDinero {
 		}
 		UtilsDB.desconectarBD();
 		return ret;
+	}
+	
+	private boolean dniValido (String dni) {
+		return dni.length() == 9;
 	}
 
 }

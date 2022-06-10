@@ -47,10 +47,10 @@ public class ElementosListaCampos extends JPanel {
 		this.campo = c;
 		this.setMaximumSize(new Dimension(80000, 70));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 68, 80, 79, 84, 90, 58, 0 };
-		gridBagLayout.rowHeights = new int[] { 37, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.columnWidths = new int[] { 68, 80, 79, 84, 90, 0, 58, 0 };
+		gridBagLayout.rowHeights = new int[] { 37, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
 		JLabel lblNewLabel_1 = new JLabel("Plantaci\u00F3n");
@@ -78,12 +78,12 @@ public class ElementosListaCampos extends JPanel {
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
 
 		JLabel icono = new JLabel("");
-		icono.setIcon(new ImageIcon(".\\imagenes\\iconoCampo.png"));
+		icono.setIcon(new ImageIcon(".\\imagenes\\agricola.png"));
 		GridBagConstraints gbc_icono = new GridBagConstraints();
 		gbc_icono.gridheight = 3;
 		gbc_icono.insets = new Insets(0, 0, 0, 5);
 		gbc_icono.gridx = 0;
-		gbc_icono.gridy = 1;
+		gbc_icono.gridy = 0;
 		add(icono, gbc_icono);
 
 		JLabel lblNewLabel = new JLabel("Nombre");
@@ -97,7 +97,7 @@ public class ElementosListaCampos extends JPanel {
 		JLabel etiquetaNombre = new JLabel(c.getNombre());
 		etiquetaNombre.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_etiquetaNombre = new GridBagConstraints();
-		gbc_etiquetaNombre.gridheight = 3;
+		gbc_etiquetaNombre.gridheight = 2;
 		gbc_etiquetaNombre.insets = new Insets(0, 0, 0, 5);
 		gbc_etiquetaNombre.gridx = 1;
 		gbc_etiquetaNombre.gridy = 1;
@@ -106,7 +106,7 @@ public class ElementosListaCampos extends JPanel {
 		JLabel etiquetaPlantacion = new JLabel(c.getPlantacion().toString());
 		etiquetaPlantacion.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_etiquetaPlantacion = new GridBagConstraints();
-		gbc_etiquetaPlantacion.gridheight = 3;
+		gbc_etiquetaPlantacion.gridheight = 2;
 		gbc_etiquetaPlantacion.insets = new Insets(0, 0, 0, 5);
 		gbc_etiquetaPlantacion.gridx = 2;
 		gbc_etiquetaPlantacion.gridy = 1;
@@ -115,7 +115,7 @@ public class ElementosListaCampos extends JPanel {
 		JLabel etiquetaProvincia = new JLabel(c.getProvincia().toString());
 		etiquetaProvincia.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_etiquetaProvincia = new GridBagConstraints();
-		gbc_etiquetaProvincia.gridheight = 3;
+		gbc_etiquetaProvincia.gridheight = 2;
 		gbc_etiquetaProvincia.insets = new Insets(0, 0, 0, 5);
 		gbc_etiquetaProvincia.gridx = 3;
 		gbc_etiquetaProvincia.gridy = 1;
@@ -125,16 +125,16 @@ public class ElementosListaCampos extends JPanel {
 
 		botonBorrar.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));
 		GridBagConstraints gbc_botonBorrar = new GridBagConstraints();
-		gbc_botonBorrar.gridheight = 4;
-		gbc_botonBorrar.gridx = 5;
+		gbc_botonBorrar.gridheight = 3;
+		gbc_botonBorrar.gridx = 6;
 		gbc_botonBorrar.gridy = 0;
 		add(botonBorrar, gbc_botonBorrar);
 
 		JLabel lblNewLabel_4 = new JLabel(String.valueOf(c.getSuperficie()));
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-		gbc_lblNewLabel_4.gridheight = 3;
-		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_4.gridheight = 2;
+		gbc_lblNewLabel_4.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_4.gridx = 4;
 		gbc_lblNewLabel_4.gridy = 1;
 		add(lblNewLabel_4, gbc_lblNewLabel_4);

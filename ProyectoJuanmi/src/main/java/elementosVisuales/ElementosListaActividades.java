@@ -20,6 +20,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.SystemColor;
 
 /**
  * Clase que extiende de JPanel, es una lista de las actividades de la empresa
@@ -45,17 +46,17 @@ public class ElementosListaActividades extends JPanel {
 		this.actividades = ac;
 		this.ventana = v;
 
-		setBorder(new LineBorder(new Color(218, 165, 32), 3, true));
+		setBorder(new LineBorder(SystemColor.desktop, 1, true));
 		this.setMaximumSize(new Dimension(80000, 70));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 67, 0, 108, 118, 83, 75, 0, 49, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 27, 0 };
+		gridBagLayout.rowHeights = new int[] { 30, 0, 27, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
 		JLabel icono = new JLabel("");
-		icono.setIcon(new ImageIcon(".\\imagenes\\iconoActividad.png"));
+		icono.setIcon(new ImageIcon(".\\imagenes\\arado.png"));
 		GridBagConstraints gbc_icono = new GridBagConstraints();
 		gbc_icono.gridheight = 3;
 		gbc_icono.insets = new Insets(0, 0, 0, 5);
@@ -66,6 +67,7 @@ public class ElementosListaActividades extends JPanel {
 		JLabel lblNewLabel = new JLabel("Nombre");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.anchor = GridBagConstraints.SOUTH;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 0;
@@ -74,6 +76,7 @@ public class ElementosListaActividades extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel("Descripcion");
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.SOUTH;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 2;
 		gbc_lblNewLabel_1.gridy = 0;
@@ -82,6 +85,7 @@ public class ElementosListaActividades extends JPanel {
 		JLabel lblNewLabel_5 = new JLabel("Duraci\u00F3n(Dias)");
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
+		gbc_lblNewLabel_5.anchor = GridBagConstraints.SOUTH;
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_5.gridx = 3;
 		gbc_lblNewLabel_5.gridy = 0;
@@ -90,6 +94,7 @@ public class ElementosListaActividades extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("Campo");
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.anchor = GridBagConstraints.SOUTH;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 4;
 		gbc_lblNewLabel_2.gridy = 0;
@@ -98,6 +103,7 @@ public class ElementosListaActividades extends JPanel {
 		JLabel lblNewLabel_3 = new JLabel("Tractor");
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+		gbc_lblNewLabel_3.anchor = GridBagConstraints.SOUTH;
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_3.gridx = 5;
 		gbc_lblNewLabel_3.gridy = 0;
@@ -106,6 +112,7 @@ public class ElementosListaActividades extends JPanel {
 		JLabel lblNewLabel_4 = new JLabel("Apero");
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
+		gbc_lblNewLabel_4.anchor = GridBagConstraints.SOUTH;
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_4.gridx = 6;
 		gbc_lblNewLabel_4.gridy = 0;
@@ -184,9 +191,9 @@ public class ElementosListaActividades extends JPanel {
 		add(etiquetaApero, gbc_etiquetaApero);
 		botonBorrar.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));
 		GridBagConstraints gbc_botonBorrar = new GridBagConstraints();
-		gbc_botonBorrar.gridheight = 2;
+		gbc_botonBorrar.gridheight = 3;
 		gbc_botonBorrar.gridx = 7;
-		gbc_botonBorrar.gridy = 1;
+		gbc_botonBorrar.gridy = 0;
 		add(botonBorrar, gbc_botonBorrar);
 
 	}

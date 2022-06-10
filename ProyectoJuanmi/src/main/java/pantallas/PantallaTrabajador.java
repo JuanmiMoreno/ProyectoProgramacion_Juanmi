@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import clases.Trabajador;
 import clases.Usuario;
 import elementosVisuales.ElementosListraTrabajador;
+import exceptions.DniInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 
 import javax.swing.JButton;
@@ -54,8 +55,8 @@ public class PantallaTrabajador extends JPanel {
 	/**
 	 * Construnctor que crea pantalla de trabajador contiene la etiqueta con todos
 	 * los atributos de trabajador y los campos donde se recoge la informacion.
-	 * Tambien contiene todas las propiedades de dicha pantalla
-	 * Tambien crea una lista con los registro insertados
+	 * Tambien contiene todas las propiedades de dicha pantalla Tambien crea una
+	 * lista con los registro insertados
 	 * 
 	 * @param v es la ventana en la que aparece la pantalla
 	 */
@@ -257,7 +258,7 @@ public class PantallaTrabajador extends JPanel {
 							JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("personal");
 
-				} catch (nombreInvalidoExceptions | SQLException e1) {
+				} catch (nombreInvalidoExceptions | DniInvalidoExceptions | SQLException e1) {
 					System.out.println(e1.getMessage());
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e1) {

@@ -209,6 +209,7 @@ public class PantallaProveedor extends JPanel {
 				String telefono = campoTelefono.getText();
 				try {
 					new Proveedor(nombre, telefono);
+					v.cambiarPantallas("proveedor");
 				} catch (SQLException | TelefonoInvalidoExceptions | nombreInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}

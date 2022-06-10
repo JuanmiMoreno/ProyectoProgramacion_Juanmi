@@ -46,9 +46,9 @@ public class ElementosListraTrabajador extends JPanel {
 		this.trabajador = tr;
 		this.setMaximumSize(new Dimension(80000, 70));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 67, 0, 86, 48, 55, 41, 0 };
+		gridBagLayout.columnWidths = new int[] { 67, 0, 86, 48, 55, 0, 65, 0 };
 		gridBagLayout.rowHeights = new int[] { 31, 22, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
@@ -141,7 +141,7 @@ public class ElementosListraTrabajador extends JPanel {
 		botonBorrar.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));
 		GridBagConstraints gbc_botonBorrar = new GridBagConstraints();
 		gbc_botonBorrar.gridheight = 3;
-		gbc_botonBorrar.gridx = 5;
+		gbc_botonBorrar.gridx = 6;
 		gbc_botonBorrar.gridy = 0;
 		add(botonBorrar, gbc_botonBorrar);
 

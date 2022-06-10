@@ -17,6 +17,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.SystemColor;
 
 /**
  * Clase que extiende de JPanel y es una lista de los proveedores de la empresa
@@ -43,12 +44,12 @@ public class ElementosListaProveedor extends JPanel {
 		this.ventana = v;
 		this.proveedor = pr;
 
-		setBorder(new LineBorder(new Color(218, 165, 32), 3, true));
+		setBorder(new LineBorder(SystemColor.desktop, 1, true));
 		this.setMaximumSize(new Dimension(80000, 70));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 67, 0, 109, 35, 75, 0, 49, 0 };
 		gridBagLayout.rowHeights = new int[] { 30, 0, 27, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
@@ -111,9 +112,9 @@ public class ElementosListaProveedor extends JPanel {
 		});
 		btnNewButton.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.gridheight = 2;
+		gbc_btnNewButton.gridheight = 3;
 		gbc_btnNewButton.gridx = 6;
-		gbc_btnNewButton.gridy = 1;
+		gbc_btnNewButton.gridy = 0;
 		add(btnNewButton, gbc_btnNewButton);
 
 	}

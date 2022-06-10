@@ -13,7 +13,7 @@ import exceptions.nombreInvalidoExceptions;
  */
 public abstract class EntidadConDinero extends EntidadConNombre {
 	/** dinero que tienen **/
-	private int dinero;
+	protected int dinero;
 
 	/**
 	 * Constructor que crea una entidad con dinero

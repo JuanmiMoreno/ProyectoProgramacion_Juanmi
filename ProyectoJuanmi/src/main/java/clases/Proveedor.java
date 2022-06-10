@@ -70,7 +70,7 @@ public class Proveedor extends EntidadConNombre {
 
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar
-				.executeUpdate("insert into proveedor values('" + this.getNombre() + "','" + telefono + "')") > 0) {
+				.executeUpdate("insert into proveedor values('" + nombre + "','" + telefono + "')") > 0) {
 			this.nombre = nombre;
 			this.telefono = telefono;
 		} else {
