@@ -173,7 +173,7 @@ public class PantallaPrincipal extends JPanel {
 				add(botonApero, gbc_botonApero);
 		
 				JButton botonSalir = new JButton("Salir");
-				botonSalir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\cerrar.png"));
+				botonSalir.setIcon(new ImageIcon(".\\imagenes\\cerrar.png"));
 				botonSalir.setBackground(new Color(204, 153, 102));
 				
 						botonSalir.setFont(new Font("Arial", Font.BOLD, 15));
@@ -213,7 +213,7 @@ public class PantallaPrincipal extends JPanel {
 		JButton botonAyuda = new JButton("");
 		botonAyuda.setBackground(new Color(204, 153, 102));
 
-		botonAyuda.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\informacion.png"));
+		botonAyuda.setIcon(new ImageIcon(".\\imagenes\\informacion.png"));
 		botonAyuda.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 13));
 		GridBagConstraints gbc_botonAyuda = new GridBagConstraints();
 		gbc_botonAyuda.insets = new Insets(0, 0, 5, 5);
@@ -223,7 +223,7 @@ public class PantallaPrincipal extends JPanel {
 		
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\fondoPrincipal.png"));
+		lblNewLabel.setIcon(new ImageIcon(".\\imagenes\\fondoPrincipal.png"));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.gridwidth = 6;
 		gbc_lblNewLabel.gridheight = 13;

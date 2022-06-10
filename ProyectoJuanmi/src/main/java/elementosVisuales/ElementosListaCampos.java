@@ -62,7 +62,7 @@ public class ElementosListaCampos extends JPanel{
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		JLabel icono = new JLabel("");
-		icono.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\iconoCampo.png"));
+		icono.setIcon(new ImageIcon(".\\imagenes\\iconoCampo.png"));
 		GridBagConstraints gbc_icono = new GridBagConstraints();
 		gbc_icono.gridheight = 3;
 		gbc_icono.insets = new Insets(0, 0, 0, 5);

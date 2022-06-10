@@ -38,7 +38,7 @@ public class ElementosListraTrabajador extends JPanel {
 		setLayout(gridBagLayout);
 		
 		JLabel fotoUsuario = new JLabel("");
-		fotoUsuario.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\usuarioIcono.png"));
+		fotoUsuario.setIcon(new ImageIcon(".\\imagenes\\usuarioIcono.png"));
 		GridBagConstraints gbc_fotoUsuario = new GridBagConstraints();
 		gbc_fotoUsuario.gridheight = 3;
 		gbc_fotoUsuario.insets = new Insets(0, 0, 0, 5);
@@ -118,7 +118,7 @@ public class ElementosListraTrabajador extends JPanel {
 		});
 		
 
-		botonBorrar.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\borrar.png"));
+		botonBorrar.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));
 		GridBagConstraints gbc_botonBorrar = new GridBagConstraints();
 		gbc_botonBorrar.gridheight = 3;
 		gbc_botonBorrar.gridx = 5;

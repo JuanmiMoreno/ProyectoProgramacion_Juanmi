@@ -35,7 +35,7 @@ public class ElementosListaProveedor  extends JPanel{
 		setLayout(gridBagLayout);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\proveedor.png"));
+		lblNewLabel.setIcon(new ImageIcon(".\\imagenes\\proveedor.png"));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.gridheight = 3;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
@@ -60,7 +60,7 @@ public class ElementosListaProveedor  extends JPanel{
 		add(etiquetaTelefono, gbc_etiquetaTelefono);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\borrar.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.gridheight = 3;
 		gbc_lblNewLabel_1.gridx = 6;
@@ -76,7 +76,7 @@ public class ElementosListaProveedor  extends JPanel{
 		gbc_lblNewLabel_2.gridy = 1;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
-		/*JLabel lblNewLabel_3 = new JLabel(pr.getTelefono());
+		JLabel lblNewLabel_3 = new JLabel(pr.getTelefono());
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 13));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.gridheight = 2;
@@ -84,7 +84,7 @@ public class ElementosListaProveedor  extends JPanel{
 		gbc_lblNewLabel_3.gridx = 4;
 		gbc_lblNewLabel_3.gridy = 1;
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
-		*/
+		
 		
 	}
 	

@@ -149,7 +149,7 @@ public class PantallaApero extends JPanel {
 		
 		JButton botonAñadir = new JButton("A\u00F1adir");
 
-		botonAñadir.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\a\u00F1adir.png"));
+		botonAñadir.setIcon(new ImageIcon(".\\imagenes\\a\u00F1adir.png"));
 		botonAñadir.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonAñadir = new GridBagConstraints();
 		gbc_botonAñadir.insets = new Insets(0, 0, 5, 5);
@@ -168,7 +168,7 @@ public class PantallaApero extends JPanel {
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton btnNewButton = new JButton("Salir");
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\34622\\Desktop\\CURSO21-22 CENEC\\ProyectoProgramacion_Juanmi\\ProyectoJuanmi\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
+		btnNewButton.setIcon(new ImageIcon(".\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
