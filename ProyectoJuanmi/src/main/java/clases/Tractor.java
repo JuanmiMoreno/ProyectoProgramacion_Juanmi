@@ -11,13 +11,36 @@ import exceptions.AñoInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 import utils.UtilsDB;
 
+/**
+ * Clase que instancia un tractor que es una herramienta de hecho hereda de
+ * herramientas no tiene variables internas
+ * 
+ * @author Juanmi
+ *
+ */
 public class Tractor extends Maquinaria {
 
-	public Tractor(String marca, String modelo, short añoAdquisicion, Empresa empresa) throws SQLException, AñoInvalidoExceptions {
-		super(marca, modelo, añoAdquisicion,empresa );
+	/**
+	 * Constructor que crea un tractor y lo inserta en la base de datos
+	 * 
+	 * @param marca          recibido por el super, es la marca del tractor
+	 * @param modelo         recibido por el super, es el modelo del tractor
+	 * @param añoAdquisicion recibido por el super, es el año en el que se compro el
+	 *                       tractor
+	 * @param empresa        recibida por el super, es la empresa a la que pertence
+	 *                       el tractro
+	 * @throws SQLException          error de base de datos salta cuando hay un
+	 *                               error de base de datos
+	 * @throws AñoInvalidoExceptions error de año invalido, salta cuando el año en
+	 *                               el que se compro es inferior a 1920 y superior
+	 *                               a 2022
+	 */
+	public Tractor(String marca, String modelo, short añoAdquisicion, Empresa empresa)
+			throws SQLException, AñoInvalidoExceptions {
+		super(marca, modelo, añoAdquisicion, empresa);
 		Statement queryInsertar = UtilsDB.conectarBD();
-		if (queryInsertar.executeUpdate(
-				"insert into tractor values('" + marca + "','" + modelo + "','" + añoAdquisicion + "','"+empresa.getNombre()+ "')") > 0) {
+		if (queryInsertar.executeUpdate("insert into tractor values('" + marca + "','" + modelo + "','" + añoAdquisicion
+				+ "','" + empresa.getNombre() + "')") > 0) {
 			this.setMarca(marca);
 			this.setModelo(modelo);
 			this.setAñoAdquisicion(añoAdquisicion);
@@ -29,11 +52,19 @@ public class Tractor extends Maquinaria {
 		UtilsDB.desconectarBD();
 	}
 
-	public Tractor() {
-		
+	/**
+	 * Constructor privado vacio que utlizamos para trabajar con el metodo get todos
+	 */
+	private Tractor() {
+
 	}
-	
-	public  static ArrayList<Tractor> getTodos()  {
+
+	/**
+	 * Funcion estatica que crea un array list de todos los tractores de una empresa
+	 * 
+	 * @return devuelve una arraylist con todos los tractores
+	 */
+	public static ArrayList<Tractor> getTodos() {
 		Statement smt = UtilsDB.conectarBD();
 		ArrayList<Tractor> ret = new ArrayList<Tractor>();
 
@@ -42,7 +73,7 @@ public class Tractor extends Maquinaria {
 			while (cursor.next()) {
 				Tractor actual = new Tractor();
 
-				actual.setMarca(cursor.getString("marcaTractor")); 
+				actual.setMarca(cursor.getString("marcaTractor"));
 				actual.setModelo(cursor.getString("modeloTractor"));
 				actual.setAñoAdquisicion(cursor.getShort("añoAdquisicion"));
 				ret.add(actual);
@@ -50,23 +81,27 @@ public class Tractor extends Maquinaria {
 		} catch (SQLException | AñoInvalidoExceptions e) {
 			return null;
 		}
-		
+
 		UtilsDB.desconectarBD();
 		return ret;
 	}
-	
+
+	/**
+	 * Funcion privada que sirve para eliminar un tractor segun su modelo
+	 * 
+	 * @return devuelve null todas las variables y lo borra de la base de datos
+	 */
 	public boolean eliminar() {
 
 		Statement smt = UtilsDB.conectarBD();
 		boolean ret;
 		try {
 			ret = smt.executeUpdate("delete from tractor where modeloTractor='" + this.getModelo() + "'") > 0;
-			
+
 			this.getMarca();
 			this.setModelo(null);
 			this.setAñoAdquisicion((short) 0);
-			
-			
+
 		} catch (SQLException | AñoInvalidoExceptions e) {
 			UtilsDB.desconectarBD();
 			return false;
@@ -74,7 +109,5 @@ public class Tractor extends Maquinaria {
 		UtilsDB.desconectarBD();
 		return ret;
 	}
-	
-	
-}
 
+}
