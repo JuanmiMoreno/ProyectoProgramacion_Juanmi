@@ -102,7 +102,7 @@ public class PantallaApero extends JPanel {
 				Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
-		JLabel lblNewLabel_1 = new JLabel("Nombre");
+		JLabel lblNewLabel_1 = new JLabel("\u00BFQu\u00E9 apero es?");
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -111,6 +111,7 @@ public class PantallaApero extends JPanel {
 		panel_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
 		campoNombre = new JTextField();
+		campoNombre.setToolTipText("INTRODUCIR EL APERO QUE ES (REMOLQUE/ATOMIZADOR/ARADO...)");
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
 		gbc_campoNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_campoNombre.fill = GridBagConstraints.HORIZONTAL;
@@ -128,6 +129,7 @@ public class PantallaApero extends JPanel {
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		campoModelo = new JTextField();
+		campoModelo.setToolTipText("INTRODUCIR EL MODELO DEL APERO");
 		GridBagConstraints gbc_campoModelo = new GridBagConstraints();
 		gbc_campoModelo.insets = new Insets(0, 0, 5, 5);
 		gbc_campoModelo.fill = GridBagConstraints.HORIZONTAL;
@@ -145,6 +147,7 @@ public class PantallaApero extends JPanel {
 		panel_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
 
 		campoAño = new JTextField();
+		campoAño.setToolTipText("INTRODUCIR EL A\u00D1O EN EL QUE COMPRASTE ESTE APERO");
 		GridBagConstraints gbc_campoAño = new GridBagConstraints();
 		gbc_campoAño.insets = new Insets(0, 0, 5, 5);
 		gbc_campoAño.fill = GridBagConstraints.HORIZONTAL;
@@ -162,6 +165,7 @@ public class PantallaApero extends JPanel {
 		panel_1.add(lblNewLabel_4, gbc_lblNewLabel_4);
 
 		final JComboBox selectorApero = new JComboBox();
+		selectorApero.setToolTipText("ELEGIR EL TIPO DE APERO QUE ES (ARRASTRADO O SUSPENDIDO)");
 		selectorApero.setModel(new DefaultComboBoxModel(TipoApero.values()));
 		GridBagConstraints gbc_selectorApero = new GridBagConstraints();
 		gbc_selectorApero.insets = new Insets(0, 0, 5, 5);
@@ -171,6 +175,7 @@ public class PantallaApero extends JPanel {
 		panel_1.add(selectorApero, gbc_selectorApero);
 
 		JButton botonAñadir = new JButton("A\u00F1adir");
+		botonAñadir.setToolTipText("CLICAR PARA A\u00D1ADIR UN APERO A LA BASE DE DATOS");
 
 		botonAñadir.setIcon(new ImageIcon(".\\imagenes\\a\u00F1adir.png"));
 		botonAñadir.setFont(new Font("Arial", Font.BOLD, 15));
@@ -221,20 +226,42 @@ public class PantallaApero extends JPanel {
 		scrollPane.setColumnHeaderView(panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[] { 0, 0, 0, 0 };
-		gbl_panel_3.rowHeights = new int[] { 33, 44, 35, 0 };
+		gbl_panel_3.rowHeights = new int[] { 33, 44, 35, 25, 0 };
 		gbl_panel_3.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
-		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_3.setLayout(gbl_panel_3);
 
 		JLabel lblNewLabel_5 = new JLabel("Registro de aperos");
 		lblNewLabel_5.setBackground(SystemColor.controlHighlight);
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 26));
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
+		gbc_lblNewLabel_5.anchor = GridBagConstraints.SOUTH;
+		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel_5.gridwidth = 3;
-		gbc_lblNewLabel_5.gridheight = 3;
+		gbc_lblNewLabel_5.gridheight = 2;
 		gbc_lblNewLabel_5.gridx = 0;
 		gbc_lblNewLabel_5.gridy = 0;
 		panel_3.add(lblNewLabel_5, gbc_lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("No puedes eliminar aperos que esten registrado en alguna actividad");
+		lblNewLabel_6.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
+		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
+		gbc_lblNewLabel_6.anchor = GridBagConstraints.SOUTH;
+		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel_6.gridwidth = 3;
+		gbc_lblNewLabel_6.gridx = 0;
+		gbc_lblNewLabel_6.gridy = 2;
+		panel_3.add(lblNewLabel_6, gbc_lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("Debes eliminar antes la actividad que este relacionada");
+		lblNewLabel_7.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
+		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
+		gbc_lblNewLabel_7.anchor = GridBagConstraints.NORTH;
+		gbc_lblNewLabel_7.gridwidth = 3;
+		gbc_lblNewLabel_7.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_7.gridx = 0;
+		gbc_lblNewLabel_7.gridy = 3;
+		panel_3.add(lblNewLabel_7, gbc_lblNewLabel_7);
 
 		JPanel listaAperos = new JPanel();
 		scrollPane.setViewportView(listaAperos);

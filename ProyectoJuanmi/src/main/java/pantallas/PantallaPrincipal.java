@@ -266,6 +266,7 @@ public class PantallaPrincipal extends JPanel {
 		});
 
 		JButton botonAyuda = new JButton("");
+		botonAyuda.setToolTipText("BOTON QUE MUESTRAS UNA INFORMACION QUE ESTA EN LA CARPETA RAIZ DEL PROGRAMA");
 		botonAyuda.setBackground(new Color(204, 153, 102));
 
 		botonAyuda.setIcon(new ImageIcon(".\\imagenes\\informacion.png"));

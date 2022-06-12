@@ -34,6 +34,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.awt.Color;
 import java.awt.SystemColor;
 
@@ -88,6 +89,7 @@ public class PantallaTrabajador extends JPanel {
 		panel.add(etiquetaNombre, gbc_etiquetaNombre);
 
 		campoNombre = new JTextField();
+		campoNombre.setToolTipText("INTRODUCIR NOMBRE DEL TRABAJADOR");
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
 		gbc_campoNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_campoNombre.fill = GridBagConstraints.HORIZONTAL;
@@ -105,6 +107,7 @@ public class PantallaTrabajador extends JPanel {
 		panel.add(etiquetaApellido, gbc_etiquetaApellido);
 
 		campoApellido = new JTextField();
+		campoApellido.setToolTipText("INTRODUCIR APELLIDO DEL TRABAJADOR");
 		GridBagConstraints gbc_campoApellido = new GridBagConstraints();
 		gbc_campoApellido.insets = new Insets(0, 0, 5, 5);
 		gbc_campoApellido.fill = GridBagConstraints.HORIZONTAL;
@@ -122,6 +125,7 @@ public class PantallaTrabajador extends JPanel {
 		panel.add(etiquetaDni, gbc_etiquetaDni);
 
 		campoDni = new JTextField();
+		campoDni.setToolTipText("INTRODUCIR DNI DEL TRABAJADOR");
 		GridBagConstraints gbc_campoDni = new GridBagConstraints();
 		gbc_campoDni.insets = new Insets(0, 0, 5, 5);
 		gbc_campoDni.fill = GridBagConstraints.HORIZONTAL;
@@ -139,6 +143,7 @@ public class PantallaTrabajador extends JPanel {
 		panel.add(etiquetaSueldo, gbc_etiquetaSueldo);
 
 		campoSueldo = new JTextField();
+		campoSueldo.setToolTipText("INTRODUCIR SUELDO DEL TRABAJADOR");
 		GridBagConstraints gbc_campoSueldo = new GridBagConstraints();
 		gbc_campoSueldo.insets = new Insets(0, 0, 5, 5);
 		gbc_campoSueldo.fill = GridBagConstraints.HORIZONTAL;
@@ -148,6 +153,7 @@ public class PantallaTrabajador extends JPanel {
 		campoSueldo.setColumns(10);
 
 		JButton botonAñadir = new JButton("A\u00F1adir");
+		botonAñadir.setToolTipText("BOTON PARA A\u00D1ADIR UN TRABAJADOR EN LA BASE DE DATOS");
 		botonAñadir.setIcon(new ImageIcon(".\\imagenes\\a\u00F1adir.png"));
 
 		botonAñadir.setFont(new Font("Arial", Font.BOLD, 15));
@@ -160,6 +166,7 @@ public class PantallaTrabajador extends JPanel {
 		panel.add(botonAñadir, gbc_botonAñadir);
 
 		JButton botonExportar = new JButton("Exportar a .txt");
+		botonExportar.setToolTipText("BOTON PARA EXPORTAR LOS CLIENTES CREANDO EN LA RAIZ DEL PROGRAMA UN ARCHIVO .txt CON TODA LA INFORMACION DE LOS TRABAJADORES");
 		botonExportar.addMouseListener(new MouseAdapter() {
 			@Override
 			/**
@@ -230,6 +237,7 @@ public class PantallaTrabajador extends JPanel {
 		panel_2.setLayout(gbl_panel_2);
 
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.setToolTipText("BOTON PARA VOLVER AL MENU PRINCIPAL");
 		botonSalir.setIcon(new ImageIcon(".\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
@@ -303,7 +311,12 @@ public class PantallaTrabajador extends JPanel {
 							JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("personal");
 
-				} catch (nombreInvalidoExceptions | NumeroInvalidoExceptions | DniInvalidoExceptions
+				}catch (SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana,
+							"No puedes haber dos trabajadores con el mismo DNI",
+							"Error", JOptionPane.ERROR_MESSAGE);
+
+				}catch (nombreInvalidoExceptions | NumeroInvalidoExceptions | DniInvalidoExceptions
 						| SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e1) {

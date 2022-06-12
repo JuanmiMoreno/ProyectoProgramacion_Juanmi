@@ -42,7 +42,7 @@ public class ElementosListaActividades extends JPanel {
 	 * @param v  ventana sobre la que aprece
 	 * @param ac actividad sobre la que se mostrara informacion
 	 */
-	public ElementosListaActividades(Ventana v, final Actividad ac) {
+	public ElementosListaActividades(final Ventana v, final Actividad ac) {
 		this.actividades = ac;
 		this.ventana = v;
 
@@ -168,6 +168,7 @@ public class ElementosListaActividades extends JPanel {
 				ac.eliminar();
 				JOptionPane.showMessageDialog(ventana, "Actividad eliminada", "Eliminada",
 						JOptionPane.INFORMATION_MESSAGE);
+				v.repaint();
 
 			}
 		});

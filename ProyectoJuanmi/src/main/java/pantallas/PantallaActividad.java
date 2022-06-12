@@ -98,6 +98,7 @@ public class PantallaActividad extends JPanel {
 		panel.add(etiquetaNombre, gbc_etiquetaNombre);
 
 		campoNombre = new JTextField();
+		campoNombre.setToolTipText("INTRODUCIR EL NOMBRE DE LA ACTIVIDAD");
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
 		gbc_campoNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_campoNombre.fill = GridBagConstraints.HORIZONTAL;
@@ -115,6 +116,7 @@ public class PantallaActividad extends JPanel {
 		panel.add(etiquetaDuracion, gbc_etiquetaDuracion);
 
 		campoDuracion = new JTextField();
+		campoDuracion.setToolTipText("INTRODUCIR LA DURACION DE LA ACTIVIDAD EN DIAS");
 		GridBagConstraints gbc_campoDuracion = new GridBagConstraints();
 		gbc_campoDuracion.insets = new Insets(0, 0, 5, 5);
 		gbc_campoDuracion.fill = GridBagConstraints.HORIZONTAL;
@@ -132,6 +134,7 @@ public class PantallaActividad extends JPanel {
 		panel.add(etiquetaDescripcion, gbc_etiquetaDescripcion);
 
 		final JTextArea campoDescripcion = new JTextArea();
+		campoDescripcion.setToolTipText("INTRODUCIR UNA BREVE DESCRIPCION DE LA ACTIVIDAD");
 		GridBagConstraints gbc_campoDescripcion = new GridBagConstraints();
 		gbc_campoDescripcion.gridheight = 2;
 		gbc_campoDescripcion.insets = new Insets(0, 0, 5, 5);
@@ -149,7 +152,7 @@ public class PantallaActividad extends JPanel {
 		panel.add(etiquetaCampo, gbc_etiquetaCampo);
 
 		campoCampo = new JTextField();
-		campoCampo.setToolTipText("Introducir NOMBRE DEL CAMPO al que esta destinado la actividad");
+		campoCampo.setToolTipText("INTRODUCIR NOMBRE DEL CAMPO  EN EL QUE SE VA A REALIZAR LA ACTIVIDAD");
 		GridBagConstraints gbc_campoCampo = new GridBagConstraints();
 		gbc_campoCampo.insets = new Insets(0, 0, 5, 5);
 		gbc_campoCampo.fill = GridBagConstraints.HORIZONTAL;
@@ -185,6 +188,7 @@ public class PantallaActividad extends JPanel {
 		panel.add(etiquetaApero, gbc_etiquetaApero);
 
 		campoApero = new JTextField();
+		campoApero.setToolTipText("INTRODUCIR EL MODELO DEL APERO QUE SE VA A UTILIZAR EN LA ACTIVIDAD");
 		GridBagConstraints gbc_campoApero = new GridBagConstraints();
 		gbc_campoApero.insets = new Insets(0, 0, 5, 5);
 		gbc_campoApero.fill = GridBagConstraints.HORIZONTAL;
@@ -194,6 +198,7 @@ public class PantallaActividad extends JPanel {
 		campoApero.setColumns(10);
 
 		JButton botonAñadir = new JButton("A\u00F1adir");
+		botonAñadir.setToolTipText("CLICAR PARA A\u00D1ADIR UNA ACTIVIDAD EN LA BASE DE DATOS");
 		botonAñadir.setFont(new Font("Arial", Font.BOLD, 13));
 
 		botonAñadir.setIcon(new ImageIcon(".\\imagenes\\a\u00F1adir.png"));
@@ -233,6 +238,7 @@ public class PantallaActividad extends JPanel {
 		panel_2.setLayout(gbl_panel_2);
 
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.setToolTipText("BOTON PARA VOVLER AL MENU PRINCIPAL");
 		botonSalir.setIcon(new ImageIcon(".\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override

@@ -69,7 +69,7 @@ public class ElementosListaCampos extends JPanel {
 		gbc_lblNewLabel_2.gridy = 0;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 
-		JLabel lblNewLabel_3 = new JLabel("Superficie");
+		JLabel lblNewLabel_3 = new JLabel("Superficie (hA)");
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 12));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
@@ -151,8 +151,8 @@ public class ElementosListaCampos extends JPanel {
 
 				setVisible(false);
 				c.eliminar();
-				
-				JOptionPane.showMessageDialog(ventana, "Campo eliminado", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(ventana, "Campo eliminado", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+			v.repaint();
 			}
 		});
 

@@ -43,6 +43,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
+import javax.swing.JRadioButton;
 
 /**
  * Clase que extiende de JPanel es la pantalla donde se registra y muestra todos
@@ -91,6 +92,7 @@ public class PantallaCampo extends JPanel {
 		panel.add(etiquetaNombre, gbc_etiquetaNombre);
 
 		campoNombre = new JTextField();
+		campoNombre.setToolTipText("INTRODUCIR EL NOMBRE DEL CAMPO ");
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
 		gbc_campoNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_campoNombre.fill = GridBagConstraints.HORIZONTAL;
@@ -108,6 +110,7 @@ public class PantallaCampo extends JPanel {
 		panel.add(etiquetaProvincia, gbc_etiquetaProvincia);
 
 		final JComboBox selectorProvincia = new JComboBox();
+		selectorProvincia.setToolTipText("ELEGIR LA PROVINCIA EN LA QUE SE ENCUENTRA");
 		selectorProvincia.setModel(new DefaultComboBoxModel(Provincia.values()));
 		GridBagConstraints gbc_selectorProvincia = new GridBagConstraints();
 		gbc_selectorProvincia.insets = new Insets(0, 0, 5, 5);
@@ -126,6 +129,7 @@ public class PantallaCampo extends JPanel {
 		panel.add(etiquetaPlantacion, gbc_etiquetaPlantacion);
 
 		final JComboBox selectorPlantacion = new JComboBox();
+		selectorPlantacion.setToolTipText("ELEGIR EL TIPO DE PLANTACION QUE HAY EN EL CAMPO");
 		selectorPlantacion.setModel(new DefaultComboBoxModel(TipoPlantacion.values()));
 		GridBagConstraints gbc_selectorPlantacion = new GridBagConstraints();
 		gbc_selectorPlantacion.insets = new Insets(0, 0, 5, 5);
@@ -134,7 +138,7 @@ public class PantallaCampo extends JPanel {
 		gbc_selectorPlantacion.gridy = 6;
 		panel.add(selectorPlantacion, gbc_selectorPlantacion);
 
-		JLabel etiquetaSuperficie = new JLabel("Superficie");
+		JLabel etiquetaSuperficie = new JLabel("Superficie (hA)");
 		etiquetaSuperficie.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_etiquetaSuperficie = new GridBagConstraints();
 		gbc_etiquetaSuperficie.insets = new Insets(0, 0, 5, 5);
@@ -143,6 +147,7 @@ public class PantallaCampo extends JPanel {
 		panel.add(etiquetaSuperficie, gbc_etiquetaSuperficie);
 
 		campoSuperficie1 = new JTextField();
+		campoSuperficie1.setToolTipText("INTRODUCIR LA SUPERFICIE DEL TERRENO EN hA");
 		GridBagConstraints gbc_campoSuperficie1 = new GridBagConstraints();
 		gbc_campoSuperficie1.insets = new Insets(0, 0, 5, 5);
 		gbc_campoSuperficie1.fill = GridBagConstraints.HORIZONTAL;
@@ -193,6 +198,7 @@ public class PantallaCampo extends JPanel {
 		panel_2.setLayout(gbl_panel_2);
 
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.setToolTipText("BOTON PARA VOLVER AL MENU PRINCIPAL");
 		botonSalir.setIcon(new ImageIcon(".\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
@@ -219,19 +225,41 @@ public class PantallaCampo extends JPanel {
 		scrollPane.setColumnHeaderView(panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[] { 0, 0, 0, 0 };
-		gbl_panel_3.rowHeights = new int[] { 37, 50, 40, 0 };
+		gbl_panel_3.rowHeights = new int[] { 37, 50, 34, 21, 0 };
 		gbl_panel_3.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
-		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_3.setLayout(gbl_panel_3);
 
 		JLabel lblNewLabel = new JLabel("Registro de Campos");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 25));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.anchor = GridBagConstraints.SOUTH;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel.gridwidth = 3;
-		gbc_lblNewLabel.gridheight = 3;
+		gbc_lblNewLabel.gridheight = 2;
 		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 0;
 		panel_3.add(lblNewLabel, gbc_lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("No puedes eliminar campos que esten registrado en alguna actividad");
+		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.SOUTH;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel_1.gridwidth = 3;
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 2;
+		panel_3.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Debes eliminar antes la actividad que este relacionada");
+		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.anchor = GridBagConstraints.NORTH;
+		gbc_lblNewLabel_2.gridwidth = 3;
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_2.gridx = 0;
+		gbc_lblNewLabel_2.gridy = 3;
+		panel_3.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		JPanel listaCampos = new JPanel();
 		scrollPane.setViewportView(listaCampos);

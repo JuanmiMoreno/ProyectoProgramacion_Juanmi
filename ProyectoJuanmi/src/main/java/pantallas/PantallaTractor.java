@@ -100,6 +100,7 @@ public class PantallaTractor extends JPanel {
 		panel_1.add(etiquetaMarca, gbc_etiquetaMarca);
 
 		campoMarca = new JTextField();
+		campoMarca.setToolTipText("INTRODUCIR MARCA DEL TRACTOR\r\n");
 		GridBagConstraints gbc_campoMarca = new GridBagConstraints();
 		gbc_campoMarca.insets = new Insets(0, 0, 5, 5);
 		gbc_campoMarca.fill = GridBagConstraints.HORIZONTAL;
@@ -117,6 +118,7 @@ public class PantallaTractor extends JPanel {
 		panel_1.add(etiquetaModelo, gbc_etiquetaModelo);
 
 		campoModelo = new JTextField();
+		campoModelo.setToolTipText("INTRODUCIR MODELO DEL TRACTOR");
 		GridBagConstraints gbc_campoModelo = new GridBagConstraints();
 		gbc_campoModelo.insets = new Insets(0, 0, 5, 5);
 		gbc_campoModelo.fill = GridBagConstraints.HORIZONTAL;
@@ -134,6 +136,7 @@ public class PantallaTractor extends JPanel {
 		panel_1.add(etiquetaAÑO, gbc_etiquetaAÑO);
 
 		campoAño = new JTextField();
+		campoAño.setToolTipText("INTRODUCIR A\u00D1O EN EL QUE SE COMPRO EL TRACTOR");
 		GridBagConstraints gbc_campoAño = new GridBagConstraints();
 		gbc_campoAño.insets = new Insets(0, 0, 5, 5);
 		gbc_campoAño.fill = GridBagConstraints.HORIZONTAL;
@@ -143,6 +146,7 @@ public class PantallaTractor extends JPanel {
 		campoAño.setColumns(10);
 
 		JButton botonAñadir = new JButton("A\u00F1adir");
+		botonAñadir.setToolTipText("BOTON PARA A\u00D1ADIR UN TRACTOR A LA BASE DE DATOS");
 
 		botonAñadir.setFont(new Font("Arial", Font.BOLD, 15));
 		botonAñadir.setIcon(new ImageIcon(".\\imagenes\\a\u00F1adir.png"));
@@ -163,6 +167,7 @@ public class PantallaTractor extends JPanel {
 		panel_2.setLayout(gbl_panel_2);
 
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.setToolTipText("BOTON PARA VOLVER AL MENU PRINCIPAL");
 		botonSalir.setIcon(new ImageIcon(".\\imagenes\\esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"));
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
@@ -190,19 +195,41 @@ public class PantallaTractor extends JPanel {
 		scrollPane.setColumnHeaderView(panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[] { 0, 0, 0, 0 };
-		gbl_panel_3.rowHeights = new int[] { 38, 35, 41, 0 };
+		gbl_panel_3.rowHeights = new int[] { 38, 35, 32, 22, 0 };
 		gbl_panel_3.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
-		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_3.setLayout(gbl_panel_3);
 
 		JLabel lblNewLabel_1 = new JLabel("Registro de tractores");
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 25));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.SOUTH;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel_1.gridwidth = 3;
-		gbc_lblNewLabel_1.gridheight = 3;
+		gbc_lblNewLabel_1.gridheight = 2;
 		gbc_lblNewLabel_1.gridx = 0;
 		gbc_lblNewLabel_1.gridy = 0;
 		panel_3.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("No puedes eliminar tractores que esten registrado en alguna actividad");
+		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.anchor = GridBagConstraints.SOUTH;
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel_2.gridwidth = 3;
+		gbc_lblNewLabel_2.gridx = 0;
+		gbc_lblNewLabel_2.gridy = 2;
+		panel_3.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Debes eliminar antes la actividad que este relacionada");
+		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
+		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+		gbc_lblNewLabel_3.anchor = GridBagConstraints.NORTH;
+		gbc_lblNewLabel_3.gridwidth = 3;
+		gbc_lblNewLabel_3.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_3.gridx = 0;
+		gbc_lblNewLabel_3.gridy = 3;
+		panel_3.add(lblNewLabel_3, gbc_lblNewLabel_3);
 
 		JPanel listaTractor = new JPanel();
 		scrollPane.setViewportView(listaTractor);

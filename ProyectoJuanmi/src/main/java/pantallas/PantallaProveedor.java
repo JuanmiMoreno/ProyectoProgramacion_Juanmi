@@ -88,6 +88,7 @@ public class PantallaProveedor extends JPanel {
 		panel_2.setLayout(gbl_panel_2);
 
 		JButton botonSalir = new JButton("Salir");
+		botonSalir.setToolTipText("BOTON PARA VOLVER AL MENU PRINCIPAL");
 		botonSalir.addMouseListener(new MouseAdapter() {
 			@Override
 			/**
@@ -128,6 +129,7 @@ public class PantallaProveedor extends JPanel {
 		panel_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
 		campoNombre = new JTextField();
+		campoNombre.setToolTipText("INTRODUCIR EL NOMBRE DEL PROVEEDOR");
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
 		gbc_campoNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_campoNombre.fill = GridBagConstraints.HORIZONTAL;
@@ -145,6 +147,7 @@ public class PantallaProveedor extends JPanel {
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		campoTelefono = new JTextField();
+		campoTelefono.setToolTipText("INTRODUCIR TELEFONO DEL PROVEEDOR");
 		GridBagConstraints gbc_campoTelefono = new GridBagConstraints();
 		gbc_campoTelefono.insets = new Insets(0, 0, 5, 5);
 		gbc_campoTelefono.fill = GridBagConstraints.HORIZONTAL;
@@ -154,6 +157,7 @@ public class PantallaProveedor extends JPanel {
 		campoTelefono.setColumns(10);
 
 		JButton btnNewButton = new JButton("A\u00F1adir");
+		btnNewButton.setToolTipText("CLICAR PARA A\u00D1ADIR UN PROVEEDOR A LA BASE DE DATOS\r\n");
 
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 12));
 		btnNewButton.setIcon(new ImageIcon(".\\imagenes\\a\u00F1adir.png"));
