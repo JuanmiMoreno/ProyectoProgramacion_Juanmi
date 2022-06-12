@@ -17,8 +17,8 @@ import javax.swing.DefaultComboBoxModel;
 
 import enums.Provincia;
 import exceptions.ContraseñaVaciaExceptions;
-import exceptions.emailInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.EmailInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 import javax.swing.SwingConstants;
 
@@ -210,8 +210,8 @@ public class PantallaRegistro extends JPanel {
 					JOptionPane.showMessageDialog(ventana, "Ese usuario ya esta registrado", "Error",
 							JOptionPane.ERROR_MESSAGE);
 
-				} catch (SQLException | ContraseñaVaciaExceptions | emailInvalidoExceptions
-						| nombreInvalidoExceptions e1) {
+				} catch (SQLException | ContraseñaVaciaExceptions | EmailInvalidoExceptions
+						| NombreInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 

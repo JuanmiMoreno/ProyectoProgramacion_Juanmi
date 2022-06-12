@@ -2,7 +2,7 @@ package superClases;
 
 import java.sql.SQLException;
 
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 /**
  * Clase abstractra que no instancia nada que hereda de entidad con nombre tiene
@@ -20,10 +20,10 @@ public abstract class EntidadConDinero extends EntidadConNombre {
 	 * 
 	 * @param nombre recibido por argumento
 	 * @param dinero dinero que tienen
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 * @throws SQLException             error de base de datos
 	 */
-	public EntidadConDinero(String nombre, int dinero) throws nombreInvalidoExceptions, SQLException {
+	public EntidadConDinero(String nombre, int dinero) throws NombreInvalidoExceptions, SQLException {
 		super(nombre);
 		this.dinero = dinero;
 	}
@@ -32,10 +32,10 @@ public abstract class EntidadConDinero extends EntidadConNombre {
 	 * Constructor vacio que solo recibe nombre
 	 * 
 	 * @param nombre recibido por argumentos, es el nombre
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 * @throws SQLException             error de base de datos
 	 */
-	public EntidadConDinero(String nombre) throws nombreInvalidoExceptions, SQLException {
+	public EntidadConDinero(String nombre) throws NombreInvalidoExceptions, SQLException {
 		super(nombre);
 	}
 

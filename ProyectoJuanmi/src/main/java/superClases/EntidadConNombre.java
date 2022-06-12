@@ -3,7 +3,7 @@ package superClases;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import utils.UtilsDB;
 
 /**
@@ -20,10 +20,10 @@ public abstract class EntidadConNombre {
 	 * Constructor que crea una entidad con nombre
 	 * 
 	 * @param nombre es el nombre
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 * @throws SQLException             error de base de datos
 	 */
-	public EntidadConNombre(String nombre) throws nombreInvalidoExceptions, SQLException {
+	public EntidadConNombre(String nombre) throws NombreInvalidoExceptions, SQLException {
 		this.setNombre(nombre);
 		;
 	}
@@ -48,12 +48,12 @@ public abstract class EntidadConNombre {
 	 * Setter de nombre que comprueba si el nombre esta vacio o no
 	 * 
 	 * @param nombre ees el nombre
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 * @throws SQLException             error de base de daros
 	 */
-	public void setNombre(String nombre) throws nombreInvalidoExceptions, SQLException {
+	public void setNombre(String nombre) throws NombreInvalidoExceptions, SQLException {
 		if (!this.nombreValido(nombre)) {
-			throw new nombreInvalidoExceptions("El  nombre no puede estar vacio ni puede contener numeros");
+			throw new NombreInvalidoExceptions("El  nombre no puede estar vacio ni puede contener numeros");
 		}
 		this.nombre = nombre;
 	}

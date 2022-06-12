@@ -17,7 +17,7 @@ import elementosVisuales.ElementosListaTractor;
 import elementosVisuales.ElementosListraTrabajador;
 import exceptions.AñoInvalidoExceptions;
 import exceptions.MarcaInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 import javax.swing.JButton;
 import javax.swing.BoxLayout;

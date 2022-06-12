@@ -25,7 +25,7 @@ import javax.swing.SwingConstants;
 import clases.Usuario;
 import exceptions.ContraseñaIncorrectaException;
 import exceptions.UsuarioNoExisteException;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 /**
  * Clase que extiende de JPanel es la pantalla de login donde contiene un
@@ -152,7 +152,7 @@ public class PantallaLogin extends JPanel {
 							"Login correcto", JOptionPane.PLAIN_MESSAGE);
 					ventana.cambiarPantallas("empresa");
 				} catch (SQLException | ContraseñaIncorrectaException | UsuarioNoExisteException
-						| nombreInvalidoExceptions e1) {
+						| NombreInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 				}

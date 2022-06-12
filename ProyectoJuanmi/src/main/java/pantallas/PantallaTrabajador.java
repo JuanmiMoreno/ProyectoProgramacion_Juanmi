@@ -16,7 +16,7 @@ import clases.Usuario;
 import elementosVisuales.ElementosListraTrabajador;
 import exceptions.DniInvalidoExceptions;
 import exceptions.NumeroInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -316,7 +316,7 @@ public class PantallaTrabajador extends JPanel {
 							"No puedes haber dos trabajadores con el mismo DNI",
 							"Error", JOptionPane.ERROR_MESSAGE);
 
-				}catch (nombreInvalidoExceptions | NumeroInvalidoExceptions | DniInvalidoExceptions
+				}catch (NombreInvalidoExceptions | NumeroInvalidoExceptions | DniInvalidoExceptions
 						| SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e1) {

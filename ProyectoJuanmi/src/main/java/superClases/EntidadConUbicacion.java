@@ -3,7 +3,7 @@ package superClases;
 import java.sql.SQLException;
 
 import enums.Provincia;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 /**
  * Clase abastract que no instancia nada y hereda de entidad con nombre
@@ -20,10 +20,10 @@ public abstract class EntidadConUbicacion extends EntidadConNombre {
 	 * 
 	 * @param nombre    recibido por argumentos es el nombre
 	 * @param provincia es un enum que eliges la provincia
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 * @throws SQLException
 	 */
-	public EntidadConUbicacion(String nombre, Provincia provincia) throws nombreInvalidoExceptions, SQLException {
+	public EntidadConUbicacion(String nombre, Provincia provincia) throws NombreInvalidoExceptions, SQLException {
 		super(nombre);
 		this.provincia = provincia;
 	}
@@ -32,10 +32,10 @@ public abstract class EntidadConUbicacion extends EntidadConNombre {
 	 * Constructor de entidad con ubicacion que solo tiene nombre
 	 * 
 	 * @param nombre recibido por argumentos, es el nombre
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 * @throws SQLException             error base de datos
 	 */
-	public EntidadConUbicacion(String nombre) throws nombreInvalidoExceptions, SQLException {
+	public EntidadConUbicacion(String nombre) throws NombreInvalidoExceptions, SQLException {
 		super(nombre);
 	}
 

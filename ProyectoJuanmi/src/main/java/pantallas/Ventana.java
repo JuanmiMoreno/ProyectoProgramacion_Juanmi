@@ -15,7 +15,7 @@ import clases.Usuario;
 import exceptions.ContraseñaIncorrectaException;
 import exceptions.ContraseñaVaciaExceptions;
 import exceptions.UsuarioNoExisteException;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 /**
  * Clase que hereda de JFrame, y que contendrá a las pantallas (Herederas de JPanel) del programa. 
@@ -39,9 +39,9 @@ public class Ventana extends JFrame{
 	 * @param contraseña es la contraseña del usuario
 	 * @throws SQLException error base de datos
 	 * @throws ContraseñaVaciaExceptions error que salta cuando la contraseña esta vacia
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 */
-	public Ventana(String usuario, String contraseña) throws SQLException, ContraseñaVaciaExceptions, nombreInvalidoExceptions {
+	public Ventana(String usuario, String contraseña) throws SQLException, ContraseñaVaciaExceptions, NombreInvalidoExceptions {
 		this.setSize(700,500);  
 		this.setLocationRelativeTo(null); 
 		
@@ -57,7 +57,7 @@ public class Ventana extends JFrame{
 				JOptionPane.showMessageDialog(pantallaActual, "Sesion iniciada con argumentos, Bienvenido "+usuarioLogado.getNombre(),"Sesion Iniciada", JOptionPane.INFORMATION_MESSAGE);
 
 			} catch (SQLException | ContraseñaIncorrectaException | UsuarioNoExisteException
-					| nombreInvalidoExceptions e) {
+					| NombreInvalidoExceptions e) {
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(pantallaActual, "No se ha podido inciar sesion por argumentos", "Error", JOptionPane.ERROR_MESSAGE);
 				this.pantallaActual  = new PantallaInicioPrograma(this);

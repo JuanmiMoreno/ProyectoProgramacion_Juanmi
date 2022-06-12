@@ -16,7 +16,7 @@ import clases.Trabajador;
 import elementosVisuales.ElementosListaProveedor;
 import elementosVisuales.ElementosListraTrabajador;
 import exceptions.TelefonoInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
@@ -214,6 +214,7 @@ public class PantallaProveedor extends JPanel {
 				String telefono = campoTelefono.getText();
 				try {
 					new Proveedor(nombre, telefono);
+					JOptionPane.showMessageDialog(ventana, "Proveedor insertado con exito!","Insertado con exito!",JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("proveedor");
 				}catch (SQLIntegrityConstraintViolationException e1) {
 					JOptionPane.showMessageDialog(ventana,
@@ -221,7 +222,7 @@ public class PantallaProveedor extends JPanel {
 							"Error", JOptionPane.ERROR_MESSAGE);
 
 				} 
-				catch (SQLException | TelefonoInvalidoExceptions | nombreInvalidoExceptions e1) {
+				catch (SQLException | TelefonoInvalidoExceptions | NombreInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}

@@ -27,7 +27,7 @@ import clases.Trabajador;
 import elementosVisuales.ElementosListaActividades;
 import elementosVisuales.ElementosListraTrabajador;
 import exceptions.NumeroInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
@@ -310,7 +310,7 @@ public class PantallaActividad extends JPanel {
 							"En los campos tractor, campos y apero, debes introducir registros ya insertado anteriormente\n EL NOMBRE DE LA ACTIVIDAD NO PUEDE SER IGUAL A ALGUNO QUE YA TENGAS INSERTADO",
 							"Error", JOptionPane.ERROR_MESSAGE);
 
-				} catch (nombreInvalidoExceptions | NumeroInvalidoExceptions | SQLException e1) {
+				} catch (NombreInvalidoExceptions | NumeroInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e1) {
 					JOptionPane.showMessageDialog(ventana,

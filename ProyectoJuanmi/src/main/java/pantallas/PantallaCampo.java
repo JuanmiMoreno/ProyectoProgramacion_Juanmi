@@ -30,7 +30,7 @@ import enums.Provincia;
 import javax.swing.JCheckBox;
 import enums.TipoPlantacion;
 import exceptions.NumeroInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 import javax.swing.ImageIcon;
 
@@ -298,7 +298,7 @@ public class PantallaCampo extends JPanel {
 					JOptionPane.showMessageDialog(ventana, "El decimal lo debes de poner con el punto\nSi has introducido una cadena de carecteres debes de borrar e introducir un numero", "Error",
 							JOptionPane.ERROR_MESSAGE);
 					e1.printStackTrace();
-				} catch (nombreInvalidoExceptions | NumeroInvalidoExceptions | SQLException e1) {
+				} catch (NombreInvalidoExceptions | NumeroInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 

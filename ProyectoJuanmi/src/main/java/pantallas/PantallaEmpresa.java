@@ -23,8 +23,8 @@ import javax.swing.UIManager;
 import clases.Empresa;
 import exceptions.EmpresaIncorrectaExceptions;
 import exceptions.NumeroInvalidoExceptions;
-import exceptions.cifInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.CifInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
@@ -190,7 +190,7 @@ public class PantallaEmpresa extends JPanel {
 					clip.start();
 					ventana.cambiarPantallas("principal");
 
-				} catch (nombreInvalidoExceptions | SQLException | EmpresaIncorrectaExceptions
+				} catch (NombreInvalidoExceptions | SQLException | EmpresaIncorrectaExceptions
 						| UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
 
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -235,7 +235,7 @@ public class PantallaEmpresa extends JPanel {
 									+ " ya tiene registrada una empresa con ese nombre",
 							"Error", JOptionPane.ERROR_MESSAGE);
 
-				} catch (cifInvalidoExceptions | nombreInvalidoExceptions | NumeroInvalidoExceptions  |  SQLException e1) {
+				} catch (CifInvalidoExceptions | NombreInvalidoExceptions | NumeroInvalidoExceptions  |  SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 				} catch (NumberFormatException e1) {

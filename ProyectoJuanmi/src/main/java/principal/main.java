@@ -2,8 +2,10 @@ package principal;
 
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import exceptions.ContraseñaVaciaExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import pantallas.Ventana;
 
 /**
@@ -39,9 +41,9 @@ public class Main {
 		}
 		try {
 			Ventana v = new Ventana(usuario, contrasena);
-		} catch (SQLException | ContraseñaVaciaExceptions | nombreInvalidoExceptions e) {
+		} catch (SQLException | ContraseñaVaciaExceptions | NombreInvalidoExceptions e) {
 
-			e.printStackTrace();
+			
 		}
 
 	}

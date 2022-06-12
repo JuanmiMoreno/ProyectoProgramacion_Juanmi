@@ -7,9 +7,9 @@ package exceptions;
  * @author Juanmi
  *
  */
-public class emailInvalidoExceptions extends Exception {
+public class EmailInvalidoExceptions extends Exception {
 
-	public emailInvalidoExceptions(String msg) {
+	public EmailInvalidoExceptions(String msg) {
 		super(msg);
 	}
 

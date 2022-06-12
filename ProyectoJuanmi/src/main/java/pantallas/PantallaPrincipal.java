@@ -228,42 +228,10 @@ public class PantallaPrincipal extends JPanel {
 		botonSalir.setFont(new Font("Arial", Font.BOLD, 15));
 		GridBagConstraints gbc_botonSalir = new GridBagConstraints();
 		gbc_botonSalir.gridwidth = 2;
-		gbc_botonSalir.insets = new Insets(0, 0, 5, 5);
+		gbc_botonSalir.insets = new Insets(0, 0, 0, 5);
 		gbc_botonSalir.gridx = 2;
-		gbc_botonSalir.gridy = 11;
+		gbc_botonSalir.gridy = 12;
 		add(botonSalir, gbc_botonSalir);
-		botonSalir.addMouseListener(new MouseAdapter() {
-			@Override
-			/**
-			 * Funcion que al clicar en el boton salir salta un sonido y una ventana
-			 * emergente asegurandote antes de salir de la aplicacion
-			 * 
-			 * @param e evento de clicar
-			 */
-			public void mouseClicked(MouseEvent e) {
-				AudioInputStream audioInputStream;
-				try {
-					audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/salir.wav"));
-					Clip clip;
-					clip = AudioSystem.getClip();
-					clip.open(audioInputStream);
-					clip.start();
-				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-
-					e1.printStackTrace();
-				}
-				int opcion = JOptionPane.showConfirmDialog(ventana, "¿Seguro que quieres salir?", "CUIDADO",
-						JOptionPane.WARNING_MESSAGE);
-
-				if (opcion == 0) {
-
-					System.exit(0);
-				} else {
-					JOptionPane.showMessageDialog(ventana, "Operacion cancelada", "Cancelado",
-							JOptionPane.INFORMATION_MESSAGE);
-				}
-			}
-		});
 
 		JButton botonAyuda = new JButton("");
 		botonAyuda.setToolTipText("BOTON QUE MUESTRAS UNA INFORMACION QUE ESTA EN LA CARPETA RAIZ DEL PROGRAMA");
@@ -272,20 +240,10 @@ public class PantallaPrincipal extends JPanel {
 		botonAyuda.setIcon(new ImageIcon(".\\imagenes\\informacion.png"));
 		botonAyuda.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 13));
 		GridBagConstraints gbc_botonAyuda = new GridBagConstraints();
-		gbc_botonAyuda.insets = new Insets(0, 0, 5, 5);
+		gbc_botonAyuda.insets = new Insets(0, 0, 0, 5);
 		gbc_botonAyuda.gridx = 4;
-		gbc_botonAyuda.gridy = 11;
+		gbc_botonAyuda.gridy = 12;
 		add(botonAyuda, gbc_botonAyuda);
-
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(".\\imagenes\\fondoPrincipal.png"));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridwidth = 6;
-		gbc_lblNewLabel.gridheight = 13;
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 0;
-		add(lblNewLabel, gbc_lblNewLabel);
-
 		botonAyuda.addMouseListener(new MouseAdapter() {
 			@Override
 			/**
@@ -328,6 +286,47 @@ public class PantallaPrincipal extends JPanel {
 
 			}
 		});
+		botonSalir.addMouseListener(new MouseAdapter() {
+			@Override
+			/**
+			 * Funcion que al clicar en el boton salir salta un sonido y una ventana
+			 * emergente asegurandote antes de salir de la aplicacion
+			 * 
+			 * @param e evento de clicar
+			 */
+			public void mouseClicked(MouseEvent e) {
+				AudioInputStream audioInputStream;
+				try {
+					audioInputStream = AudioSystem.getAudioInputStream(new File("sonido/salir.wav"));
+					Clip clip;
+					clip = AudioSystem.getClip();
+					clip.open(audioInputStream);
+					clip.start();
+				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+
+					e1.printStackTrace();
+				}
+				int opcion = JOptionPane.showConfirmDialog(ventana, "¿Seguro que quieres salir?", "CUIDADO",
+						JOptionPane.WARNING_MESSAGE);
+
+				if (opcion == 0) {
+
+					System.exit(0);
+				} else {
+					JOptionPane.showMessageDialog(ventana, "Operacion cancelada", "Cancelado",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
+
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(".\\imagenes\\fondoPrincipal.png"));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.gridwidth = 6;
+		gbc_lblNewLabel.gridheight = 13;
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 0;
+		add(lblNewLabel, gbc_lblNewLabel);
 
 	}
 }
