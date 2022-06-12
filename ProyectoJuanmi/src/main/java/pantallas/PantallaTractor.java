@@ -210,7 +210,7 @@ public class PantallaTractor extends JPanel {
 		gbc_lblNewLabel_1.gridx = 0;
 		gbc_lblNewLabel_1.gridy = 0;
 		panel_3.add(lblNewLabel_1, gbc_lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("No puedes eliminar tractores que esten registrado en alguna actividad");
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
@@ -220,7 +220,7 @@ public class PantallaTractor extends JPanel {
 		gbc_lblNewLabel_2.gridx = 0;
 		gbc_lblNewLabel_2.gridy = 2;
 		panel_3.add(lblNewLabel_2, gbc_lblNewLabel_2);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Debes eliminar antes la actividad que este relacionada");
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();

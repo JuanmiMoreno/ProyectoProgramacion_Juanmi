@@ -13,7 +13,7 @@ import utils.UtilsDB;
  *
  */
 public abstract class EntidadConNombre {
-	/** es el nombre publico para poder trabajar con el en pantalla principal**/
+	/** es el nombre publico para poder trabajar con el en pantalla principal **/
 	public String nombre;
 
 	/**
@@ -66,7 +66,9 @@ public abstract class EntidadConNombre {
 	 *         vacio
 	 */
 	private boolean nombreValido(String nombre) {
-		return !nombre.isBlank() && !nombre.contains("0") && !nombre.contains("1") && !nombre.contains("2") && !nombre.contains("3") && !nombre.contains("4") && !nombre.contains("5") && !nombre.contains("6") && !nombre.contains("7") && !nombre.contains("8") && !nombre.contains("9");
+		return !nombre.isBlank() && !nombre.contains("0") && !nombre.contains("1") && !nombre.contains("2")
+				&& !nombre.contains("3") && !nombre.contains("4") && !nombre.contains("5") && !nombre.contains("6")
+				&& !nombre.contains("7") && !nombre.contains("8") && !nombre.contains("9");
 	}
 
 }

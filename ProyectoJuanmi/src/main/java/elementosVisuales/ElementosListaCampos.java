@@ -151,8 +151,8 @@ public class ElementosListaCampos extends JPanel {
 
 				setVisible(false);
 				c.eliminar();
-			JOptionPane.showMessageDialog(ventana, "Campo eliminado", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
-			v.repaint();
+				JOptionPane.showMessageDialog(ventana, "Campo eliminado", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+
 			}
 		});
 

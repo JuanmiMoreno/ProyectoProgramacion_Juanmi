@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 import exceptions.AñoInvalidoExceptions;
 import exceptions.MarcaInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import utils.UtilsDB;
 
 /**
@@ -31,12 +31,13 @@ public class Tractor extends Maquinaria {
 	 *                       tractor
 	 * @param empresa        recibida por el super, es la empresa a la que pertence
 	 *                       el tractro
-	 * @throws SQLException          error de base de datos salta cuando hay un
-	 *                               error de base de datos
-	 * @throws AñoInvalidoExceptions error de año invalido, salta cuando el año en
-	 *                               el que se compro es inferior a 1920 y superior
-	 *                               a 2022
-	 * @throws MarcaInvalidoExceptions error que sata cuando la marca del tractro contiene numeros
+	 * @throws SQLException            error de base de datos salta cuando hay un
+	 *                                 error de base de datos
+	 * @throws AñoInvalidoExceptions   error de año invalido, salta cuando el año en
+	 *                                 el que se compro es inferior a 1920 y
+	 *                                 superior a 2022
+	 * @throws MarcaInvalidoExceptions error que sata cuando la marca del tractro
+	 *                                 contiene numeros
 	 */
 	public Tractor(String marca, String modelo, short añoAdquisicion, Empresa empresa)
 			throws SQLException, AñoInvalidoExceptions, MarcaInvalidoExceptions {
@@ -44,7 +45,7 @@ public class Tractor extends Maquinaria {
 		if (!this.añoValido(añoAdquisicion)) {
 			throw new AñoInvalidoExceptions("El  no puede ser inferior a 1920 ni superior a 2022");
 		}
-		if(!this.marcaValida(marca)) {
+		if (!this.marcaValida(marca)) {
 			throw new MarcaInvalidoExceptions("La marca no puede contener numeros");
 		}
 

@@ -9,9 +9,9 @@ import exceptions.ContraseñaIncorrectaException;
 import exceptions.EmpresaIncorrectaExceptions;
 import exceptions.NumeroInvalidoExceptions;
 import exceptions.UsuarioNoExisteException;
-import exceptions.cifInvalidoExceptions;
-import exceptions.emailInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.CifInvalidoExceptions;
+import exceptions.EmailInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import superClases.EntidadConDinero;
 import utils.UtilsDB;
 
@@ -51,14 +51,14 @@ public class Empresa extends EntidadConDinero {
 	 * @param trabajadores arraylist de todos los trabajadores
 	 * @param proveedores  arraylist de todos los proveedores
 	 * @param actividades  arraylist de todas las actividades
-	 * @throws nombreInvalidoExceptions error de nombre invalido salta cuando el
+	 * @throws NombreInvalidoExceptions error de nombre invalido salta cuando el
 	 *                                  nombre se queda en blanco
 	 * @throws SQLException             error sql salta cuando hay un error de base
 	 *                                  de datos
 	 */
 	public Empresa(String nombre, int dinero, String cif, ArrayList<Campo> campos, ArrayList<Maquinaria> maquinarias,
 			ArrayList<Trabajador> trabajadores, ArrayList<Proveedor> proveedores, ArrayList<Actividad> actividades)
-			throws nombreInvalidoExceptions, SQLException {
+			throws NombreInvalidoExceptions, SQLException {
 		super(nombre, dinero);
 		this.cif = cif;
 		this.campos = campos;
@@ -76,23 +76,23 @@ public class Empresa extends EntidadConDinero {
 	 *                empresa
 	 * @param cif     es el cif de la empresa su longuitud debe de ser de 9 digitos
 	 * @param usuario usuario es el dueño de la empresa, es la clave foranea
-	 * @throws nombreInvalidoExceptions nombre invalido salta cuando el nombre se
+	 * @throws NombreInvalidoExceptions nombre invalido salta cuando el nombre se
 	 *                                  queda ene blanco
 	 * @throws SQLException             error que salta cuando hay errores de base
 	 *                                  de datos
-	 * @throws cifInvalidoExceptions    cif invalido error que salta cuando la
+	 * @throws CifInvalidoExceptions    cif invalido error que salta cuando la
 	 *                                  longuitud del cif no es 9 digitos
 	 * @throws NumeroInvalidoExceptions error que salta cuando se introduce un
 	 *                                  numero negativo
 	 */
 	public Empresa(String nombre, int dinero, String cif, Usuario usuario)
-			throws nombreInvalidoExceptions, SQLException, cifInvalidoExceptions, NumeroInvalidoExceptions {
+			throws NombreInvalidoExceptions, SQLException, CifInvalidoExceptions, NumeroInvalidoExceptions {
 		super(nombre, dinero);
 		String nombreEmpresa = nombre;
 		float presupuesto = dinero;
 		String nombreUsuario = usuario.getNombre();
 		if (!this.cifValido(cif)) {
-			throw new cifInvalidoExceptions(
+			throw new CifInvalidoExceptions(
 					"La longuitud del CIF debe ser de 9 digitos, 8 numeos y 1 letra. NO PUEDE ser un numero NEGATIVO");
 		}
 
@@ -130,7 +130,7 @@ public class Empresa extends EntidadConDinero {
 	 * 
 	 * @param nombre  recibido desde el super es el nombre de la empresa
 	 * @param usuario usuario es el dueño de la empresa, es la clave foranea
-	 * @throws nombreInvalidoExceptions    nombre invalido salta cuando el nombre se
+	 * @throws NombreInvalidoExceptions    nombre invalido salta cuando el nombre se
 	 *                                     queda ene blanco
 	 * @throws SQLException                error que salta cuando hay errores de
 	 *                                     base de datos
@@ -138,7 +138,7 @@ public class Empresa extends EntidadConDinero {
 	 *                                     empresa no exite
 	 */
 	public Empresa(String nombre, Usuario usuario)
-			throws nombreInvalidoExceptions, SQLException, EmpresaIncorrectaExceptions {
+			throws NombreInvalidoExceptions, SQLException, EmpresaIncorrectaExceptions {
 		super(nombre);
 		String nombreUsuario = usuario.getNombre();
 		Statement smt = UtilsDB.conectarBD();

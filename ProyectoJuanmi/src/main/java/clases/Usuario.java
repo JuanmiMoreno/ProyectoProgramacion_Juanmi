@@ -8,8 +8,8 @@ import enums.Provincia;
 import exceptions.ContraseñaIncorrectaException;
 import exceptions.ContraseñaVaciaExceptions;
 import exceptions.UsuarioNoExisteException;
-import exceptions.emailInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.EmailInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import superClases.EntidadConUbicacion;
 import utils.UtilsDB;
 
@@ -39,19 +39,19 @@ public class Usuario extends EntidadConUbicacion {
 	 *                                   fallos en la base de datos
 	 * @throws ContraseñaVaciaExceptions error que salta cuando la contraseña la
 	 *                                   dejas vacia
-	 * @throws emailInvalidoExceptions   error que salta cuando el email no
+	 * @throws EmailInvalidoExceptions   error que salta cuando el email no
 	 *                                   contiene @
-	 * @throws nombreInvalidoExceptions  error que salta cuando el nombre se queda
+	 * @throws NombreInvalidoExceptions  error que salta cuando el nombre se queda
 	 *                                   vacio
 	 */
 	public Usuario(String nombre, Provincia provincia, String contraseña, String email)
-			throws SQLException, ContraseñaVaciaExceptions, emailInvalidoExceptions, nombreInvalidoExceptions {
+			throws SQLException, ContraseñaVaciaExceptions, EmailInvalidoExceptions, NombreInvalidoExceptions {
 		super(nombre, provincia);
 		if (!this.contraseñaValido(contraseña)) {
 			throw new ContraseñaVaciaExceptions("La contraeña no puede estar vacia");
 		}
 		if (!this.emailValido(email)) {
-			throw new emailInvalidoExceptions("El email debe contener @");
+			throw new EmailInvalidoExceptions("El email debe contener @");
 		}
 
 		Statement queryInsertar = UtilsDB.conectarBD();
@@ -82,11 +82,11 @@ public class Usuario extends EntidadConUbicacion {
 	 *                                       usuario
 	 * @throws UsuarioNoExisteException      error que existe cuando se introduce un
 	 *                                       nombre de usuario que no existe
-	 * @throws nombreInvalidoExceptions      error que salta cuando el nombre se
+	 * @throws NombreInvalidoExceptions      error que salta cuando el nombre se
 	 *                                       queda en blanco
 	 */
 	public Usuario(String nombre, String contraseña)
-			throws SQLException, ContraseñaIncorrectaException, UsuarioNoExisteException, nombreInvalidoExceptions {
+			throws SQLException, ContraseñaIncorrectaException, UsuarioNoExisteException, NombreInvalidoExceptions {
 		super(nombre);
 		Statement smt = UtilsDB.conectarBD();
 		ResultSet cursor = smt.executeQuery("select * from usuario where nombreUsuario='" + nombre + "'");
@@ -182,12 +182,12 @@ public class Usuario extends EntidadConUbicacion {
 	 * 
 	 * @param email nuevo email
 	 * @throws SQLException            error base de datos
-	 * @throws emailInvalidoExceptions error que salta cuando el email no contiene
+	 * @throws EmailInvalidoExceptions error que salta cuando el email no contiene
 	 *                                 un @
 	 */
-	public void setEmail(String email) throws SQLException, emailInvalidoExceptions {
+	public void setEmail(String email) throws SQLException, EmailInvalidoExceptions {
 		if (!this.emailValido(email)) {
-			throw new emailInvalidoExceptions("El email debe contener @");
+			throw new EmailInvalidoExceptions("El email debe contener @");
 		}
 		Statement smt = UtilsDB.conectarBD();
 		if (smt.executeUpdate(

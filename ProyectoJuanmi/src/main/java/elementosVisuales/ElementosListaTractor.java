@@ -5,7 +5,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 import clases.Tractor;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import pantallas.Ventana;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

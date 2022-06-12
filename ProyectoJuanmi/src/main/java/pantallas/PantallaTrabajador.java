@@ -166,7 +166,8 @@ public class PantallaTrabajador extends JPanel {
 		panel.add(botonAñadir, gbc_botonAñadir);
 
 		JButton botonExportar = new JButton("Exportar a .txt");
-		botonExportar.setToolTipText("BOTON PARA EXPORTAR LOS CLIENTES CREANDO EN LA RAIZ DEL PROGRAMA UN ARCHIVO .txt CON TODA LA INFORMACION DE LOS TRABAJADORES");
+		botonExportar.setToolTipText(
+				"BOTON PARA EXPORTAR LOS CLIENTES CREANDO EN LA RAIZ DEL PROGRAMA UN ARCHIVO .txt CON TODA LA INFORMACION DE LOS TRABAJADORES");
 		botonExportar.addMouseListener(new MouseAdapter() {
 			@Override
 			/**
@@ -311,12 +312,11 @@ public class PantallaTrabajador extends JPanel {
 							JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("personal");
 
-				}catch (SQLIntegrityConstraintViolationException e1) {
-					JOptionPane.showMessageDialog(ventana,
-							"No puedes haber dos trabajadores con el mismo DNI",
-							"Error", JOptionPane.ERROR_MESSAGE);
+				} catch (SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana, "No puedes haber dos trabajadores con el mismo DNI", "Error",
+							JOptionPane.ERROR_MESSAGE);
 
-				}catch (NombreInvalidoExceptions | NumeroInvalidoExceptions | DniInvalidoExceptions
+				} catch (NombreInvalidoExceptions | NumeroInvalidoExceptions | DniInvalidoExceptions
 						| SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e1) {

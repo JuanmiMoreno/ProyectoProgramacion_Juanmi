@@ -3,7 +3,7 @@ package clases;
 import java.sql.SQLException;
 
 import enums.TipoProducto;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import superClases.EntidadConDinero;
 
 /**
@@ -24,12 +24,12 @@ public class Producto extends EntidadConDinero {
 	 * @param tipo            es el tipo de producto que es
 	 * @param nombreActividad nombre de la actividad en el que se utiliza el
 	 *                        producto
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 * @throws SQLException             error que salta cuando hay unn problema de
 	 *                                  base de datos
 	 */
 	public Producto(String nombre, int dinero, TipoProducto tipo, Actividad nombreActividad)
-			throws nombreInvalidoExceptions, SQLException {
+			throws NombreInvalidoExceptions, SQLException {
 		super(nombre, dinero);
 		this.tipo = tipo;
 		this.nombreActividad = nombreActividad;

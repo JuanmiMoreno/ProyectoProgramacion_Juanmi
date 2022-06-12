@@ -71,10 +71,6 @@ CREATE TABLE proveedor (
     telefono        int(9)
 );
 
-
-
-
-
 CREATE TABLE empresa_proveedor (
     nombreEmpresa   VARCHAR(30) NOT NULL,
     nombreProveedor VARCHAR(30) NOT NULL
@@ -99,11 +95,6 @@ CREATE TABLE producto (
     nombreActividad VARCHAR(50) NOT NULL,
 	foreign key (nombreActividad) references actividad(nombreActividad)
 );
-
-
-
-
-
 
 CREATE TABLE proveedor_producto (
     nombreProveedor VARCHAR(30) NOT NULL,
@@ -130,11 +121,6 @@ CREATE TABLE trabajador (
     nombreEmpresa    VARCHAR(30) NOT NULL,
     foreign key (nombreEmpresa) references empresa(nombreEmpresa)
 );
-
-
-
-
-
 
 ALTER TABLE tractor
     ADD CONSTRAINT tractor_empresa_fk FOREIGN KEY ( nombreEmpresa )

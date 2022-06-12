@@ -7,9 +7,9 @@ package exceptions;
  * @author Juanmi
  *
  */
-public class cifInvalidoExceptions extends Exception {
+public class CifInvalidoExceptions extends Exception {
 
-	public cifInvalidoExceptions(String msg) {
+	public CifInvalidoExceptions(String msg) {
 		super(msg);
 	}
 

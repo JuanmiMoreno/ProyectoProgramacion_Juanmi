@@ -48,8 +48,8 @@ public class PantallaProveedor extends JPanel {
 	/**
 	 * Construnctor que crea pantalla de proveedor contiene la etiqueta con todos
 	 * los atributos de actividad y los campos donde se recoge la informacion.
-	 * Tambien contiene todas las propiedades de dicha pantalla
-	 * Tambien crea una lista con los registro insertados
+	 * Tambien contiene todas las propiedades de dicha pantalla Tambien crea una
+	 * lista con los registro insertados
 	 * 
 	 * @param v es la ventana en la que aparece la pantalla
 	 */
@@ -214,15 +214,14 @@ public class PantallaProveedor extends JPanel {
 				String telefono = campoTelefono.getText();
 				try {
 					new Proveedor(nombre, telefono);
-					JOptionPane.showMessageDialog(ventana, "Proveedor insertado con exito!","Insertado con exito!",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(ventana, "Proveedor insertado con exito!", "Insertado con exito!",
+							JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("proveedor");
-				}catch (SQLIntegrityConstraintViolationException e1) {
-					JOptionPane.showMessageDialog(ventana,
-							"No puedes tener dos proveedores con el mismo nombre",
+				} catch (SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana, "No puedes tener dos proveedores con el mismo nombre",
 							"Error", JOptionPane.ERROR_MESSAGE);
 
-				} 
-				catch (SQLException | TelefonoInvalidoExceptions | NombreInvalidoExceptions e1) {
+				} catch (SQLException | TelefonoInvalidoExceptions | NombreInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}

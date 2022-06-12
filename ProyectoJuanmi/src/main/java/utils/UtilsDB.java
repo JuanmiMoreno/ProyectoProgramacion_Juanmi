@@ -35,7 +35,7 @@ public class UtilsDB {
 			return conexion.createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		
+
 			return null;
 		}
 	}
@@ -52,7 +52,7 @@ public class UtilsDB {
 				conexion = null;
 			} catch (SQLException e) {
 				e.printStackTrace();
-			
+
 			}
 		}
 	}

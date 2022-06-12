@@ -261,6 +261,7 @@ public class PantallaPrincipal extends JPanel {
 					Clip clip = AudioSystem.getClip();
 					clip.open(audioInputStream);
 					clip.start();
+
 					String texto = "";
 					InputStream is = new FileInputStream("./Readme.md");
 					BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -310,7 +311,7 @@ public class PantallaPrincipal extends JPanel {
 						JOptionPane.WARNING_MESSAGE);
 
 				if (opcion == 0) {
-
+					JOptionPane.showMessageDialog(ventana, "Gracias por utilizar nuestra aplicacion");
 					System.exit(0);
 				} else {
 					JOptionPane.showMessageDialog(ventana, "Operacion cancelada", "Cancelado",

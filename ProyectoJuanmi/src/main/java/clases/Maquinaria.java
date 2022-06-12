@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import exceptions.AñoInvalidoExceptions;
 import exceptions.MarcaInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import utils.UtilsDB;
 
 /**
@@ -83,13 +83,15 @@ public abstract class Maquinaria {
 	 * Setter de la marca de la maquinaria
 	 * 
 	 * @param marca nueva marca
-	 * @throws MarcaInvalidoExceptions error que salta cuando la marca de las maquinarias contienen nombre
+	 * @throws MarcaInvalidoExceptions error que salta cuando la marca de las
+	 *                                 maquinarias contienen nombre
 	 */
 	public void setMarca(String marca) throws MarcaInvalidoExceptions {
 		if (!this.marcaValida(marca)) {
-			throw new MarcaInvalidoExceptions("TRACTOR : La marca no puede contener numeros\nAPEROS: El apero que es no puede contener numero");
+			throw new MarcaInvalidoExceptions(
+					"TRACTOR : La marca no puede contener numeros\nAPEROS: El apero que es no puede contener numero");
 		}
-		
+
 		this.marca = marca;
 	}
 
@@ -144,13 +146,18 @@ public abstract class Maquinaria {
 	protected boolean añoValido(short año) {
 		return año > 1920 && año <= 2022;
 	}
+
 	/**
-	 * Funcion protecte que compruba que la marca de las herramientas no tengan numeros
+	 * Funcion protecte que compruba que la marca de las herramientas no tengan
+	 * numeros
+	 * 
 	 * @param marca
 	 * @return
 	 */
-	protected boolean marcaValida (String marca) {
-		return !marca.contains("0") && !marca.contains("1") && !marca.contains("2") && !marca.contains("3") && !marca.contains("4") && !marca.contains("5") && !marca.contains("6") && !marca.contains("7") && !marca.contains("8") && !marca.contains("9"); 
+	protected boolean marcaValida(String marca) {
+		return !marca.contains("0") && !marca.contains("1") && !marca.contains("2") && !marca.contains("3")
+				&& !marca.contains("4") && !marca.contains("5") && !marca.contains("6") && !marca.contains("7")
+				&& !marca.contains("8") && !marca.contains("9");
 	}
 
 }

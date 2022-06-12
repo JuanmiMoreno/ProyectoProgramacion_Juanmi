@@ -242,7 +242,7 @@ public class PantallaApero extends JPanel {
 		gbc_lblNewLabel_5.gridx = 0;
 		gbc_lblNewLabel_5.gridy = 0;
 		panel_3.add(lblNewLabel_5, gbc_lblNewLabel_5);
-		
+
 		JLabel lblNewLabel_6 = new JLabel("No puedes eliminar aperos que esten registrado en alguna actividad");
 		lblNewLabel_6.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
 		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
@@ -252,7 +252,7 @@ public class PantallaApero extends JPanel {
 		gbc_lblNewLabel_6.gridx = 0;
 		gbc_lblNewLabel_6.gridy = 2;
 		panel_3.add(lblNewLabel_6, gbc_lblNewLabel_6);
-		
+
 		JLabel lblNewLabel_7 = new JLabel("Debes eliminar antes la actividad que este relacionada");
 		lblNewLabel_7.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 9));
 		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
@@ -297,7 +297,7 @@ public class PantallaApero extends JPanel {
 				} catch (SQLIntegrityConstraintViolationException e1) {
 					JOptionPane.showMessageDialog(ventana, "No puedes tener dos aperos con el mismo modelo", "Error",
 							JOptionPane.ERROR_MESSAGE);
-				}catch (SQLException | AñoInvalidoExceptions | MarcaInvalidoExceptions e1) {
+				} catch (SQLException | AñoInvalidoExceptions | MarcaInvalidoExceptions e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e1) {

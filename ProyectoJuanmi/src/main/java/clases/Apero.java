@@ -35,11 +35,12 @@ public class Apero extends Maquinaria {
 	 * @param tipo           enum que puede elegir entre suspendido o arrastrado
 	 * @param empresa        recibida por el super hace referencia a la empresa que
 	 *                       pertence el apero
-	 * @throws SQLException          error de la base de datos
-	 * @throws AñoInvalidoExceptions error creado para que el año de adquisicion no
-	 *                               pueda ser inferior a 1920 ni superior a 2022
-	 *                               (año actual)
-	 * @throws MarcaInvalidoExceptions error que salta cuando se define el apero que es contiene un un numero 
+	 * @throws SQLException            error de la base de datos
+	 * @throws AñoInvalidoExceptions   error creado para que el año de adquisicion
+	 *                                 no pueda ser inferior a 1920 ni superior a
+	 *                                 2022 (año actual)
+	 * @throws MarcaInvalidoExceptions error que salta cuando se define el apero que
+	 *                                 es contiene un un numero
 	 */
 	public Apero(String marca, String modelo, short añoAdquisicion, TipoApero tipo, Empresa empresa)
 			throws SQLException, AñoInvalidoExceptions, MarcaInvalidoExceptions {
@@ -47,7 +48,7 @@ public class Apero extends Maquinaria {
 		if (!this.añoValido(añoAdquisicion)) {
 			throw new AñoInvalidoExceptions("El  no puede ser inferior a 1920 ni superior a 2022");
 		}
-		if(!this.marcaValida(marca)) {
+		if (!this.marcaValida(marca)) {
 			throw new MarcaInvalidoExceptions("La definicion del apero que es no puede contener numero");
 		}
 
@@ -84,10 +85,10 @@ public class Apero extends Maquinaria {
 	}
 
 	/**
-	 * Setter en DAO  del tipo de apero
+	 * Setter en DAO del tipo de apero
 	 * 
 	 * @param tipo nuevo tiò de apero
-	 * @throws SQLException  error de base de datos
+	 * @throws SQLException error de base de datos
 	 */
 	public void setTipo(TipoApero tipo) throws SQLException {
 		Statement smt = UtilsDB.conectarBD();
@@ -98,7 +99,6 @@ public class Apero extends Maquinaria {
 		UtilsDB.desconectarBD();
 
 	}
-
 
 	/**
 	 * Funcion que crea un array list de apero en el que se inserta todos los apero

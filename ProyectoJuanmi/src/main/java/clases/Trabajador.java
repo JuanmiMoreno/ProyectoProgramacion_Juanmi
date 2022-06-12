@@ -10,7 +10,7 @@ import enums.TipoPlantacion;
 import exceptions.ContraseñaVaciaExceptions;
 import exceptions.DniInvalidoExceptions;
 import exceptions.NumeroInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import superClases.EntidadConDinero;
 import utils.UtilsDB;
 
@@ -45,7 +45,7 @@ public class Trabajador extends EntidadConDinero {
 	 * @param apellido apeelido del trabjador
 	 * @param dni      dni del trabajador es unico
 	 * @param empresa  es la empresa a la que pertence el trabajador
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre se queda en
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre se queda en
 	 *                                  blanco
 	 * @throws SQLException             error que salta cuando hay error de base de
 	 *                                  datos
@@ -55,7 +55,7 @@ public class Trabajador extends EntidadConDinero {
 	 *                                  sueldo negativo o igual a 0
 	 */
 	public Trabajador(String nombre, int dinero, String apellido, String dni, Empresa empresa)
-			throws nombreInvalidoExceptions, SQLException, DniInvalidoExceptions, NumeroInvalidoExceptions {
+			throws NombreInvalidoExceptions, SQLException, DniInvalidoExceptions, NumeroInvalidoExceptions {
 		super(nombre, dinero);
 		if (!this.dniValido(dni)) {
 			throw new DniInvalidoExceptions("El dni debe tener 9 digitos y no puede ser un numero negativo");
@@ -98,7 +98,7 @@ public class Trabajador extends EntidadConDinero {
 	public void setApellido(String apellido) throws SQLException {
 		Statement smt = UtilsDB.conectarBD();
 		if (smt.executeUpdate(
-				"update trabajador set apellido='" +apellido + "' where nombreTrabajador='" + this.nombre + "'") > 0) {
+				"update trabajador set apellido='" + apellido + "' where nombreTrabajador='" + this.nombre + "'") > 0) {
 			this.apellido = apellido;
 		}
 		UtilsDB.desconectarBD();
@@ -123,7 +123,7 @@ public class Trabajador extends EntidadConDinero {
 	public void setDni(String dni) throws SQLException {
 		Statement smt = UtilsDB.conectarBD();
 		if (smt.executeUpdate(
-				"update trabajador set dni='" +dni + "' where nombreTrabajador='" + this.nombre + "'") > 0) {
+				"update trabajador set dni='" + dni + "' where nombreTrabajador='" + this.nombre + "'") > 0) {
 			this.dni = dni;
 		}
 		UtilsDB.desconectarBD();

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import enums.Provincia;
 import enums.TipoPlantacion;
 import exceptions.NumeroInvalidoExceptions;
-import exceptions.nombreInvalidoExceptions;
+import exceptions.NombreInvalidoExceptions;
 import superClases.EntidadConUbicacion;
 import utils.UtilsDB;
 
@@ -37,13 +37,13 @@ public class Campo extends EntidadConUbicacion {
 	 * @param superficie es la superficie del campo se mide en hA
 	 * @param plantacion es el tipo de plantacion que hay plantada (enum)
 	 * @param empresa    empresa a la que pertenece el campo
-	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
+	 * @throws NombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 * @throws SQLException             error de base de datos
 	 * @throws NumeroInvalidoExceptions error que salta cuando le inserta una
 	 *                                  superficie negativa o igual a 0
 	 */
 	public Campo(String nombre, Provincia provincia, float superficie, TipoPlantacion plantacion, Empresa empresa)
-			throws nombreInvalidoExceptions, SQLException, NumeroInvalidoExceptions {
+			throws NombreInvalidoExceptions, SQLException, NumeroInvalidoExceptions {
 		super(nombre, provincia);
 
 		if (!this.numeroValido(superficie)) {
@@ -111,9 +111,9 @@ public class Campo extends EntidadConUbicacion {
 	 * Setter en DAO de plantacion
 	 * 
 	 * @param plantacion nueva plantacion
-	 * @throws SQLException error de base de datos 
+	 * @throws SQLException error de base de datos
 	 */
-	public void setPlantacion(TipoPlantacion plantacion) throws SQLException  {
+	public void setPlantacion(TipoPlantacion plantacion) throws SQLException {
 		Statement smt = UtilsDB.conectarBD();
 		if (smt.executeUpdate(
 				"update campo set plantacion='" + plantacion + "' where nombreCampo='" + this.nombre + "'") > 0) {
@@ -123,7 +123,6 @@ public class Campo extends EntidadConUbicacion {
 
 	}
 
-
 	/**
 	 * Getter de empresa
 	 * 
@@ -132,14 +131,12 @@ public class Campo extends EntidadConUbicacion {
 	public Empresa getEmpresa() {
 		return empresa;
 	}
-	
-	
 
 	/**
 	 * Setter de empresa
 	 * 
 	 * @param empresa nueva empresa
-	 * @throws SQLException  error de base de datos
+	 * @throws SQLException error de base de datos
 	 */
 	public void setEmpresa(Empresa empresa) throws SQLException {
 		Statement smt = UtilsDB.conectarBD();
@@ -150,8 +147,6 @@ public class Campo extends EntidadConUbicacion {
 		UtilsDB.desconectarBD();
 
 	}
-		
-
 
 	/**
 	 * Funcion estatica que crea un array list e inserta todos los campos que

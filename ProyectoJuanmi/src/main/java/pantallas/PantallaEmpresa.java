@@ -55,8 +55,8 @@ public class PantallaEmpresa extends JPanel {
 	/**
 	 * Construnctor que crea pantalla de empresa contiene la etiqueta con todos los
 	 * atributos de empresa y los campos donde se recoge la informacion. Tambien
-	 * contiene todas las propiedades de dicha pantalla
-	 * Tambien crea una lista con los registro insertados
+	 * contiene todas las propiedades de dicha pantalla Tambien crea una lista con
+	 * los registro insertados
 	 * 
 	 * @param v es la ventana en la que aparece la pantalla
 	 */
@@ -235,7 +235,8 @@ public class PantallaEmpresa extends JPanel {
 									+ " ya tiene registrada una empresa con ese nombre",
 							"Error", JOptionPane.ERROR_MESSAGE);
 
-				} catch (CifInvalidoExceptions | NombreInvalidoExceptions | NumeroInvalidoExceptions  |  SQLException e1) {
+				} catch (CifInvalidoExceptions | NombreInvalidoExceptions | NumeroInvalidoExceptions
+						| SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 				} catch (NumberFormatException e1) {

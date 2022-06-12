@@ -43,7 +43,6 @@ public class Main {
 			Ventana v = new Ventana(usuario, contrasena);
 		} catch (SQLException | ContraseñaVaciaExceptions | NombreInvalidoExceptions e) {
 
-			
 		}
 
 	}
