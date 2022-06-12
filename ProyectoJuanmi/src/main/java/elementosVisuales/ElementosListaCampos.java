@@ -41,7 +41,7 @@ public class ElementosListaCampos extends JPanel {
 	 * @param v ventana sobre la que aprece la lista
 	 * @param c campo del que se mostrara la informacion
 	 */
-	public ElementosListaCampos(Ventana v, final Campo c) {
+	public ElementosListaCampos(final Ventana v, final Campo c) {
 		setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		this.ventana = v;
 		this.campo = c;
@@ -148,9 +148,11 @@ public class ElementosListaCampos extends JPanel {
 			 * @param e evento de clicarr
 			 */
 			public void mouseClicked(MouseEvent e) {
+
 				setVisible(false);
 				c.eliminar();
-				JOptionPane.showConfirmDialog(ventana, "Campo eliminado", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+				
+				JOptionPane.showMessageDialog(ventana, "Campo eliminado", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 

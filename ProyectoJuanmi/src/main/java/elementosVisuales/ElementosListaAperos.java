@@ -141,6 +141,8 @@ public class ElementosListaAperos extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 				ap.eliminar();
+
+				JOptionPane.showMessageDialog(ventana, "Apero eliminado", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));

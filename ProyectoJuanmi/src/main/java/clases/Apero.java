@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import enums.Provincia;
 import enums.TipoApero;
 import exceptions.AñoInvalidoExceptions;
+import exceptions.MarcaInvalidoExceptions;
 import utils.UtilsDB;
 
 /**
@@ -38,12 +39,16 @@ public class Apero extends Maquinaria {
 	 * @throws AñoInvalidoExceptions error creado para que el año de adquisicion no
 	 *                               pueda ser inferior a 1920 ni superior a 2022
 	 *                               (año actual)
+	 * @throws MarcaInvalidoExceptions error que salta cuando se define el apero que es contiene un un numero 
 	 */
 	public Apero(String marca, String modelo, short añoAdquisicion, TipoApero tipo, Empresa empresa)
-			throws SQLException, AñoInvalidoExceptions {
+			throws SQLException, AñoInvalidoExceptions, MarcaInvalidoExceptions {
 		super(marca, modelo, añoAdquisicion, empresa);
 		if (!this.añoValido(añoAdquisicion)) {
 			throw new AñoInvalidoExceptions("El  no puede ser inferior a 1920 ni superior a 2022");
+		}
+		if(!this.marcaValida(marca)) {
+			throw new MarcaInvalidoExceptions("La definicion del apero que es no puede contener numero");
 		}
 
 		Statement queryInsertar = UtilsDB.conectarBD();
@@ -109,7 +114,7 @@ public class Apero extends Maquinaria {
 				actual.tipo = TipoApero.valueOf(cursor.getString("tipoapero"));
 				ret.add(actual);
 			}
-		} catch (SQLException | AñoInvalidoExceptions e) {
+		} catch (SQLException | AñoInvalidoExceptions | MarcaInvalidoExceptions e) {
 			return null;
 		}
 
@@ -138,7 +143,7 @@ public class Apero extends Maquinaria {
 			this.empresa = null;
 			this.tipo = null;
 
-		} catch (SQLException | AñoInvalidoExceptions e) {
+		} catch (SQLException | AñoInvalidoExceptions | MarcaInvalidoExceptions e) {
 			UtilsDB.desconectarBD();
 			return false;
 		}

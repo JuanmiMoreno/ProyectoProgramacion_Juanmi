@@ -5,13 +5,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import exceptions.NumeroInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConNombre;
 import utils.UtilsDB;
 
 /**
- * DAO que instancia a una actividad que representa la actividades que tiene
- * la empresa. En el  se hace todo los movimientos con la base de datos
+ * DAO que instancia a una actividad que representa la actividades que tiene la
+ * empresa. En el se hace todo los movimientos con la base de datos
  * 
  * @author Juanmi
  *
@@ -72,10 +73,16 @@ public class Actividad extends EntidadConNombre {
 	 * @throws nombreInvalidoExceptions excepcions creada para que el nombre de la
 	 *                                  actividad no se deje en blanco
 	 * @throws SQLException             exception de base de datos
+	 * @throws NumeroInvalidoExceptions error que salta cuando la duracion de la
+	 *                                  actividad es negativa o 0
 	 */
 	public Actividad(String nombre, Byte duracion, String campo, String descripcion, String modeloTractor,
-			String modeloApero, Empresa empresa) throws nombreInvalidoExceptions, SQLException {
+			String modeloApero, Empresa empresa)
+			throws nombreInvalidoExceptions, SQLException, NumeroInvalidoExceptions {
 		super(nombre);
+		if (!this.numeroValido(duracion)) {
+			throw new NumeroInvalidoExceptions("La duracion de la actividad no puede ser negativa ni 0");
+		}
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into actividad values('" + this.getNombre() + "','" + duracion + "','"
 				+ descripcion + "','" + empresa.getNombre() + "','" + campo + "','" + modeloTractor + "','"
@@ -263,6 +270,7 @@ public class Actividad extends EntidadConNombre {
 	/**
 	 * Funcion que añade en un array list todas las actividades de una empresa que
 	 * haya en la base de datos
+	 * 
 	 * @param empresa empresa a los que pertenece las actividades
 	 * @return devuelve el array list de actividades
 	 */
@@ -271,7 +279,7 @@ public class Actividad extends EntidadConNombre {
 		ArrayList<Actividad> ret = new ArrayList<Actividad>();
 
 		try {
-			ResultSet cursor = smt.executeQuery("select * from actividad where nombreEmpresa='" + empresa.nombre + "'" );
+			ResultSet cursor = smt.executeQuery("select * from actividad where nombreEmpresa='" + empresa.nombre + "'");
 			while (cursor.next()) {
 				Actividad actual = new Actividad();
 
@@ -321,4 +329,14 @@ public class Actividad extends EntidadConNombre {
 		return ret;
 	}
 
+	/**
+	 * Funcion privada que comprueba que los dias de duracion de la actividad no
+	 * sean negativos ni 0
+	 * 
+	 * @param duracion son los dias de duracion de la actividad
+	 * @return devuelve true si la duracion es un numero postivo y false si no lo es
+	 */
+	private boolean numeroValido(byte duracion) {
+		return duracion > 0;
+	}
 }

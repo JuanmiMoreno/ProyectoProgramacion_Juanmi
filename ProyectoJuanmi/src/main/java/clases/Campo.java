@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import enums.Provincia;
 import enums.TipoPlantacion;
+import exceptions.NumeroInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConUbicacion;
 import utils.UtilsDB;
@@ -38,10 +39,16 @@ public class Campo extends EntidadConUbicacion {
 	 * @param empresa    empresa a la que pertenece el campo
 	 * @throws nombreInvalidoExceptions error que salta cuando el nombre esta vacio
 	 * @throws SQLException             error de base de datos
+	 * @throws NumeroInvalidoExceptions error que salta cuando le inserta una
+	 *                                  superficie negativa o igual a 0
 	 */
 	public Campo(String nombre, Provincia provincia, float superficie, TipoPlantacion plantacion, Empresa empresa)
-			throws nombreInvalidoExceptions, SQLException {
+			throws nombreInvalidoExceptions, SQLException, NumeroInvalidoExceptions {
 		super(nombre, provincia);
+
+		if (!this.numeroValido(superficie)) {
+			throw new NumeroInvalidoExceptions("La superficie de los campos no puede ser negativa ni 0");
+		}
 
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into campo values('" + nombre + "','" + provincia + "'," + superficie
@@ -179,4 +186,14 @@ public class Campo extends EntidadConUbicacion {
 		return ret;
 	}
 
+	/**
+	 * Funcion privada que comprueba que la superfecie de los campos no sean
+	 * negativos ni 0
+	 * 
+	 * @param superficie es la superficie de los campos es decir lo que miden en hA
+	 * @return devuelve true si la superficie es un numero postivo y false si no lo es
+	 */
+	private boolean numeroValido(float superficie) {
+		return superficie > 0;
+	}
 }

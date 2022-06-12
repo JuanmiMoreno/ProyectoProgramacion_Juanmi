@@ -9,6 +9,7 @@ import enums.Provincia;
 import enums.TipoPlantacion;
 import exceptions.ContraseñaVaciaExceptions;
 import exceptions.DniInvalidoExceptions;
+import exceptions.NumeroInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 import superClases.EntidadConDinero;
 import utils.UtilsDB;
@@ -48,14 +49,22 @@ public class Trabajador extends EntidadConDinero {
 	 *                                  blanco
 	 * @throws SQLException             error que salta cuando hay error de base de
 	 *                                  datos
-	 * @throws DniInvalidoExceptions error que salta cuando el dni no tiene 9 digitos
+	 * @throws DniInvalidoExceptions    error que salta cuando el dni no tiene 9
+	 *                                  digitos
+	 * @throws NumeroInvalidoExceptions error que salta cuando se introduce un
+	 *                                  sueldo negativo o igual a 0
 	 */
 	public Trabajador(String nombre, int dinero, String apellido, String dni, Empresa empresa)
-			throws nombreInvalidoExceptions, SQLException, DniInvalidoExceptions {
+			throws nombreInvalidoExceptions, SQLException, DniInvalidoExceptions, NumeroInvalidoExceptions {
 		super(nombre, dinero);
 		if (!this.dniValido(dni)) {
-			throw new DniInvalidoExceptions("El dni debe tener 9 digitos");
+			throw new DniInvalidoExceptions("El dni debe tener 9 digitos y no puede ser un numero negativo");
 		}
+
+		if (!this.numeroValido(dinero)) {
+			throw new NumeroInvalidoExceptions("El sueldo del trabajador no puede ser negativo ni 0");
+		}
+
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into trabajador values('" + this.getNombre() + "','" + apellido + "','"
 				+ dni + "','" + this.getDinero() + "','" + empresa.getNombre() + "')") > 0) {
@@ -128,7 +137,7 @@ public class Trabajador extends EntidadConDinero {
 				actual.nombre = cursor.getString("nombreTrabajador");
 				actual.apellido = cursor.getString("apellido");
 				actual.dni = cursor.getString("dni");
-				actual.dinero = cursor.getInt("sueldo"); 
+				actual.dinero = cursor.getInt("sueldo");
 				ret.add(actual);
 			}
 		} catch (SQLException e) {
@@ -165,9 +174,32 @@ public class Trabajador extends EntidadConDinero {
 		UtilsDB.desconectarBD();
 		return ret;
 	}
-	
-	private boolean dniValido (String dni) {
-		return dni.length() == 9;
+
+	/**
+	 * Funcion privada que comprueba que la longuitud del dni sea 9 digitos y no
+	 * negativos
+	 * 
+	 * @param dni
+	 * @return
+	 */
+	private boolean dniValido(String dni) {
+		return dni.length() == 9 && !dni.contains("-");
 	}
 
+	@Override
+	public String toString() {
+		return "Nombre: " + this.getNombre() + " Apellido: " + this.apellido + " Dni: " + this.dni + " Sueldo: "
+				+ this.dinero;
+	}
+
+	/**
+	 * Funcion privada que comprueba que el sueldo de los trabajadores no sean
+	 * negativos ni 0
+	 * 
+	 * @param sueldo es el sueldo de los trabajadores de la empresa
+	 * @return true si el sueldo es mayor que cero sino false
+	 */
+	private boolean numeroValido(int sueldo) {
+		return sueldo > 0;
+	}
 }

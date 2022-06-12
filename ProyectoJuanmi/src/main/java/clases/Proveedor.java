@@ -65,7 +65,7 @@ public class Proveedor extends EntidadConNombre {
 	public Proveedor(String nombre, String telefono)
 			throws SQLException, TelefonoInvalidoExceptions, nombreInvalidoExceptions {
 		if (!this.telefonoValido(telefono)) {
-			throw new TelefonoInvalidoExceptions("La longuitud del Telefono debe ser de 9 digitos");
+			throw new TelefonoInvalidoExceptions("La longuitud del Telefono debe ser de 9 digitos\nEl telefono no puede ser un numero negativo");
 		}
 
 		Statement queryInsertar = UtilsDB.conectarBD();
@@ -82,13 +82,13 @@ public class Proveedor extends EntidadConNombre {
 	}
 
 	/**
-	 * Funcion privada que comprueba la longuitud del telefono
+	 * Funcion privada que comprueba la longuitud del telefono y que no sea un un numero negativo
 	 * 
 	 * @param telefono el telefono a comprobar
 	 * @return devuelve true si la longuitud es 9 y false si es distinta
 	 */
 	private boolean telefonoValido(String telefono) {
-		return telefono.length() == 9;
+		return telefono.length() == 9 && !telefono.contains("-");
 	}
 
 	/**

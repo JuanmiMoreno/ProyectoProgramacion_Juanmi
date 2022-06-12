@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import exceptions.AñoInvalidoExceptions;
+import exceptions.MarcaInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 import utils.UtilsDB;
 
@@ -35,12 +36,16 @@ public class Tractor extends Maquinaria {
 	 * @throws AñoInvalidoExceptions error de año invalido, salta cuando el año en
 	 *                               el que se compro es inferior a 1920 y superior
 	 *                               a 2022
+	 * @throws MarcaInvalidoExceptions error que sata cuando la marca del tractro contiene numeros
 	 */
 	public Tractor(String marca, String modelo, short añoAdquisicion, Empresa empresa)
-			throws SQLException, AñoInvalidoExceptions {
+			throws SQLException, AñoInvalidoExceptions, MarcaInvalidoExceptions {
 		super(marca, modelo, añoAdquisicion, empresa);
 		if (!this.añoValido(añoAdquisicion)) {
 			throw new AñoInvalidoExceptions("El  no puede ser inferior a 1920 ni superior a 2022");
+		}
+		if(!this.marcaValida(marca)) {
+			throw new MarcaInvalidoExceptions("La marca no puede contener numeros");
 		}
 
 		Statement queryInsertar = UtilsDB.conectarBD();
@@ -83,7 +88,7 @@ public class Tractor extends Maquinaria {
 				actual.setAñoAdquisicion(cursor.getShort("añoAdquisicion"));
 				ret.add(actual);
 			}
-		} catch (SQLException | AñoInvalidoExceptions e) {
+		} catch (SQLException | AñoInvalidoExceptions | MarcaInvalidoExceptions e) {
 			return null;
 		}
 
@@ -105,11 +110,11 @@ public class Tractor extends Maquinaria {
 		try {
 			ret = smt.executeUpdate("delete from tractor where modeloTractor='" + this.getModelo() + "'") > 0;
 
-			this.getMarca();
+			this.setMarca(null);
 			this.setModelo(null);
 			this.setAñoAdquisicion((short) 0);
 
-		} catch (SQLException | AñoInvalidoExceptions e) {
+		} catch (SQLException | AñoInvalidoExceptions | MarcaInvalidoExceptions e) {
 			UtilsDB.desconectarBD();
 			return false;
 		}
