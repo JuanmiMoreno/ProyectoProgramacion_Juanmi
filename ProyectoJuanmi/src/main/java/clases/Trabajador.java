@@ -93,9 +93,16 @@ public class Trabajador extends EntidadConDinero {
 	 * Setter de apellidos del trabajador
 	 * 
 	 * @param apellido nuevo apellido del trabajador
+	 * @throws SQLException error de base de datos
 	 */
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setApellido(String apellido) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update trabajador set apellido='" +apellido + "' where nombreTrabajador='" + this.nombre + "'") > 0) {
+			this.apellido = apellido;
+		}
+		UtilsDB.desconectarBD();
+
 	}
 
 	/**
@@ -111,9 +118,16 @@ public class Trabajador extends EntidadConDinero {
 	 * Setter del dni de trabajador
 	 * 
 	 * @param dni nuevo dni del trabajador
+	 * @throws SQLException error de base de datos
 	 */
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setDni(String dni) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update trabajador set dni='" +dni + "' where nombreTrabajador='" + this.nombre + "'") > 0) {
+			this.dni = dni;
+		}
+		UtilsDB.desconectarBD();
+
 	}
 
 	/**

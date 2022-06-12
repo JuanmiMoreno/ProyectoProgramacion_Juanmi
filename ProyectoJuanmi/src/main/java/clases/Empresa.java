@@ -82,7 +82,8 @@ public class Empresa extends EntidadConDinero {
 	 *                                  de datos
 	 * @throws cifInvalidoExceptions    cif invalido error que salta cuando la
 	 *                                  longuitud del cif no es 9 digitos
-	 * @throws NumeroInvalidoExceptions error que salta cuando se introduce un numero negativo
+	 * @throws NumeroInvalidoExceptions error que salta cuando se introduce un
+	 *                                  numero negativo
 	 */
 	public Empresa(String nombre, int dinero, String cif, Usuario usuario)
 			throws nombreInvalidoExceptions, SQLException, cifInvalidoExceptions, NumeroInvalidoExceptions {
@@ -91,14 +92,14 @@ public class Empresa extends EntidadConDinero {
 		float presupuesto = dinero;
 		String nombreUsuario = usuario.getNombre();
 		if (!this.cifValido(cif)) {
-			throw new cifInvalidoExceptions("La longuitud del CIF debe ser de 9 digitos, 8 numeos y 1 letra. NO PUEDE ser un numero NEGATIVO");
+			throw new cifInvalidoExceptions(
+					"La longuitud del CIF debe ser de 9 digitos, 8 numeos y 1 letra. NO PUEDE ser un numero NEGATIVO");
 		}
-		
+
 		if (!this.numeroValido(dinero)) {
 			throw new NumeroInvalidoExceptions("La empresa no puede tener fondos negativos");
 		}
-		
-		
+
 		Statement queryInsertar = UtilsDB.conectarBD();
 		if (queryInsertar.executeUpdate("insert into empresa values('" + this.getNombre() + "','" + cif + "',"
 				+ this.getDinero() + ",'" + usuario.getNombre() + "')") > 0) {
@@ -113,7 +114,8 @@ public class Empresa extends EntidadConDinero {
 	}
 
 	/**
-	 * Funcion privada que sirve comprobar la longuitud del cif y que no sea negativo
+	 * Funcion privada que sirve comprobar la longuitud del cif y que no sea
+	 * negativo
 	 * 
 	 * @param cif recibe el cif de la empresa
 	 * @return devuelve que la longuitud del cif debe de ser 9 digitos
@@ -171,9 +173,15 @@ public class Empresa extends EntidadConDinero {
 	 * Setter del cif de la empresa
 	 * 
 	 * @param cif es el nuevo cif de la empresa
+	 * @throws SQLException error de base de datos
 	 */
-	public void setCif(String cif) {
-		this.cif = cif;
+	public void setCif(String cif) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate("update empresa set cif='" + cif + "' where nombreEmpresa='" + this.nombre + "'") > 0) {
+			this.cif = cif;
+		}
+		UtilsDB.desconectarBD();
+
 	}
 
 	/**
@@ -267,11 +275,38 @@ public class Empresa extends EntidadConDinero {
 	}
 
 	/**
-	 * Funcion privada que comprueba que los fondos de la empresa no sean negativos ni 0
+	 * Funcion privada que comprueba que los fondos de la empresa no sean negativos
+	 * ni 0
+	 * 
 	 * @param dinero son los fondos con los que se crea la empresa
 	 * @return devuelve true si los fondos es un numero postivo y false si no lo es
 	 */
 	private boolean numeroValido(int dinero) {
-		return dinero > 0; 
+		return dinero > 0;
+	}
+
+	/**
+	 * Getter del usuario de la empresa
+	 * 
+	 * @return devuelve el usuario que es el dueño de la empresa
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * Setter en DAO del usuario de la empresa
+	 * 
+	 * @param usuario nuevo dueño de la empresa
+	 * @throws SQLException erro de base de datos
+	 */
+	public void setUsuario(Usuario usuario) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate("update empresa set nombreUsuario='" + usuario.nombre + "' where nombreEmpresa='"
+				+ this.nombre + "'") > 0) {
+			this.usuario = usuario;
+		}
+		UtilsDB.desconectarBD();
+
 	}
 }

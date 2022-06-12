@@ -86,9 +86,16 @@ public class Campo extends EntidadConUbicacion {
 	 * Setter de la superficie
 	 * 
 	 * @param superficie nueva superficie
+	 * @throws SQLException error de base de datos
 	 */
-	public void setSuperficie(float superficie) {
-		this.superficie = superficie;
+	public void setSuperficie(float superficie) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update campo set superficie='" + superficie + "' where nombreCampo='" + this.nombre + "'") > 0) {
+			this.superficie = superficie;
+		}
+		UtilsDB.desconectarBD();
+
 	}
 
 	/**
@@ -101,13 +108,21 @@ public class Campo extends EntidadConUbicacion {
 	}
 
 	/**
-	 * Setter de plantacion
+	 * Setter en DAO de plantacion
 	 * 
 	 * @param plantacion nueva plantacion
+	 * @throws SQLException error de base de datos 
 	 */
-	public void setPlantacion(TipoPlantacion plantacion) {
-		this.plantacion = plantacion;
+	public void setPlantacion(TipoPlantacion plantacion) throws SQLException  {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update campo set plantacion='" + plantacion + "' where nombreCampo='" + this.nombre + "'") > 0) {
+			this.plantacion = plantacion;
+		}
+		UtilsDB.desconectarBD();
+
 	}
+
 
 	/**
 	 * Getter de empresa
@@ -117,15 +132,26 @@ public class Campo extends EntidadConUbicacion {
 	public Empresa getEmpresa() {
 		return empresa;
 	}
+	
+	
 
 	/**
 	 * Setter de empresa
 	 * 
 	 * @param empresa nueva empresa
+	 * @throws SQLException  error de base de datos
 	 */
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
+	public void setEmpresa(Empresa empresa) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update campo set nombreEmpresa='" + empresa + "' where nombreCampo='" + this.nombre + "'") > 0) {
+			this.empresa = empresa;
+		}
+		UtilsDB.desconectarBD();
+
 	}
+		
+
 
 	/**
 	 * Funcion estatica que crea un array list e inserta todos los campos que
@@ -191,7 +217,8 @@ public class Campo extends EntidadConUbicacion {
 	 * negativos ni 0
 	 * 
 	 * @param superficie es la superficie de los campos es decir lo que miden en hA
-	 * @return devuelve true si la superficie es un numero postivo y false si no lo es
+	 * @return devuelve true si la superficie es un numero postivo y false si no lo
+	 *         es
 	 */
 	private boolean numeroValido(float superficie) {
 		return superficie > 0;

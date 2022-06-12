@@ -84,13 +84,21 @@ public class Apero extends Maquinaria {
 	}
 
 	/**
-	 * Setter del tipo de apero
+	 * Setter en DAO  del tipo de apero
 	 * 
 	 * @param tipo nuevo tiò de apero
+	 * @throws SQLException  error de base de datos
 	 */
-	public void setTipo(TipoApero tipo) {
-		this.tipo = tipo;
+	public void setTipo(TipoApero tipo) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update apero set tipoapero='" + tipo + "' where nombreApero='" + this.getMarca() + "'") > 0) {
+			this.tipo = tipo;
+		}
+		UtilsDB.desconectarBD();
+
 	}
+
 
 	/**
 	 * Funcion que crea un array list de apero en el que se inserta todos los apero

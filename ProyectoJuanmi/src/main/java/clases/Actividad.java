@@ -115,12 +115,19 @@ public class Actividad extends EntidadConNombre {
 	}
 
 	/**
-	 * Setter de la duracion de la actividad
+	 * Setter en DAO de la duracion de la actividad
 	 * 
 	 * @param duracion devuelve la nueva duracion de la actividad
+	 * @throws SQLException error que salta cuando hay un fallo de base de datos
 	 */
-	public void setDuracion(Byte duracion) {
-		this.duracion = duracion;
+	public void setDuracion(Byte duracion) throws SQLException {
+
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update actividad set duracion='" + duracion + "' where nombreActividad='" + this.nombre + "'") > 0) {
+			this.duracion = duracion;
+		}
+		UtilsDB.desconectarBD();
 	}
 
 	/**
@@ -133,12 +140,19 @@ public class Actividad extends EntidadConNombre {
 	}
 
 	/**
-	 * Setter del nombre del campo donde se realiza la actividad
+	 * Setter en DAO del nombre del campo donde se realiza la actividad
 	 * 
 	 * @param campo campo es el nuevo nombre del campo
+	 * @throws SQLException
 	 */
-	public void setCampo(String campo) {
-		this.campo = campo;
+	public void setCampo(String campo) throws SQLException {
+
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update actividad set nombreCampo='" + campo + "' where nombreActividad='" + this.nombre + "'") > 0) {
+			this.campo = campo;
+		}
+		UtilsDB.desconectarBD();
 	}
 
 	/**
@@ -160,12 +174,20 @@ public class Actividad extends EntidadConNombre {
 	}
 
 	/**
-	 * Setter del modelo del tractor que realiza la accion
+	 * Setter en DAO del modelo del tractor que realiza la accion
 	 * 
 	 * @param modeloTractor nuevo modelo del tractor
+	 * @throws SQLException error de base de datos
 	 */
-	public void setModeloTractor(String modeloTractor) {
-		this.modeloTractor = modeloTractor;
+	public void setModeloTractor(String modeloTractor) throws SQLException {
+
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update actividad set modeloTractor='" + modeloTractor + "' where nombreActividad='" + this.nombre + "'") > 0) {
+			this.modeloTractor = modeloTractor;
+		}
+		UtilsDB.desconectarBD();
+
 	}
 
 	/**
@@ -178,13 +200,21 @@ public class Actividad extends EntidadConNombre {
 	}
 
 	/**
-	 * Setter del modelo de apero que realiza la accion
+	 * Setter en DAO  del modelo de apero que realiza la accion
 	 * 
 	 * @param modeloApero nuevo modelo de apero
+	 * @throws SQLException  error de base de datos
 	 */
-	public void setModeloApero(String modeloApero) {
-		this.modeloApero = modeloApero;
+	public void setModeloApero(String modeloApero) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update actividad set modeloApero='" + modeloApero + "' where nombreActividad='" + this.nombre + "'") > 0) {
+			this.modeloApero = modeloApero;
+		}
+		UtilsDB.desconectarBD();
+
 	}
+		
 
 	/**
 	 * Setter del trabajador que realiza la accion
@@ -226,10 +256,18 @@ public class Actividad extends EntidadConNombre {
 	 * Setter descripcion de la actividad
 	 * 
 	 * @param descripcion nueva descripcion de la actividad
+	 * @throws SQLException  error de base de datos
 	 */
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescripcion(String descripcion) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update actividad set descripcion='" + descripcion + "' where nombreActividad='" + this.nombre + "'") > 0) {
+			this.descripcion = descripcion;
+		}
+		UtilsDB.desconectarBD();
+
 	}
+		
 
 	/**
 	 * Getter de los productos que realizan la actividad
@@ -259,13 +297,21 @@ public class Actividad extends EntidadConNombre {
 	}
 
 	/**
-	 * Setter de la empresa que realiza la actividad
+	 * Setter en DAO de la empresa que realiza la actividad
 	 * 
 	 * @param empresa nueva empresa
+	 * @throws SQLException error base de datos 
 	 */
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
+	public void setEmpresa(Empresa empresa) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update actividad set nombreEmpresa='" + empresa.nombre + "' where nombreActividad='" + this.nombre + "'") > 0) {
+			this.empresa = empresa;
+		}
+		UtilsDB.desconectarBD();
 	}
+		
+
 
 	/**
 	 * Funcion que añade en un array list todas las actividades de una empresa que

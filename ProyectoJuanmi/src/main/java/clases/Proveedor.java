@@ -101,13 +101,21 @@ public class Proveedor extends EntidadConNombre {
 	}
 
 	/**
-	 * Setter del telefono de proveedores
+	 * Setter en DAO del telefono de proveedores
 	 * 
 	 * @param telefono nuevo telefono
+	 * @throws SQLException  error de base de datos
 	 */
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefono(String telefono) throws SQLException {
+		Statement smt = UtilsDB.conectarBD();
+		if (smt.executeUpdate(
+				"update proveedor set telefono='" + telefono + "' where nombreProveedor='" + this.nombre + "'") > 0) {
+			this.telefono = telefono;
+		}
+		UtilsDB.desconectarBD();
+
 	}
+
 
 	/**
 	 * Getter de arraylist de productos que tiene los proveedores

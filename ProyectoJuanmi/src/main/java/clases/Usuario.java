@@ -148,7 +148,7 @@ public class Usuario extends EntidadConUbicacion {
 	}
 
 	/**
-	 * Setter de la contraseña
+	 * Setter en DAO de la contraseña
 	 * 
 	 * @param contraseña nueva contraseña
 	 * @throws SQLException              error de base de datos
@@ -160,9 +160,12 @@ public class Usuario extends EntidadConUbicacion {
 			throw new ContraseñaVaciaExceptions("La contraeña no puede estar vacia");
 		}
 		Statement smt = UtilsDB.conectarBD();
-		smt.executeUpdate("update usuario set contrasena='" + contraseña + "' where nombre='" + this.getNombre() + "'");
+		if (smt.executeUpdate(
+				"update usuario set contraseña='" + contraseña + "' where nombreUsuario='" + this.nombre + "'") > 0) {
+			this.contraseña = contraseña;
+		}
 		UtilsDB.desconectarBD();
-		this.contraseña = contraseña;
+
 	}
 
 	/**
@@ -187,9 +190,11 @@ public class Usuario extends EntidadConUbicacion {
 			throw new emailInvalidoExceptions("El email debe contener @");
 		}
 		Statement smt = UtilsDB.conectarBD();
-		smt.executeUpdate("update usuario set email='" + email + "' where nombre='" + super.getNombre() + "'");
+		if (smt.executeUpdate(
+				"update usuario set email='" + email + "' where nombreUsuario='" + this.nombre + "'") > 0) {
+			this.email = email;
+		}
 		UtilsDB.desconectarBD();
-		this.email = email;
-	}
 
+	}
 }

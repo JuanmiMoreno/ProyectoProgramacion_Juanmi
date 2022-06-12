@@ -110,8 +110,8 @@ public class Tractor extends Maquinaria {
 		try {
 			ret = smt.executeUpdate("delete from tractor where modeloTractor='" + this.getModelo() + "'") > 0;
 
-			this.setMarca(null);
-			this.setModelo(null);
+			this.setMarca("");
+			this.setModelo("");
 			this.setAñoAdquisicion((short) 0);
 
 		} catch (SQLException | AñoInvalidoExceptions | MarcaInvalidoExceptions e) {
