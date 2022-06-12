@@ -9,6 +9,7 @@ import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
@@ -135,6 +136,8 @@ public class ElementosListraTrabajador extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 				tr.eliminar();
+				JOptionPane.showMessageDialog(ventana, "Trabajador eliminado", "Eliminado",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 

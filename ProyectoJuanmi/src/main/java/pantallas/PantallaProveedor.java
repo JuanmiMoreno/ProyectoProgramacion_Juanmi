@@ -26,6 +26,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.awt.SystemColor;
 
@@ -210,7 +211,13 @@ public class PantallaProveedor extends JPanel {
 				try {
 					new Proveedor(nombre, telefono);
 					v.cambiarPantallas("proveedor");
-				} catch (SQLException | TelefonoInvalidoExceptions | nombreInvalidoExceptions e1) {
+				}catch (SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana,
+							"No puedes tener dos proveedores con el mismo nombre",
+							"Error", JOptionPane.ERROR_MESSAGE);
+
+				} 
+				catch (SQLException | TelefonoInvalidoExceptions | nombreInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}

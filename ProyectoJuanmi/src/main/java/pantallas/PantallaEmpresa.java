@@ -22,6 +22,7 @@ import javax.swing.UIManager;
 
 import clases.Empresa;
 import exceptions.EmpresaIncorrectaExceptions;
+import exceptions.NumeroInvalidoExceptions;
 import exceptions.cifInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 
@@ -234,7 +235,7 @@ public class PantallaEmpresa extends JPanel {
 									+ " ya tiene registrada una empresa con ese nombre",
 							"Error", JOptionPane.ERROR_MESSAGE);
 
-				} catch (cifInvalidoExceptions | nombreInvalidoExceptions | SQLException e1) {
+				} catch (cifInvalidoExceptions | nombreInvalidoExceptions | NumeroInvalidoExceptions  |  SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 				} catch (NumberFormatException e1) {

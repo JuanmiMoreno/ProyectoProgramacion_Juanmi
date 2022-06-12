@@ -123,9 +123,9 @@ ALTER TABLE proveedor_producto
 
 
 CREATE TABLE trabajador (
-    nombreTrabajador VARCHAR(30) PRIMARY KEY,
+    nombreTrabajador VARCHAR(30) ,
     apellido         VARCHAR(30),
-    dni              VARCHAR(9),
+    dni              VARCHAR(9) primary key,
     sueldo           int(6),
     nombreEmpresa    VARCHAR(30) NOT NULL,
     foreign key (nombreEmpresa) references empresa(nombreEmpresa)

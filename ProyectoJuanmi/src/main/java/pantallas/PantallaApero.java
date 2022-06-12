@@ -26,6 +26,7 @@ import javax.swing.DefaultComboBoxModel;
 import enums.Provincia;
 import enums.TipoApero;
 import exceptions.AñoInvalidoExceptions;
+import exceptions.MarcaInvalidoExceptions;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -34,6 +35,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.awt.SystemColor;
 
 /**
@@ -57,8 +59,8 @@ public class PantallaApero extends JPanel {
 	/**
 	 * Construnctor que crea pantalla de aperos, contiene la etiqueta con todos los
 	 * atributos de aperos y los campos donde se recoge la informacion. Tambien
-	 * contiene todas las propiedades de dicha pantalla
-	 * Tambien crea una lista con los registro insertados
+	 * contiene todas las propiedades de dicha pantalla Tambien crea una lista con
+	 * los registro insertados
 	 * 
 	 * @param v es la ventana en la que aparece la pantalla
 	 */
@@ -265,7 +267,10 @@ public class PantallaApero extends JPanel {
 					JOptionPane.showMessageDialog(ventana, "Apero insertado con exito!", "Insertado con exito",
 							JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("apero");
-				} catch (SQLException | AñoInvalidoExceptions e1) {
+				} catch (SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana, "No puedes tener dos aperos con el mismo modelo", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}catch (SQLException | AñoInvalidoExceptions | MarcaInvalidoExceptions e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e1) {

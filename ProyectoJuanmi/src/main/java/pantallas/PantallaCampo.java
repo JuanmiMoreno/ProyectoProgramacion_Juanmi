@@ -29,6 +29,7 @@ import javax.swing.DefaultComboBoxModel;
 import enums.Provincia;
 import javax.swing.JCheckBox;
 import enums.TipoPlantacion;
+import exceptions.NumeroInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 
 import javax.swing.ImageIcon;
@@ -38,6 +39,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
@@ -61,8 +63,8 @@ public class PantallaCampo extends JPanel {
 	/**
 	 * Construnctor que crea pantalla de campo contiene la etiqueta con todos los
 	 * atributos de campo y los campos donde se recoge la informacion. Tambien
-	 * contiene todas las propiedades de dicha pantalla
-	 * Tambien crea una lista con los registro insertados
+	 * contiene todas las propiedades de dicha pantalla Tambien crea una lista con
+	 * los registro insertados
 	 * 
 	 * @param v es la ventana en la que aparece la pantalla
 	 */
@@ -258,11 +260,17 @@ public class PantallaCampo extends JPanel {
 					JOptionPane.showMessageDialog(ventana, "Campo insertado con exito", "",
 							JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("campos");
-				} catch (NumberFormatException e1) {
-					JOptionPane.showMessageDialog(ventana, "El decimal lo debes de poner con el punto", "Error",
+				}catch (SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana,
+							"No puedes tener dos campos con el mismo nombre",
+							"Error", JOptionPane.ERROR_MESSAGE);
+
+				} 
+				catch (NumberFormatException  e1) {
+					JOptionPane.showMessageDialog(ventana, "El decimal lo debes de poner con el punto\nSi has introducido una cadena de carecteres debes de borrar e introducir un numero", "Error",
 							JOptionPane.ERROR_MESSAGE);
 					e1.printStackTrace();
-				} catch (nombreInvalidoExceptions | SQLException e1) {
+				} catch (nombreInvalidoExceptions | NumeroInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 

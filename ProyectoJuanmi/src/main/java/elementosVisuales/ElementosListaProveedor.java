@@ -10,6 +10,8 @@ import javax.swing.border.LineBorder;
 import clases.Proveedor;
 import pantallas.Ventana;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
@@ -108,6 +110,8 @@ public class ElementosListaProveedor extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 				pr.eliminar();
+				JOptionPane.showMessageDialog(ventana, "Proveedor eliminado", "Eliminado",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));

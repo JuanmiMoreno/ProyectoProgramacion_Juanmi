@@ -26,6 +26,7 @@ import clases.Actividad;
 import clases.Trabajador;
 import elementosVisuales.ElementosListaActividades;
 import elementosVisuales.ElementosListraTrabajador;
+import exceptions.NumeroInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 
 import com.toedter.calendar.JDateChooser;
@@ -68,8 +69,8 @@ public class PantallaActividad extends JPanel {
 	/**
 	 * Construnctor que crea pantalla de actividad contiene la etiqueta con todos
 	 * los atributos de actividad y los campos donde se recoge la informacion.
-	 * Tambien contiene todas las propiedades de dicha pantalla
-	 * Tambien crea una lista con los registro insertados
+	 * Tambien contiene todas las propiedades de dicha pantalla Tambien crea una
+	 * lista con los registro insertados
 	 * 
 	 * @param v es la ventana en la que aparece la pantalla
 	 */
@@ -300,10 +301,10 @@ public class PantallaActividad extends JPanel {
 					v.cambiarPantallas("actividad");
 				} catch (SQLIntegrityConstraintViolationException e1) {
 					JOptionPane.showMessageDialog(ventana,
-							"En los campos tractor, campos y apero, debes introducir registros ya insertado anteriormente",
+							"En los campos tractor, campos y apero, debes introducir registros ya insertado anteriormente\n EL NOMBRE DE LA ACTIVIDAD NO PUEDE SER IGUAL A ALGUNO QUE YA TENGAS INSERTADO",
 							"Error", JOptionPane.ERROR_MESSAGE);
 
-				} catch (nombreInvalidoExceptions | SQLException e1) {
+				} catch (nombreInvalidoExceptions | NumeroInvalidoExceptions | SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e1) {
 					JOptionPane.showMessageDialog(ventana,

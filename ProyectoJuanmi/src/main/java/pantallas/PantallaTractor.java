@@ -16,6 +16,7 @@ import clases.Tractor;
 import elementosVisuales.ElementosListaTractor;
 import elementosVisuales.ElementosListraTrabajador;
 import exceptions.AñoInvalidoExceptions;
+import exceptions.MarcaInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 
 import javax.swing.JButton;
@@ -26,6 +27,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.awt.SystemColor;
 
@@ -228,7 +230,12 @@ public class PantallaTractor extends JPanel {
 					v.cambiarPantallas("tractores");
 					JOptionPane.showMessageDialog(ventana, "Tractor insertado con exito", "Insertado con exito",
 							JOptionPane.INFORMATION_MESSAGE);
-				} catch (SQLException | AñoInvalidoExceptions e1) {
+				} catch (SQLIntegrityConstraintViolationException e1) {
+					JOptionPane.showMessageDialog(ventana,
+							"No puedes tener dos tractores con el mismo modelo, nadie los tiene", "Error",
+							JOptionPane.ERROR_MESSAGE);
+
+				} catch (SQLException | AñoInvalidoExceptions | MarcaInvalidoExceptions e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 				} catch (NumberFormatException e1) {

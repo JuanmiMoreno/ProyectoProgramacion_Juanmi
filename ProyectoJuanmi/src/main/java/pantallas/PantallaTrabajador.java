@@ -15,6 +15,7 @@ import clases.Trabajador;
 import clases.Usuario;
 import elementosVisuales.ElementosListraTrabajador;
 import exceptions.DniInvalidoExceptions;
+import exceptions.NumeroInvalidoExceptions;
 import exceptions.nombreInvalidoExceptions;
 
 import javax.swing.JButton;
@@ -29,6 +30,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JScrollBar;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.awt.Color;
 import java.awt.SystemColor;
@@ -69,9 +73,10 @@ public class PantallaTrabajador extends JPanel {
 		add(panel, BorderLayout.WEST);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 57, 109, 52, 0 };
-		gbl_panel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 0 };
+		gbl_panel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 37, 0, 0, 0 };
 		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+				Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
 		JLabel etiquetaNombre = new JLabel("Nombre");
@@ -153,6 +158,46 @@ public class PantallaTrabajador extends JPanel {
 		gbc_botonAñadir.gridx = 1;
 		gbc_botonAñadir.gridy = 9;
 		panel.add(botonAñadir, gbc_botonAñadir);
+
+		JButton botonExportar = new JButton("Exportar a .txt");
+		botonExportar.addMouseListener(new MouseAdapter() {
+			@Override
+			/**
+			 * Funcion que al clicar en el boton exportar crea un archivo txt con los
+			 * trabajadores de la empresa
+			 * 
+			 * @param e evento de clicar
+			 */
+			public void mouseClicked(MouseEvent e) {
+
+				ArrayList<Trabajador> trabajadores = Trabajador.getTodos(v.empresaLogada);
+
+				try {
+					FileWriter escritor = new FileWriter("trabajadores.txt");
+					BufferedWriter lector = new BufferedWriter(escritor);
+					for (Trabajador tr : trabajadores) {
+						lector.write(tr.toString());
+						lector.newLine();
+					}
+					lector.close();
+					escritor.close();
+					JOptionPane.showMessageDialog(ventana, "Archivo generado con exito", "Operacion con exito",
+							JOptionPane.INFORMATION_MESSAGE);
+				} catch (IOException e1) {
+
+					JOptionPane.showMessageDialog(ventana, "No se pudo generar el archivo", "Error",
+							JOptionPane.ERROR_MESSAGE);
+
+				}
+			}
+		});
+		botonExportar.setIcon(new ImageIcon(".\\imagenes\\exportar.png"));
+		botonExportar.setFont(new Font("Arial", Font.BOLD, 12));
+		GridBagConstraints gbc_botonExportar = new GridBagConstraints();
+		gbc_botonExportar.insets = new Insets(0, 0, 5, 5);
+		gbc_botonExportar.gridx = 1;
+		gbc_botonExportar.gridy = 11;
+		panel.add(botonExportar, gbc_botonExportar);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(SystemColor.controlShadow);
@@ -258,8 +303,8 @@ public class PantallaTrabajador extends JPanel {
 							JOptionPane.INFORMATION_MESSAGE);
 					v.cambiarPantallas("personal");
 
-				} catch (nombreInvalidoExceptions | DniInvalidoExceptions | SQLException e1) {
-					System.out.println(e1.getMessage());
+				} catch (nombreInvalidoExceptions | NumeroInvalidoExceptions | DniInvalidoExceptions
+						| SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (NumberFormatException e1) {
 					JOptionPane.showMessageDialog(ventana, "El sueldo del empleado debe ser un numero entero!", "Error",

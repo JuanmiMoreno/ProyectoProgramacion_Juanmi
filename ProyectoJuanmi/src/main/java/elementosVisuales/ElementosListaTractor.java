@@ -127,6 +127,9 @@ public class ElementosListaTractor extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 				tr.eliminar();
+				JOptionPane.showMessageDialog(ventana, "Tractor eliminado", "Eliminado",
+						JOptionPane.INFORMATION_MESSAGE);
+
 			}
 		});
 		botonBorrar.setIcon(new ImageIcon(".\\imagenes\\borrar.png"));

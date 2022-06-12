@@ -53,7 +53,7 @@ public abstract class EntidadConNombre {
 	 */
 	public void setNombre(String nombre) throws nombreInvalidoExceptions, SQLException {
 		if (!this.nombreValido(nombre)) {
-			throw new nombreInvalidoExceptions("El  nombre no puede estar vacio");
+			throw new nombreInvalidoExceptions("El  nombre no puede estar vacio ni puede contener numeros");
 		}
 		this.nombre = nombre;
 	}
@@ -66,7 +66,7 @@ public abstract class EntidadConNombre {
 	 *         vacio
 	 */
 	private boolean nombreValido(String nombre) {
-		return !nombre.isBlank();
+		return !nombre.isBlank() && !nombre.contains("0") && !nombre.contains("1") && !nombre.contains("2") && !nombre.contains("3") && !nombre.contains("4") && !nombre.contains("5") && !nombre.contains("6") && !nombre.contains("7") && !nombre.contains("8") && !nombre.contains("9");
 	}
 
 }
